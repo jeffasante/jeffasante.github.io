@@ -246,9 +246,9 @@
             selectedThumbnail.classList.add('active');
 
             // Scroll the thumbnail into view
-            selectedThumbnail.scrollIntoView({ behavior: 'smooth', inline: 'center',   block: 'nearest' });
-        
-            
+            selectedThumbnail.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+
         }
 
         thumbnails.forEach((thumbnail, index) => {
@@ -326,6 +326,29 @@
             slider.scrollLeft = scrollLeft - walk;
         });
 
+
+        // Add this to your existing JavaScript
+        // const slider = document.querySelector('.thumbnail-slider');
+        // let isScrolling = false;
+
+        // slider.addEventListener('scroll', () => {
+        //     window.clearTimeout(isScrolling);
+        //     isScrolling = setTimeout(() => {
+        //         const scrollPosition = slider.scrollLeft;
+        //         const thumbnailWidth = slider.querySelector('.thumbnail').offsetWidth;
+        //         const index = Math.round(scrollPosition / thumbnailWidth);
+        //         updateMainDisplay(index);
+        //     }, 100);
+        // });
+
+        // // Update your existing next and prev button event listeners
+        // nextButton.addEventListener('click', () => {
+        //     slider.scrollBy({ left: slider.querySelector('.thumbnail').offsetWidth, behavior: 'smooth' });
+        // });
+
+        // prevButton.addEventListener('click', () => {
+        //     slider.scrollBy({ left: -slider.querySelector('.thumbnail').offsetWidth, behavior: 'smooth' });
+        // });
     </script>
 </body>
 
