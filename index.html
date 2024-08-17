@@ -6,10 +6,14 @@
     <title>Jeffrey Asante - AI Developer & Data Scientist</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     <header>
         <nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined">menu_open</span>
+            </button>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -100,5 +104,15 @@
     <footer>
         <p>&copy; 2024 Jeffrey Asante. All rights reserved.</p>
     </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
