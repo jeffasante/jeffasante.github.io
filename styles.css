@@ -64,6 +64,8 @@ nav ul li a:hover {
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block; /* Show the hamburger icon on small screens */
+        margin-right: 45px;
+        font-size: 30px;
     }
 
     nav ul {
@@ -357,5 +359,31 @@ footer {
 @media (max-width: 768px) {
     .profile-picture {
         max-width: 150px; /* Adjust max width for smaller screens */
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .experience-item {
+        padding: 20px;
+    }
+
+    .experience-item h3 {
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .company, .date, .location {
+        display: block;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .date, .location {
+        text-align: left;
+        position: static; /* Reset positioning on small screens */
+        margin-bottom: 10px;
     }
 }
