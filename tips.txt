@@ -1,0 +1,4 @@
+
+ <!-- <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Reddit Stress Detection" data-description="Built stress detection app using machine learning, analyzing Reddit comments with Logistic Regression and CountVectorizer.">
+                        <img src="https://via.placeholder.com/150x100" alt="Reddit Stress Detection Project Thumbnail" />
+                    </div> -->
