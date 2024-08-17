@@ -235,6 +235,11 @@
     </footer>
 
     <script>
+        
+        // force the page to scroll to the top after it has finished loading.
+        window.onload = function () {
+            window.scrollTo(0, 0);
+        }
 
         // JavaScript for mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -350,6 +355,7 @@
             const walk = (x - startX) * 2; // Reduce the scrolling speed for better control
             slider.scrollLeft = scrollLeft - walk;
         });
+
 
 
 
