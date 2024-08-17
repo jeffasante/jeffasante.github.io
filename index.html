@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -119,7 +124,7 @@
             </ul>
         </section>
          -->
-         <h2>Skills</h2>
+        <h2>Skills</h2>
 
         <section id="skills">
             <div class="skills-container">
@@ -164,15 +169,16 @@
             </div>
             <div class="thumbnail-slider-container">
                 <div class="thumbnail-slider">
-                    <div class="thumbnail" data-image="assets/android-soundid-inference-1.png" data-title="Sound ID"
-                        data-description="Sound-ID is an on-device audio classification project using YAMNet, a deep neural network, within mobile apps. The model is optimized for real-time performance and cross-platform compatibility.">
-                        <img src="assets/android-soundid-index-1.png" alt="Sound ID Project Thumbnail" />
-                    </div>
                     <div class="thumbnail" data-image="assets/chrome-dino.gif"
                         data-title="Playing Chrome Dino with Deep Reinforcement Learning (DQN)"
                         data-description="Developed DRL agent for Chrome Dino game using OpenAI Gym, achieving superhuman performance with DQN algorithm.">
                         <img src="assets/chrome-dino.gif" alt="Chrome Dino Project Thumbnail" />
                     </div>
+                    <div class="thumbnail" data-image="assets/android-soundid-inference-1.png" data-title="Sound ID"
+                        data-description="Sound-ID is an on-device audio classification project using YAMNet, a deep neural network, within mobile apps. The model is optimized for real-time performance and cross-platform compatibility.">
+                        <img src="assets/android-soundid-index-1.png" alt="Sound ID Project Thumbnail" />
+                    </div>
+
                     <div class="thumbnail" data-image="assets/aa.jpg" data-title="Authorship Attribution"
                         data-description="Implemented Stylometry Analysis for anonymous tweet authorship, analyzing linguistic patterns to identify likely authors.">
                         <img src="assets/aa.jpg" alt="Authorship Attribution Project Thumbnail" />
@@ -192,15 +198,35 @@
             </div>
 
 
+            <h2 style="margin-top: 100px;">Get in Touch</h2>
+
             <section id="contact">
-                <h2>Get in Touch</h2>
-                <p>Email: jeffaoduro@gmail.com</p>
-                <p>Phone: +233203436583</p>
-                <p>Location: HSE/NO 212 TANTRA HILLS</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">mail</span>
+                        <a href="mailto:jeffaoduro@gmail.com">jeffaoduro@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">phone</span>
+                        <a href="tel:+233203436583">+233 20 343 6583</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <p>HSE/NO 212 TANTRA HILLS</p>
+                    </div>
+                </div>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/jeffrey-asante-a69440231" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/jeffasante" target="_blank">GitHub</a>
-                    <a href="https://x.com/jeffasante" target="_blank">X</a>
+                    <a href="https://linkedin.com/in/jeffrey-asante-a69440231" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/jeffasante" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/jeffasante" target="_blank" aria-label="X (Twitter)">
+                        <!-- <i class="fab fa-x"></i> -->
+                        <i class="fa-solid fa-x"></i>
+
+                    </a>
                 </div>
             </section>
     </main>
@@ -327,28 +353,7 @@
         });
 
 
-        // Add this to your existing JavaScript
-        // const slider = document.querySelector('.thumbnail-slider');
-        // let isScrolling = false;
 
-        // slider.addEventListener('scroll', () => {
-        //     window.clearTimeout(isScrolling);
-        //     isScrolling = setTimeout(() => {
-        //         const scrollPosition = slider.scrollLeft;
-        //         const thumbnailWidth = slider.querySelector('.thumbnail').offsetWidth;
-        //         const index = Math.round(scrollPosition / thumbnailWidth);
-        //         updateMainDisplay(index);
-        //     }, 100);
-        // });
-
-        // // Update your existing next and prev button event listeners
-        // nextButton.addEventListener('click', () => {
-        //     slider.scrollBy({ left: slider.querySelector('.thumbnail').offsetWidth, behavior: 'smooth' });
-        // });
-
-        // prevButton.addEventListener('click', () => {
-        //     slider.scrollBy({ left: -slider.querySelector('.thumbnail').offsetWidth, behavior: 'smooth' });
-        // });
     </script>
 </body>
 
