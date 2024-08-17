@@ -235,11 +235,6 @@
     </footer>
 
     <script>
-        
-        // force the page to scroll to the top after it has finished loading.
-        window.onload = function () {
-            window.scrollTo(0, 0);
-        }
 
         // JavaScript for mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -266,7 +261,7 @@
 
         let currentIndex = 0;
 
-        function updateMainDisplay(index) {
+        function updateMainDisplay(index, shouldScroll = false) {
             const selectedThumbnail = thumbnails[index];
             mainImage.src = selectedThumbnail.dataset.image;
             mainTitle.textContent = selectedThumbnail.dataset.title;
@@ -275,16 +270,16 @@
             thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
             selectedThumbnail.classList.add('active');
 
-            // Scroll the thumbnail into view
-            selectedThumbnail.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-
-
+            // Only scroll into view when necessary, and not on initial load
+            if (shouldScroll) {
+                selectedThumbnail.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
         }
 
         thumbnails.forEach((thumbnail, index) => {
             thumbnail.addEventListener('click', () => {
                 currentIndex = index;
-                updateMainDisplay(currentIndex);
+                updateMainDisplay(currentIndex, true);
             });
         });
 
@@ -294,7 +289,7 @@
             } else {
                 currentIndex--;
             }
-            updateMainDisplay(currentIndex);
+            updateMainDisplay(currentIndex, true);
         });
 
         nextButton.addEventListener('click', () => {
@@ -303,10 +298,10 @@
             } else {
                 currentIndex++;
             }
-            updateMainDisplay(currentIndex);
+            updateMainDisplay(currentIndex, true);
         });
 
-        // Initialize the first thumbnail as active
+        // Initialize the first thumbnail as active without scrolling
         updateMainDisplay(currentIndex);
 
         // Drag to slide functionality
@@ -355,9 +350,6 @@
             const walk = (x - startX) * 2; // Reduce the scrolling speed for better control
             slider.scrollLeft = scrollLeft - walk;
         });
-
-
-
 
     </script>
 </body>
