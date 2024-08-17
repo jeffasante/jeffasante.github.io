@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeffrey Asante - AI Developer & Data Scientist</title>
+    <title>Jeffrey Asante - AI, Software Engineer & Data Scientist</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -12,7 +12,7 @@
     <header>
         <nav>
             <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
-                <span class="material-symbols-outlined">menu_open</span>
+                <span id="menu-icon" class="material-symbols-outlined">menu</span>
             </button>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -27,10 +27,10 @@
     <main>
         <section id="home" class="hero">
             <div class="profile-picture">
-                <img src="/api/placeholder/200/200" alt="Jeffrey Asante" />
+                <img src="https://via.placeholder.com/200" alt="Jeffrey Asante" />
             </div>
             <h1>Jeffrey Asante</h1>
-            <h2>AI Developer & Data Scientist</h2>
+            <h2>AI, Software Engineer & Data Scientist</h2>
             <p>Turning ideas into reality through innovation and machine learning</p>
         </section>
 
@@ -63,31 +63,64 @@
             </div>
         </section>
 
-        <section id="projects">
+        <!-- <section id="projects">
             <h2>Featured Projects</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <img src="/api/placeholder/300/200" alt="Chrome Dino Project" />
+                    <img src="https://via.placeholder.com/300x200" alt="Chrome Dino Project" />
                     <h3>Playing Chrome Dino with Deep Reinforcement Learning</h3>
                     <p>Developed DRL agent for Chrome Dino game using OpenAI Gym, achieving superhuman performance with DQN algorithm.</p>
                 </div>
                 <div class="project-item">
-                    <img src="/api/placeholder/300/200" alt="Authorship Attribution Project" />
+                    <img src="https://via.placeholder.com/300x200" alt="Authorship Attribution Project" />
                     <h3>Authorship Attribution</h3>
                     <p>Implemented Stylometry Analysis for anonymous tweet authorship, analyzing linguistic patterns to identify likely authors.</p>
                 </div>
                 <div class="project-item">
-                    <img src="/api/placeholder/300/200" alt="Reddit Stress Detection Project" />
+                    <img src="https://via.placeholder.com/300x200" alt="Reddit Stress Detection Project" />
                     <h3>Reddit Stress Detection</h3>
                     <p>Built stress detection app using machine learning, analyzing Reddit comments with Logistic Regression and CountVectorizer.</p>
                 </div>
                 <div class="project-item">
-                    <img src="/api/placeholder/300/200" alt="Nostalgia Movie Recommendation Project" />
+                    <img src="https://via.placeholder.com/300x200" alt="Nostalgia Movie Recommendation Project" />
                     <h3>Nostalgia Movie Recommendation System</h3>
                     <p>Created a movie recommendation system using collaborative filtering, providing personalized recommendations based on user search data.</p>
                 </div>
             </div>
+        </section> -->
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="main-display">
+                <div class="project-item">
+                    <img id="main-image" src="https://via.placeholder.com/800x400" alt="Featured Project" />
+                    <h3 id="main-title">Project Title</h3>
+                    <p id="main-description">Project Description</p>
+                </div>
+            </div>
+            <div class="thumbnail-slider-container">
+                <div class="thumbnail-slider">
+                    <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Playing Chrome Dino with Deep Reinforcement Learning" data-description="Developed DRL agent for Chrome Dino game using OpenAI Gym, achieving superhuman performance with DQN algorithm.">
+                        <img src="https://via.placeholder.com/150x100" alt="Chrome Dino Project Thumbnail" />
+                    </div>
+                    <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Authorship Attribution" data-description="Implemented Stylometry Analysis for anonymous tweet authorship, analyzing linguistic patterns to identify likely authors.">
+                        <img src="https://via.placeholder.com/150x100" alt="Authorship Attribution Project Thumbnail" />
+                    </div>
+                    <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Reddit Stress Detection" data-description="Built stress detection app using machine learning, analyzing Reddit comments with Logistic Regression and CountVectorizer.">
+                        <img src="https://via.placeholder.com/150x100" alt="Reddit Stress Detection Project Thumbnail" />
+                    </div>
+                    <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Nostalgia Movie Recommendation System" data-description="Created a movie recommendation system using collaborative filtering, providing personalized recommendations based on user search data.">
+                        <img src="https://via.placeholder.com/150x100" alt="Nostalgia Movie Recommendation Project Thumbnail" />
+                    </div>
+                    <!-- Add more thumbnails here -->
+                </div>
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+            </div>
         </section>
+        
+
+        
 
         <section id="contact">
             <h2>Get in Touch</h2>
@@ -109,10 +142,66 @@
         // JavaScript for mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('nav ul');
+        const menuIcon = document.getElementById('menu-icon');
 
         mobileMenuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show');
+            if (navMenu.classList.contains('show')) {
+                menuIcon.textContent = 'menu_open'; // Change to 'menu_open' icon
+            } else {
+                menuIcon.textContent = 'menu'; // Change back to 'menu' icon
+            }
         });
+
+
+        // the slider:
+        const mainImage = document.getElementById('main-image');
+    const mainTitle = document.getElementById('main-title');
+    const mainDescription = document.getElementById('main-description');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const slider = document.querySelector('.thumbnail-slider');
+
+    let currentIndex = 0;
+
+    function updateMainDisplay(index) {
+        const selectedThumbnail = thumbnails[index];
+        mainImage.src = selectedThumbnail.dataset.image;
+        mainTitle.textContent = selectedThumbnail.dataset.title;
+        mainDescription.textContent = selectedThumbnail.dataset.description;
+
+        thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+        selectedThumbnail.classList.add('active');
+    }
+
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+            currentIndex = index;
+            updateMainDisplay(currentIndex);
+        });
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex === 0) {
+            currentIndex = thumbnails.length - 1;
+        } else {
+            currentIndex--;
+        }
+        updateMainDisplay(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex === thumbnails.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateMainDisplay(currentIndex);
+    });
+
+    // Initialize the first thumbnail as active
+    updateMainDisplay(currentIndex);
     </script>
 </body>
 </html>
