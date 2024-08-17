@@ -336,10 +336,10 @@ footer {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-
 .profile-picture {
-    width: 200px; /* Set the desired width */
-    height: 200px; /* Set the desired height */
+    width: 100%; /* Ensure the container takes full width available */
+    max-width: 200px; /* Set a maximum width */
+    height: auto; /* Let the height adjust automatically */
     overflow: hidden; /* Ensure anything outside the circle is hidden */
     border-radius: 50%; /* This makes it a perfect circle */
     display: block;
@@ -356,7 +356,6 @@ footer {
 /* Responsiveness */
 @media (max-width: 768px) {
     .profile-picture {
-        width: 150px; /* Smaller circle on mobile screens */
-        height: 150px;
+        max-width: 150px; /* Adjust max width for smaller screens */
     }
 }
