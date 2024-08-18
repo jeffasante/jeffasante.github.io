@@ -315,8 +315,12 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Jeffrey Asante. All rights reserved.</p>
+        <!-- <p>&copy; 2024 Jeffrey Asante. All rights reserved.</p> -->
+        <p>&copy; <span id="current-year"></span> Jeffrey Asante. All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
     <script>
 
