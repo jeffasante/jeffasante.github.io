@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 body {
-    font-family: 'Ubuntu Mono', monospace;
+    /* font-family: 'Ubuntu Mono', monospace; */
+    font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
     line-height: 1.6;
@@ -10,6 +10,8 @@ body {
     padding: 0;
     background-color: #f5f5f7;
 }
+
+
 
 header {
     background-color: rgba(255, 255, 255, 0.9);
@@ -24,6 +26,8 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+
+
 }
 
 nav ul {
@@ -117,7 +121,13 @@ main {
     padding: 80px 20px;
     padding-top: 140px;
 }
+@media (max-width: 768px) {
 
+    main {
+        padding-top: 50px;
+    }
+
+}
 section {
     margin-bottom: 60px;
 }
