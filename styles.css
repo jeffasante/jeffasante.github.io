@@ -450,61 +450,54 @@ footer {
 } */
 
 #skills {
+    background-color: #f5f5f7;
+    padding: 30px;
+}
+
+.skill-group {
     background-color: #fff;
     border-radius: 12px;
-    padding: 30px;
-    /* padding: 20px; */
-    /* padding: 5px 20px 20px 20px; */
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-#skills h2 {
-    font-size: 2rem;
+    padding: 20px;
     margin-bottom: 20px;
-    color: #1d1d1f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.skills-container {
+.skill-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.sub-skills {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
 }
 
-.skill-card {
-    background-color: rgba(0, 0, 0, 0.838); /* Background color of the skill card */
-    /* background-color: black; Background color of the skill card */
-    /* background-color: #0071e3; Background color of the skill card */
-    color: #fff; /* Text color */
-    padding: 10px 20px;
-    border-radius: 50px; /* Make the card rounded */
+.sub-skills span {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 600;
-    text-align: center;
-    min-width: 120px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.skill-card:hover {
-    transform: scale(1.1); /* Slightly enlarge the card on hover */
+    display: inline-block;
 }
 
 @media (max-width: 768px) {
-    .skill-card {
-        font-size: 0.8rem; /* Smaller font size on mobile */
-        padding: 8px 15px; /* Adjust padding for mobile */
-        min-width: 100px; /* Adjust minimum width for mobile */
+    #skills {
+        padding: 15px;
+    }
+
+    .skill-group {
+        padding: 15px;
+    }
+
+    .sub-skills span {
+        font-size: 0.8rem;
+        padding: 6px 12px;
     }
 }
-
-
 
 /* General Section Styling */
 #contact {
