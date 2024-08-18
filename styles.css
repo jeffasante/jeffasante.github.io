@@ -671,6 +671,9 @@ footer {
     background-color: #0066cc; /* Adjust this color to match your design */
 }
 
+
+
+/* education  */
 .education-item {
     padding: 20px 0;
 }
@@ -687,12 +690,19 @@ footer {
     margin-bottom: 5px;
 }
 
-.education-item .location,
-.education-item .date {
+
+#education .location-edu{
     font-size: 0.9rem;
     color: #6e6e73;
     margin-bottom: 3px;
 }
+
+/* .education-item .location,
+.education-item .date {
+    font-size: 0.9rem;
+    color: #6e6e73;
+    margin-bottom: 3px;
+} */
 
 @media (max-width: 768px) {
     .education-item {
