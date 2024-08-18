@@ -135,6 +135,8 @@ h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #1d1d1f;
+
+    /* font-family: 'Nunito ', monospace; */
 }
 
 h3 {
@@ -161,6 +163,23 @@ h3 {
     font-weight: 400;
     color: #d1d1d6;
     margin-bottom: 20px;
+}
+
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    background-color: #172562; /* This is a purple color, you can change it */
 }
 
 
@@ -365,6 +384,17 @@ footer {
         height: 30px;
         font-size: 16px;
     }
+
+    .prev {
+        left: 0;
+        border-radius: 0 5px 8px 0;
+    }
+    
+    .next {
+        right: 0;
+        border-radius: 5px 0 8px 5px;
+    }
+
 }
 
 
