@@ -627,3 +627,20 @@ footer {
         font-size: 20px;
     }
 }
+
+
+/* cv views */
+.cv-link {
+    color: inherit; /* This will make the link color match your other contact info */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cv-link:hover {
+    color: #8b00ff; /* Or any color that fits your design */
+}
+
+.contact-item .material-symbols-outlined {
+    margin-right: 10px;
+    vertical-align: middle;
+}
