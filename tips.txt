@@ -2,3 +2,28 @@
  <!-- <div class="thumbnail" data-image="https://via.placeholder.com/800x400" data-title="Reddit Stress Detection" data-description="Built stress detection app using machine learning, analyzing Reddit comments with Logistic Regression and CountVectorizer.">
                         <img src="https://via.placeholder.com/150x100" alt="Reddit Stress Detection Project Thumbnail" />
                     </div> -->
+
+
+                      <section id="about">
+            <h2>About Me</h2>
+            <!-- <p>Experienced data scientist and software engineer with a strong background in machine learning. Passionate
+                about innovation and skilled at turning ideas into reality.</p> -->
+            <p>With years of dedicated experience in data science, software engineering, and machine learning, I offer a
+                comprehensive skill set and deep expertise in these fields.</p>
+            <p>As an experienced engineer, I am driven by a passion for innovation and a commitment to pushing the
+                boundaries of what's possible in these dynamic domains. My career has been defined by my ability to
+                transform visionary concepts into practical, impactful solutions, demonstrating my capabilities as a
+                seasoned professional.</p>
+            <p>Throughout my journey, I have consistently demonstrated:</p>
+            <ul>
+                <li>Proficiency in translating complex technical concepts into actionable insights</li>
+                <li>Proficiency in mathematical modelling</li>
+                <li>A track record of delivering innovative solutions that drive business value</li>
+                <li>Strong analytical skills combined with creative problem-solving abilities</li>
+                <li>The ability to lead and collaborate effectively in cross-functional teams</li>
+                <li>Experience with designing and maintaining high-performance, scalable data architectures</li>
+                <li>Obsession with details, reliability, and good testing to ensure data and system's quality and integrity</li>
+            </ul>
+            <p>My goal is to leverage this expertise to contribute meaningfully to challenging projects and to continue
+                advancing the frontiers of technology in data science, software engineering and AI.</p>
+        </section>
