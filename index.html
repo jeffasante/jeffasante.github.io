@@ -291,10 +291,11 @@
             }
 
             .profile-image {
-                float: none !important;
+                /* float: none !important;
                 margin: 20px auto !important;
                 max-width: 180px;
-                height: auto !important;
+                height: auto !important; */
+                display: none;
             }
 
             #name {
@@ -348,9 +349,12 @@
         <div class="col-sm-offset-2">
             <div id="overview" style="margin-top: 1.5rem;">
                 <hr>
-                <p>
+                <!-- <p>
                     I'm a software engineer and AI researcher with five years of experience in data science, software
                     engineering, and machine learning.
+                </p> -->
+                <p>
+                    I'm a software engineer and AI researcher with experience in data science, software engineering, and machine learning.
                 </p>
                 <p>
                     My expertise includes:
@@ -635,9 +639,9 @@
         </div>
     </div>
 
-    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #666;">
+    <!-- <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #666;">
         <p>&copy; <span id="current-year"></span> Jeffrey Asante. All rights reserved.</p>
-    </footer>
+    </footer> -->
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
