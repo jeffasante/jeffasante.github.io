@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style type="text/css">
         body {
             font-family: 'DM Sans', sans-serif !important;
@@ -312,6 +314,145 @@
             border-radius: 8px;
             object-fit: cover;
         }
+
+        .tools-frameworks {
+            margin-top: 1rem;
+            width: 50%;
+
+        }
+
+        .framework-tags {
+            margin-bottom: 1rem;
+        }
+
+        .scientific-packages {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 30px;
+        }
+
+        .package-header {
+            width: 100%;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .package-list {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 0;
+            max-height: 500px;
+            /* Large enough to show all content */
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .package-list.collapsed {
+            max-height: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .package-list li {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .package-list i {
+            width: 1.25rem;
+            text-align: center;
+            color: #666;
+        }
+
+        .package-header i {
+            color: #306BAC;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+            color: #666;
+        }
+
+        .arrow-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .tools-frameworks {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tools-frameworks {
+        width: 100%;
+    }
+
+    .scientific-packages {
+        padding: 0.75rem;
+        border-radius: 20px;
+    }
+
+    .framework-tags {
+        gap: 0.25rem;
+    }
+
+    .skill-tag {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+
+    .package-list {
+        padding-left: 0.5rem;
+    }
+
+    .package-list li {
+        gap: 0.5rem;
+        font-size: 0.95em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .scientific-packages {
+        padding: 0.5rem;
+        border-radius: 15px;
+    }
+
+    .header-content span {
+        font-size: 0.95em;
+    }
+
+    .package-list li {
+        font-size: 0.9em;
+    }
+
+    .framework-tags {
+        justify-content: flex-start;
+    }
+
+    .skill-tag {
+        font-size: 0.85em;
+        padding: 3px 6px;
+    }
+}
     </style>
 </head>
 
@@ -341,8 +482,8 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <img class="float-right profile-image" src="assets/h1.GIF" alt="Jeffrey Asante" 
-                     style="height: 220px; margin-top: 10px;">
+                <img class="float-right profile-image" src="assets/h1.GIF" alt="Jeffrey Asante"
+                    style="height: 220px; margin-top: 10px;">
             </div>
         </div>
 
@@ -355,7 +496,8 @@
                     engineering, and machine learning.
                 </p> -->
                 <p>
-                    I'm a software engineer and AI researcher with experience in data science, software engineering, and machine learning.
+                    I'm a software engineer and AI researcher with experience in data science, software engineering, and
+                    machine learning.
                 </p>
                 <p>
                     My expertise includes:
@@ -614,30 +756,73 @@
                     </div>
                 </div>
 
-                <div class="skill-group">
+                <!-- <div class="skill-group">
                     <h4>Tools & Frameworks</h4>
                     <div>
                         <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">TensorFlow</span>
                         <span class="skill-tag">WebAssembly</span>
-
+                        <span class="skill-tag">Python Scientific Packages (Scipy, NumPy, etc.)</span>
+                        <div>
+                            <i class="fa fa-python"></i> Python Scientific Packages
+                            <ul>
+                            <li><i class="fa fa-cubes"></i> NumPy</li>
+                            <li><i class="fa fa-rocket"></i> SciPy</li>
+                            <li><i class="fa fa-table"></i> Pandas</li>
+                            <li><i class="fa fa-chart-line"></i> Matplotlib</li>
+                            <li><i class="fa fa-brain"></i> Scikit-learn</li>
+                            </ul>
+                        </div>
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">React</span>
                     </div>
-                </div>
-
+                </div> -->
                 <div class="skill-group">
-                    <h4>Other Skills</h4>
-                    <div>
-                        <span class="skill-tag">Data Structures & Algorithms</span>
-                        <span class="skill-tag">Operating Systems (Unix & Linux)</span>
-                        <span class="skill-tag">Mobile and Web Development</span>
-                        <span class="skill-tag">Cloud Computing (AWS, GCP)</span>
-                        <span class="skill-tag">Databases (SQL, MongoDB, NoSQL)</span>
+                    <h4>Tools & Frameworks</h4>
+                    <div class="tools-frameworks">
+                        <!-- Main frameworks -->
+                        <div class="framework-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">WebAssembly</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+
+
+                        <!-- Python Scientific Packages Section -->
+                        <div class="scientific-packages">
+                            <button class="package-header collapsible">
+                                <div class="header-content">
+                                    <i class="fa-brands fa-python"></i>
+                                    <span>Python Scientific Packages</span>
+                                </div>
+                                <i class="fas fa-chevron-down arrow-icon"></i>
+                            </button>
+                            <ul class="package-list collapsed">
+                                <li><i class="fas fa-cubes"></i> NumPy</li>
+                                <li><i class="fas fa-rocket"></i> SciPy</li>
+                                <li><i class="fas fa-table"></i> Pandas</li>
+                                <li><i class="fas fa-chart-line"></i> Matplotlib</li>
+                                <li><i class="fas fa-brain"></i> Scikit-learn</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="skill-group">
+                <h4>Other Skills</h4>
+                <div>
+                    <span class="skill-tag">Data Structures & Algorithms</span>
+                    <span class="skill-tag">Operating Systems (Unix & Linux)</span>
+                    <span class="skill-tag">Mobile and Web Development</span>
+                    <span class="skill-tag">Cloud Computing (AWS, GCP)</span>
+                    <span class="skill-tag">Databases (SQL, MongoDB, NoSQL)</span>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
 
     <!-- <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #666;">
@@ -687,6 +872,21 @@
                 if (!e.target.closest('.project-card')) {
                     removeActiveFromAll();
                 }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('.package-header');
+            const list = document.querySelector('.package-list');
+            const arrow = document.querySelector('.arrow-icon');
+
+            // Set initial state
+            list.classList.add('collapsed');
+
+            header.addEventListener('click', function () {
+                list.classList.toggle('collapsed');
+                arrow.classList.toggle('rotated');
             });
         });
     </script>
