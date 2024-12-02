@@ -1,433 +1,588 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeffrey Asante - AI, Software Engineer & Data Scientist</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+    <title>Jeffrey Asante</title>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- <link rel="icon" href="https://bulma.io/assets/images/placeholders/128x128.png" type="image/x-icon"> -->
+    <style type="text/css">
+        body {
+            font-family: 'DM Sans', sans-serif !important;
+        }
 
-    <!-- <link rel="icon" href="assets/recsys-small.png" type="image/png"> -->
+        a:link,
+        a:hover,
+        a:visited,
+        a:active {
+            color: #306BAC !important;
+        }
 
+        .nodecor:link,
+        .nodecor:hover,
+        .nodecor:visited,
+        .nodecor:active {
+            color: #333 !important;
+            text-decoration: none;
+        }
+
+        .boldtext {
+            font-weight: 700 !important;
+        }
+
+        .semiboldtext {
+            font-weight: 500 !important;
+        }
+
+        #name {
+            font-size: 3.6em;
+            line-height: 1em;
+            margin-top: .5em;
+            margin-bottom: .2em;
+        }
+
+        #title {
+            font-size: 1.2em;
+        }
+
+        #email {
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: .9em;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        #overview {
+            font-size: 1.2em;
+        }
+
+        .content {
+            margin: auto;
+            max-width: 800px;
+            padding: 10px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .experience-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .experience-date {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .experience-location {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .skills-section {
+            margin-top: 30px;
+        }
+
+        .skill-group {
+            margin-bottom: 20px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .project-skills {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+       
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            padding: 20px 0;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 60%;
+            overflow: hidden;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 16px;
+            background: #ffffff;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .project-url {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .project-meta {
+            font-size: 14px;
+            color: #888;
+            margin-top: auto;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-description {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .project-links a {
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: background 0.2s ease;
+        }
+
+        .project-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: rgb(255, 236, 114) !important;
+
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .show-all {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
-                <span id="menu-icon" class="material-symbols-outlined">menu</span>
-            </button>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="profile-picture">
-                <img src="assets/h1.GIF" alt="Jeffrey Asante" />
-                <!-- <img src="https://via.placeholder.com/200" alt="Jeffrey Asante" /> -->
+    <div class="content" style="margin-top: 5.5rem;">
+        <div class="row">
+            <div class="col-sm-offset-5 col-sm-8">
+                <div id="name">
+                    <div class="semiboldtext">Jeffrey Asante</div>
+                </div>
+                <div id="title" style="margin-top: 1.5rem;">
+                    <div>AI, Software Engineer & Data Scientist</div>
+                    <div style="margin-top: 1rem;"></div>
+                    <div id="email">jeffaoduro@gmail.com</div>
+                    <div style="font-size: 1em;">
+                        <a href="cv.html">cv</a> ·
+                        <a href="https://github.com/jeffasante">github</a> ·
+                        <a href="https://linkedin.com/in/jeffrey-asante-a69440231">linkedin</a> ·
+                        <a href="https://stackoverflow.com/users/13482983/jeffasante">stackoverflow</a>
+                    </div>
+                    <!-- <div class="social-links">
+            <a href="https://linkedin.com/in/jeffrey-asante-a69440231" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/jeffasante" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://stackoverflow.com/users/13482983/jeffasante" target="_blank"><i class="fab fa-stack-overflow"></i></a>
+            <a href="https://x.com/jeffasante" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          </div> -->
+                </div>
             </div>
-            <h1>Jeffrey Oduro Asante</h1>
-            <h2>AI, Software Engineer & Data Scientist</h2>
-            <p>Turning ideas into reality through innovation and machine learning</p>
-        </section>
-
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <!-- <p>With five years of experience spanning data science, software engineering, and machine learning, I bring a comprehensive skill set to the table. My expertise lies in developing and optimizing AI models, engineering robust data systems, and deploying cutting-edge machine learning solutions. Throughout my career, I've consistently demonstrated the ability to transform complex data challenges into innovative, high-performance solutions that drive real business value.</p> -->
-            <p>With five years of experience in data science, software engineering, and machine learning, I bring a
-                comprehensive skill set to developing and optimizing AI models and data processes.</p>
-            <p>My expertise includes:</p>
-            <ul>
-                <li>Developing innovative AI solutions and data systems</li>
-                <li>Optimizing model performance and scalability</li>
-                <li>Proficiency in mathematical modeling and data architectures</li>
-                <li>Translating complex technical concepts into actionable insights</li>
-                <li>Leading cross-functional teams and driving business value</li>
-                <li>Ensuring data quality and system integrity through meticulous attention to detail and rigorous
-                    testing</li>
-            </ul>
-
-            <p>Passionate about technology and quick to learn, I'm always eager to take on new challenges and push the
-                boundaries of what's possible in AI, software engineering and data science.</p>
-        </section>
-
-        <section id="experience">
-            <h2 class="section-title">Professional Experience</h2>
-
-            <div class="experience-item">
-                <h3>Artificial Intelligence Engineer</h3>
-                <p class="company">Mobobi</p>
-                <p class="date">06/2023</p>
-                <p class="location">Accra, Ghana · Hybrid</p>
-
+            <div class="col-sm-4">
+                <img class="float-right" src="assets/h1.GIF" id="fadeshow1" alt="pdb" id="pdb-pic"
+                    style="height: 220px; margin-top: 10px;">
             </div>
+        </div>
 
 
-            <div class="experience-item">
-                <h3>Artificial Intelligence Developer</h3>
-                <p class="company">Zinary</p>
-                <p class="date">01/2024 – 05/2024</p>
-                <p class="location">Abuja, Nigeria · Remote</p>
-
+        <div class="col-sm-offset-2">
+            <div id="overview" style="margin-top: 1.5rem;">
+                <hr>
+                <p>
+                    I'm a software engineer and AI researcher with five years of experience in data science, software
+                    engineering, and machine learning.
+                </p>
+                <p>
+                    My expertise includes:
+                </p>
                 <ul>
-                    <li>Developed and implemented an advanced biometric system utilizing Optical Character Recognition
-                        (OCR) and state-of-the-art computer vision techniques</li>
-                    <li>Engineered the system for multi-country compatibility, ensuring seamless operation across
-                        diverse regulatory environments and cultural contexts</li>
-                    <li>Enhanced facial recognition capabilities through innovative algorithms, improving prediction
-                        accuracy by 80% and significantly boosting system reliability</li>
-                    <li>Collaborated with cross-functional teams to integrate the biometric system into existing
-                        infrastructure, enhancing security protocols and user authentication processes</li>
+                    <li>Developing innovative AI solutions and data systems</li>
+                    <li>Optimizing model performance and scalability</li>
+                    <li>Mathematical modeling and data architectures</li>
+                    <li>Leading cross-functional teams and driving business value</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-sm-offset-2">
+            <div style="margin-top: 3.5rem;"></div>
+            <h3>Experience</h3>
+
+            <div class="card">
+                <div class="experience-title">Software Engineer (AI + ML)</div>
+                <div class="experience-company">Mobobi LLC</div>
+                <div class="experience-date">Sep 2024 - Present</div>
+                <div class="experience-location">Greater Accra Region, Ghana · Hybrid</div>
+                <ul>
+                    <li>Led development of voice data processing system, improving analysis speed by 40%</li>
+                    <li>Developed tools for voice dataset generation and optimization</li>
+                    <li>Deployed on-device ML models for efficient voice AI execution</li>
                 </ul>
             </div>
 
-            <div class="experience-item">
-                <h3>Data Science Consultant</h3>
-                <p class="company">Freelancer</p>
-                <p class="date">12/2021 – 05/2024</p>
-                <p class="location">Bristol, England, United Kingdom · Remote</p>
+            <div class="card">
+                <div class="experience-title">Artificial Intelligence Developer</div>
+                <div class="experience-company">Zinary</div>
+                <div class="experience-date">Jan 2024 - May 2024</div>
+                <div class="experience-location">Abuja, Nigeria · Remote</div>
+                <ul>
+                    <li>Enhanced biometric system using OCR and computer vision</li>
+                    <li>Improved facial recognition accuracy by 80%</li>
+                    <li>Engineered system for multi-country compatibility</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="experience-title">Data Science Consultant</div>
+                <div class="experience-company">Freelancer</div>
+                <div class="experience-date">Dec 2021 - May 2024</div>
+                <div class="experience-location">Bristol, England, United Kingdom · Remote</div>
                 <ul>
                     <li>Developed and implemented data-gathering systems and reporting tools, processing diverse
                         datasets to drive actionable business insights</li>
                     <li>Streamlined data compilation, cleaning, and visualization processes from multiple sources,
                         improving overall data quality by 75%</li>
-                    <li>Applied advanced statistical techniques to gain deep insights and validate predictive models,
-                        enhancing prediction accuracy by 80%</li>
-                    <li>Collaborated with cross-functional teams to translate complex data findings into clear,
-                        actionable recommendations for business strategy</li>
+                    <li>Enhanced prediction accuracy by 80% using advanced statistical techniques and validation of
+                        predictive models</li>
                 </ul>
             </div>
 
-
-            <div class="experience-item">
-                <h3>Co-Founder | Software Engineer/Developer</h3>
-                <p class="company">Anaanse - internships & entry level jobs · Full-time</p>
-                <p class="date">Oct 2021 - Oct 2022 · 1 yr 1 mo</p>
-                <p class="location">Greater Accra Region, Ghana · Remote</p>
-                <ul>
-                    <li><strong>Tech Stack:</strong> Node.js, React.js, MongoDB, JavaScript, Full-Stack Development</li>
-                    <li>Co-founded Anaanse, an innovative platform connecting students and recent graduates with
-                        internships and entry-level job opportunities, contributing to the reduction of youth
-                        unemployment</li>
-                    <li>Architected and developed a scalable full-stack solution using Node.js, React.js, and MongoDB,
-                        ensuring robust performance and seamless user experience for both job seekers and employers</li>
-                    <li>Implemented key features including user authentication, job posting and application systems, and
-                        advanced search algorithms, enhancing platform functionality and user engagement</li>
-                    <li>Collaborated closely with the design team to create an intuitive, visually appealing interface,
-                        resulting in positive user feedback and a 40% increase in user retention</li>
-                    <li>Managed the entire development lifecycle, from initial concept to deployment, demonstrating
-                        strong project management and technical leadership skills</li>
-                </ul>
-            </div>
-
-        </section>
+            <div style="margin-top: 3.5rem;"></div>
 
 
-        <h2 class="section-title">Education</h2>
-        <section id="education">
-            <div class="education-item">
-                <h3>Bachelor of Science in Information Technology Management</h3>
-                <p class="institution">University of Professional Studies</p>
-                <p class="location-edu">Accra, Ghana</p>
-            </div>
-        </section>
+            <div class="col-sm-offset-2">
+                <div class="section-header">
+                    <h3>Projects</h3>
+                    <a href="https://github.com/jeffasante" class="show-all">Show All ›</a>
+                </div>
 
-        <h2 class="section-title">Skills</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/ant-colony/simulation-components.png" alt="Ant Colony Simulation"
+                                class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">Ant Colony Simulation</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Reinforcement Learning · Game Development · Swarm Intelligence
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                An interactive simulation demonstrating swarm intelligence through reinforcement
+                                learning, showcasing emergent behavior in ant colony optimization algorithms.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/ant-colony" target="_blank">View Code</a>
+                                <a href="https://ant-colony-demo.jeffasante.dev" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
 
-        <section id="skills">
-            <div class="skill-group">
-                <h3>Artificial Intelligence</h3>
-                <div class="sub-skills">
-                    <span>Natural Language Processing</span>
-                    <span>Computer Vision</span>
-                    <span>Reinforcement Learning</span>
-                    <span>Signal Processing</span>
-                    <span>Machine Learning</span>
-                    <span>Deep Learning</span>
-                    <span>Data Science</span>
+                  
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/coreface/1.png" alt="CoreFace" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">CoreFace</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Deep Learning · Web Assembly
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                Local facial demographic analysis powered by WebAssembly and deep learning - fast,
+                                private, and secure with no server communication.
+                            </div>
+                            <div class="project-links">
+                                <!-- <a href="https://github.com/jeffasante/ant-colony-rl" target="_blank">View Code</a> -->
+                                <a href="https://coreface.vercel.app" target="_blank">Try it Out</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/rustviz.png" alt="RustViz" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">RustViz</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Web Assembly · Data Science
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                A high-performance CSV analysis tool built with Rust and WebAssembly, providing
+                                statistical analysis and visualization capabilities directly in the browser.
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Code</a>
+                                <a href="#" target="_blank">Try Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/rl-ppo-ss/rl-ppo-ss-1.gif" alt="RL-PPO-SharpShooter" class="project-image">
+
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">RL-PPO-SharpShooter</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Reinforcement Learning · Game Development · Deep Learning
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                A bespoke 2D shooter game is demonstrating a PPO-powered AI, highlighting skills in reinforcement learning and game development.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/RL-PPO-SharpShooter" target="_blank">View Code</a>
+                                <!-- <a href="#" target="_blank">Try Demo</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/android-soundid-inference-1.png" alt="Sound ID" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">Sound ID</div>
+                                <div class="project-url">mobobi.com</div>
+                            </div>
+                           <div class="project-skills">
+                                Skills: Artificial Intelligence (AI) · Mobile Application Development
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                On-device audio classification project using YAMNet, a deep neural network. Optimized
+                                for real-time performance and cross-platform compatibility.
+                            </div>
+                            <div class="project-links">
+                                <!-- <a href="#" target="_blank">View Details</a>
+                                <a href="#" target="_blank">Live Demo</a> -->
+                                <a href="mobobi.com" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/coreradio.png" alt="CoreRadio" class="project-image">
+
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">CoreRadio</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Vanilla JavaScript · Web Services API
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                CoreRadio is a modern web app offering global radio stations, blending nostalgic retro-style design with cutting-edge technology for a unique streaming experience.
+                            </div>
+                            <div class="project-links">
+                                <!-- <a href="#" target="_blank">View Code</a> -->
+                                <a href="https://coreradio.vercel.app/" target="_blank">Try Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="skill-group">
-                <h3>Python</h3>
-                <div class="sub-skills">
-                    <span>Scipy</span>
-                    <span>Sci-kit Learn</span>
-                    <span>PyTorch</span>
-                    <span>Keras</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>Matplotlib</span>
+
+
+            <div style="margin-top: 3.5rem;"></div>
+            <h3>Skills</h3>
+
+            <div class="skills-section">
+                <div class="skill-group">
+                    <h4>Artificial Intelligence</h4>
+                    <div>
+                        <span class="skill-tag">Natural Language Processing</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Reinforcement Learning</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Signal Processing</span>
+                        <span class="skill-tag">Data Science</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Programming</h4>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Rust</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Dart (Flutter)</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Tools & Frameworks</h4>
+                    <div>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">WebAssembly</span>
+
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Other Skills</h4>
+                    <div>
+                        <span class="skill-tag">Data Structures & Algorithms</span>
+                        <span class="skill-tag">Operating Systems (Unix & Linux)</span>
+                        <span class="skill-tag">Mobile and Web Development</span>
+                        <span class="skill-tag">Cloud Computing (AWS, GCP)</span>
+                        <span class="skill-tag">Databases (SQL, MongoDB, NoSQL)</span>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="skill-group">
-                <h3>Programming Languages</h3>
-                <div class="sub-skills">
-                    <span>JavaScript</span>
-                    <span>C</span>
-                    <span>Dart (Flutter)</span>
-                    <span>Go</span>
-                    <span>Rust</span>
-                </div>
-            </div>
-
-            <div class="skill-group">
-                <h3>Databases</h3>
-                <div class="sub-skills">
-                    <span>SQL</span>
-                    <span>MongoDB</span>
-                    <span>NoSQL</span>
-                </div>
-            </div>
-
-            <div class="skill-group">
-                <h3>Other Skills</h3>
-                <div class="sub-skills">
-                    <span>Data Structures & Algorithms</span>
-                    <span>Operating Systems (Unix & Linux)</span>
-                    <span>Mobile and Web Development</span>
-                    <span>Cloud Computing (AWS, GCP)</span>
-                </div>
-            </div>
-        </section>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="main-display">
-                <div class="project-item">
-                    <img id="main-image" src="https://via.placeholder.com/800x400" alt="Featured Project" />
-                    <h3 id="main-title">Project Title</h3>
-                    <p id="main-description">Project Description</p>
-                </div>
-            </div>
-            <div class="thumbnail-slider-container">
-                <div class="thumbnail-slider">
-                    <div class="thumbnail"
-                        data-image="assets/projects/chrome-dino/chrome-dino_resized-2-ezgif.com-video-speed.mp4"
-                        data-title="Playing Chrome Dino with Deep Reinforcement Learning (DQN)"
-                        data-description="Developed DRL agent for Chrome Dino game using OpenAI Gym, achieving superhuman performance with DQN algorithm.">
-                        <img src="assets/projects/chrome-dino/chrome-dino.gif" alt="Chrome Dino Project Thumbnail" />
-                    </div>
-                    <div class="thumbnail" data-image="assets/android-soundid-inference-1.png" data-title="Sound ID"
-                        data-description="Sound-ID is an on-device audio classification project using YAMNet, a deep neural network, within mobile apps. The model is optimized for real-time performance and cross-platform compatibility.">
-                        <img src="assets/android-soundid-index-1.png" alt="Sound ID Project Thumbnail" />
-                    </div>
-                    <div class="thumbnail" data-image="assets/aa.jpg" data-title="Authorship Attribution"
-                        data-description="Implemented Stylometry Analysis for anonymous tweet authorship, analyzing linguistic patterns to identify likely authors.">
-                        <img src="assets/aa.jpg" alt="Authorship Attribution Project Thumbnail" />
-                    </div>
-                    <div class="thumbnail" data-image="assets/projects/rl-ppo-ss/rl-ppo-ss-1.gif"
-                        data-title="RL-PPO-SharpShooter"
-                        data-description="Implemented a PPO agent from scratch to master a custom 2D shooter game, showcasing reinforcement learning and game development skills.">
-                        <img src="assets/projects/rl-ppo-ss/rl-ppo-ss-1.mp4"
-                            alt="RL-PPO-SharpShooter Project Thumbnail" />
-                        <!-- <img src="assets/projects/rl-ppo-ss/rl-ppo-sharpshooter.png" alt="RL-PPO-SharpShooter Project Thumbnail" /> -->
-                    </div>
-                    <div class="thumbnail" data-image="assets/rsd.png" data-title="Reddit Stress Detection"
-                        data-description="Built stress detection app using machine learning, analyzing Reddit comments with Logistic Regression and CountVectorizer.">
-                        <img src="assets/rsd.png" alt="Reddit Stress Detection Project Thumbnail" />
-                    </div> 
-                      <div class="thumbnail" data-image="assets/projects/ant-colony/ant-colony.mov"
-                        data-title="Ant Colony Reinforcement Learning Simulation"
-                        data-description="Implemented an interactive simulation of an ant colony using advanced reinforcement learning techniques, demonstrating efficient food collection strategies.">
-                        <img src="assets/projects/ant-colony/simulation-components.png"
-                            alt="Ant Colony Simulation Project Thumbnail" />
-                    </div>
-                    <div class="thumbnail" data-image="assets/recsys-big.png"
-                        data-title="Nostalgia Movie Recommendation System"
-                        data-description="Created a movie recommendation system using collaborative filtering, providing personalized recommendations based on user search data.">
-                        <img src="assets/recsys-small.png" alt="Nostalgia Movie Recommendation Project Thumbnail" />
-                    </div>
-                 
-                </div>
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </div>
-
-
-            <h2 style="margin-top: 60px;" class="section-title">Get in Touch</h2>
-
-            <section id="contact">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="material-symbols-outlined">mail</span>
-                        <a href="mailto:jeffaoduro@gmail.com">jeffaoduro@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="material-symbols-outlined">phone</span>
-                        <a href="tel:+233203436583">+233 20 343 6583</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="material-symbols-outlined">location_on</span>
-                        <p>Greater Accra, Ghana</p>
-                    </div>
-                    <div class="contact-item">
-                        <span class="material-symbols-outlined">description</span>
-                        <a href="cv.html" target="_blank" class="cv-link">View My CV/Resume</a>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/jeffrey-asante-a69440231" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/jeffasante" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://x.com/jeffasante" target="_blank" aria-label="X (Twitter)">
-                        <i class="fa-solid fa-x"></i>
-                    </a>
-                    <a href="https://stackoverflow.com/users/13482983/jeffasante" target="_blank"
-                        aria-label="Stack Overflow">
-                        <i class="fab fa-stack-overflow"></i>
-                    </a>
-                </div>
-            </section>
-    </main>
-
-    <footer>
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #666;">
         <p>&copy; <span id="current-year"></span> Jeffrey Asante. All rights reserved.</p>
     </footer>
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
-
-    <script>
-
-        // JavaScript for mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navMenu = document.querySelector('nav ul');
-        const menuIcon = document.getElementById('menu-icon');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-            if (navMenu.classList.contains('show')) {
-                menuIcon.textContent = 'menu_open'; // Change to 'menu_open' icon
-            } else {
-                menuIcon.textContent = 'menu'; // Change back to 'menu' icon
-            }
-        });
-
-        // the slider:
-        const mainImage = document.getElementById('main-image');
-        const mainTitle = document.getElementById('main-title');
-        const mainDescription = document.getElementById('main-description');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-        const slider = document.querySelector('.thumbnail-slider');
-
-        let currentIndex = 0;
-
-        function updateMainDisplay(index, shouldScroll = false) {
-            const selectedThumbnail = thumbnails[index];
-            mainImage.src = selectedThumbnail.dataset.image;
-            mainTitle.textContent = selectedThumbnail.dataset.title;
-            mainDescription.textContent = selectedThumbnail.dataset.description;
-
-            thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
-            selectedThumbnail.classList.add('active');
-
-            // Only scroll into view when necessary, and not on initial load
-            if (shouldScroll) {
-                selectedThumbnail.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }
-        }
-
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                currentIndex = index;
-                updateMainDisplay(currentIndex, true);
-            });
-        });
-
-        prevButton.addEventListener('click', () => {
-            if (currentIndex === 0) {
-                currentIndex = thumbnails.length - 1;
-            } else {
-                currentIndex--;
-            }
-            updateMainDisplay(currentIndex, true);
-        });
-
-        nextButton.addEventListener('click', () => {
-            if (currentIndex === thumbnails.length - 1) {
-                currentIndex = 0;
-            } else {
-                currentIndex++;
-            }
-            updateMainDisplay(currentIndex, true);
-        });
-
-        // Initialize the first thumbnail as active without scrolling
-        updateMainDisplay(currentIndex);
-
-        // Drag to slide functionality
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Reduce the scrolling speed for better control
-            slider.scrollLeft = scrollLeft - walk;
-        });
-
-        slider.addEventListener('touchstart', (e) => {
-            isDown = true;
-            startX = e.touches[0].pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener('touchend', () => {
-            isDown = false;
-        });
-
-        slider.addEventListener('touchmove', (e) => {
-            if (!isDown) return;
-            const x = e.touches[0].pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Reduce the scrolling speed for better control
-            slider.scrollLeft = scrollLeft - walk;
-        });
-
     </script>
 </body>
 
