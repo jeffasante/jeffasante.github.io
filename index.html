@@ -281,6 +281,35 @@
             align-items: center;
             gap: 4px;
         }
+
+        @media screen and (max-width: 768px) {
+            .profile-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-image {
+                float: none !important;
+                margin: 20px auto !important;
+                max-width: 180px;
+                height: auto !important;
+            }
+
+            #name {
+                font-size: 2.8em !important;
+            }
+
+            #title {
+                text-align: center;
+            }
+        }
+
+        .profile-image {
+            border-radius: 8px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -310,8 +339,8 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <img class="float-right" src="assets/h1.GIF" id="fadeshow1" alt="pdb" id="pdb-pic"
-                    style="height: 220px; margin-top: 10px;">
+                <img class="float-right profile-image" src="assets/h1.GIF" alt="Jeffrey Asante" 
+                     style="height: 220px; margin-top: 10px;">
             </div>
         </div>
 
