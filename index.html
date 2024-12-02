@@ -126,7 +126,7 @@
             font-size: 1.2em;
         }
 
-       
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -208,11 +208,32 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            pointer-events: none;
         }
 
         .project-card:hover .project-overlay {
             opacity: 1;
         }
+
+        .project-card:hover .project-overlay,
+        .project-card.active .project-overlay {
+            opacity: 1;
+            pointer-events: auto;
+            /* Re-enable pointer events when visible */
+        }
+
+        /* Ensure touch devices show the overlay properly */
+        @media (hover: none) {
+            .project-card .project-overlay {
+                background: rgba(0, 0, 0, 0.9);
+            }
+
+            .project-card.active .project-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
 
         .project-description {
             font-size: 14px;
@@ -233,6 +254,10 @@
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.2);
             transition: background 0.2s ease;
+
+            padding: 12px 20px;
+            margin: 5px 0;
+            display: inline-block;
         }
 
         .project-links a:hover {
@@ -389,7 +414,7 @@
                         </div>
                     </div>
 
-                  
+
 
                     <div class="project-card">
                         <div class="project-image-container">
@@ -443,7 +468,8 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/projects/rl-ppo-ss/rl-ppo-ss-1.gif" alt="RL-PPO-SharpShooter" class="project-image">
+                            <img src="assets/projects/rl-ppo-ss/rl-ppo-ss-1.gif" alt="RL-PPO-SharpShooter"
+                                class="project-image">
 
                         </div>
                         <div class="project-content">
@@ -457,10 +483,12 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-description">
-                                A bespoke 2D shooter game is demonstrating a PPO-powered AI, highlighting skills in reinforcement learning and game development.
+                                A bespoke 2D shooter game is demonstrating a PPO-powered AI, highlighting skills in
+                                reinforcement learning and game development.
                             </div>
                             <div class="project-links">
-                                <a href="https://github.com/jeffasante/RL-PPO-SharpShooter" target="_blank">View Code</a>
+                                <a href="https://github.com/jeffasante/RL-PPO-SharpShooter" target="_blank">View
+                                    Code</a>
                                 <!-- <a href="#" target="_blank">Try Demo</a> -->
                             </div>
                         </div>
@@ -475,7 +503,7 @@
                                 <div class="project-title">Sound ID</div>
                                 <div class="project-url">mobobi.com</div>
                             </div>
-                           <div class="project-skills">
+                            <div class="project-skills">
                                 Skills: Artificial Intelligence (AI) · Mobile Application Development
                             </div>
                         </div>
@@ -508,7 +536,8 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-description">
-                                CoreRadio is a modern web app offering global radio stations, blending nostalgic retro-style design with cutting-edge technology for a unique streaming experience.
+                                CoreRadio is a modern web app offering global radio stations, blending nostalgic
+                                retro-style design with cutting-edge technology for a unique streaming experience.
                             </div>
                             <div class="project-links">
                                 <!-- <a href="#" target="_blank">View Code</a> -->
@@ -583,6 +612,49 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectCards = document.querySelectorAll('.project-card');
+
+            // Function to remove active class from all cards
+            function removeActiveFromAll() {
+                projectCards.forEach(card => card.classList.remove('active'));
+            }
+
+            // Handle touch events for each card
+            projectCards.forEach(card => {
+                card.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                    const wasActive = this.classList.contains('active');
+
+                    // Remove active class from all cards
+                    removeActiveFromAll();
+
+                    // Toggle active class on touched card
+                    if (!wasActive) {
+                        this.classList.add('active');
+                    }
+                });
+
+                // Prevent default touch behavior inside overlay
+                const overlay = card.querySelector('.project-overlay');
+                if (overlay) {
+                    overlay.addEventListener('touchstart', function (e) {
+                        e.stopPropagation();
+                    });
+                }
+            });
+
+            // Close overlay when touching outside
+            document.addEventListener('touchstart', function (e) {
+                if (!e.target.closest('.project-card')) {
+                    removeActiveFromAll();
+                }
+            });
+        });
     </script>
 </body>
 
