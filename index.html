@@ -6,457 +6,14 @@
     <meta charset="utf-8" />
     <meta name=viewport content="width=device-width, initial-scale=1">
     <!-- <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico"> -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style type="text/css">
-        body {
-            font-family: 'DM Sans', sans-serif !important;
-        }
 
-        a:link,
-        a:hover,
-        a:visited,
-        a:active {
-            color: #306BAC !important;
-        }
-
-        .nodecor:link,
-        .nodecor:hover,
-        .nodecor:visited,
-        .nodecor:active {
-            color: #333 !important;
-            text-decoration: none;
-        }
-
-        .boldtext {
-            font-weight: 700 !important;
-        }
-
-        .semiboldtext {
-            font-weight: 500 !important;
-        }
-
-        #name {
-            font-size: 3.6em;
-            line-height: 1em;
-            margin-top: .5em;
-            margin-bottom: .2em;
-        }
-
-        #title {
-            font-size: 1.2em;
-        }
-
-        #email {
-            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-            font-size: .9em;
-            margin-top: 2px;
-            margin-bottom: 2px;
-        }
-
-        #overview {
-            font-size: 1.2em;
-        }
-
-        .content {
-            margin: auto;
-            max-width: 800px;
-            padding: 10px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 20px;
-            margin-top: 20px;
-            border: 1px solid rgba(0, 0, 0, .125);
-        }
-
-        .experience-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .experience-company {
-            font-size: 16px;
-            color: #666;
-        }
-
-        .experience-date {
-            font-size: 14px;
-            color: #888;
-        }
-
-        .experience-location {
-            font-size: 14px;
-            color: #888;
-            font-style: italic;
-        }
-
-        .skills-section {
-            margin-top: 30px;
-        }
-
-        .skill-group {
-            margin-bottom: 20px;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            /* background: #f5f5f5; */
-            /* background: #dadada; */
-            background: #f8f9fa;
-            padding: 5px 10px;
-            margin: 3px;
-            border-radius: 6px;
-            /* border-radius: 3px; */
-            font-size: 14px;
-        }
-
-        .project-skills {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        .social-links {
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            margin-right: 15px;
-            font-size: 1.2em;
-        }
-
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 16px;
-            padding: 20px 0;
-        }
-
-        .project-card {
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .project-image-container {
-            width: 100%;
-            height: 60%;
-            overflow: hidden;
-            background: #f8f9fa;
-            position: relative;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 16px;
-            background: #ffffff;
-            height: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .project-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: #1a1a1a;
-            margin-bottom: 4px;
-        }
-
-        .project-url {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .project-meta {
-            font-size: 14px;
-            color: #888;
-            margin-top: auto;
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-card:hover .project-overlay,
-        .project-card.active .project-overlay {
-            opacity: 1;
-            pointer-events: auto;
-            /* Re-enable pointer events when visible */
-        }
-
-        /* Ensure touch devices show the overlay properly */
-        @media (hover: none) {
-            .project-card .project-overlay {
-                background: rgba(0, 0, 0, 0.9);
-            }
-
-            .project-card.active .project-overlay {
-                opacity: 1;
-                pointer-events: auto;
-            }
-        }
-
-
-        .project-description {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .project-links a {
-            color: white !important;
-            text-decoration: none;
-            font-size: 14px;
-            padding: 6px 12px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: background 0.2s ease;
-
-            padding: 12px 20px;
-            margin: 5px 0;
-            display: inline-block;
-        }
-
-        .project-links a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: rgb(255, 236, 114) !important;
-
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .show-all {
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        @media screen and (max-width: 768px) {
-            .profile-section {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .profile-image {
-                /* float: none !important;
-                margin: 20px auto !important;
-                max-width: 180px;
-                height: auto !important; */
-                display: none;
-            }
-
-            #name {
-                font-size: 2.8em !important;
-            }
-
-            #title {
-                /* text-align: center; */
-            }
-        }
-
-        .profile-image {
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .tools-frameworks {
-            margin-top: 1rem;
-            width: 50%;
-
-        }
-
-        .framework-tags {
-            margin-bottom: 1rem;
-        }
-
-        .scientific-packages {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 30px;
-        }
-
-        .package-header {
-            width: 100%;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .package-list {
-            list-style: none;
-            padding-left: 1rem;
-            margin: 0;
-            max-height: 500px;
-            /* Large enough to show all content */
-            transition: max-height 0.3s ease-out;
-            overflow: hidden;
-        }
-
-        .package-list.collapsed {
-            max-height: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .package-list li {
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .package-list i {
-            width: 1.25rem;
-            text-align: center;
-            color: #666;
-        }
-
-        .package-header i {
-            color: #306BAC;
-        }
-
-        .arrow-icon {
-            transition: transform 0.3s ease;
-            color: #666;
-        }
-
-        .arrow-icon.rotated {
-            transform: rotate(180deg);
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 1024px) {
-            .tools-frameworks {
-                width: 70%;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .tools-frameworks {
-                width: 100%;
-            }
-
-            .scientific-packages {
-                padding: 0.75rem;
-                border-radius: 20px;
-            }
-
-            .framework-tags {
-                gap: 0.25rem;
-            }
-
-            .skill-tag {
-                font-size: 0.9em;
-                padding: 4px 8px;
-            }
-
-            .package-list {
-                padding-left: 0.5rem;
-            }
-
-            .package-list li {
-                gap: 0.5rem;
-                font-size: 0.95em;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .scientific-packages {
-                padding: 0.5rem;
-                border-radius: 15px;
-            }
-
-            .header-content span {
-                font-size: 0.95em;
-            }
-
-            .package-list li {
-                font-size: 0.9em;
-            }
-
-            .framework-tags {
-                justify-content: flex-start;
-            }
-
-            .skill-tag {
-                font-size: 0.85em;
-                padding: 3px 6px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -566,20 +123,140 @@
             <div class="col-sm-offset-2">
                 <div class="section-header">
                     <h3>Projects</h3>
-                    <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231/details/projects/?profileId=ACoAADnoSfEBue8GP7WhaIWibRIhw40EwIg_cKQ"
-                        class="show-all">Show All ›</a>
+                    <!-- <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231/details/projects/?profileId=ACoAADnoSfEBue8GP7WhaIWibRIhw40EwIg_cKQ" -->
+                    <a href="https://github.com/jeffasante?tab=repositories"
+                       target="_blank" class="show-all">Show All ›</a>
                 </div>
 
                 <div class="projects-grid">
+                
+
+                      
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/projects/ant-colony/ant-colony.gif" alt="Ant Colony Simulation"
-                                class="project-image">
+                            <img src="assets/projects/maze.JPG" alt="GRPO Maze Solver" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">GRPO Maze Solver</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">Python</span>
+                                    <span class="language-pill">PyTorch</span>
+                                </div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Reinforcement Learning · Path Planning · Deep Learning
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                A reinforcement learning agent that learns to solve mazes using Group Relative Policy Optimization (GRPO), demonstrating advanced policy learning techniques.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/grpo-maze-solver" target="_blank">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                
+                
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/metal.gif" alt="BFSMetal" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">BFSMetal</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">Swift</span>
+                                    <span class="language-pill">Metal</span>
+                                </div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: GPU Computing · Graph Algorithms · Memory Optimization
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                High-performance implementation of Breadth-First Search using Apple's Metal framework for GPU acceleration, optimizing memory usage and parallel processing on large-scale graphs.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/bfs-metal" target="_blank">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+              
+
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/nimble.gif" alt="Nimble" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">Nimble</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">Python</span>
+                                    <span class="language-pill">JAX</span>
+                                    <span class="language-pill">Flax</span>
+                                </div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Deep Learning · Image Processing · Vector Graphics
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                A diffusion-based model for converting images into vector sketches, inspired by human drawing processes. Transforms bitmap images into point-based vector representations using JAX and Flax.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/nimble" target="_blank">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/mathexpr.JPG" alt="MathExpr" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-title">MathExpr</div>
+                                <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">Rust</span>
+                                </div>
+                            </div>
+                            <div class="project-skills">
+                                Skills: Parser Development · Mathematical Computing
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-description">
+                                A Rust library and CLI tool that parses and evaluates mathematical expressions, handling arithmetic operations, scientific notation, and complex expressions with proper operator precedence.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jeffasante/mathexpr" target="_blank">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/projects/ant-colony/ant-colony.gif" alt="Ant Colony Simulation" class="project-image">
                         </div>
                         <div class="project-content">
                             <div>
                                 <div class="project-title">Ant Colony Simulation</div>
                                 <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">Python</span>
+                                    <span class="language-pill">PyGame</span>
+                                </div>
                             </div>
                             <div class="project-skills">
                                 Skills: Reinforcement Learning · Game Development · Swarm Intelligence
@@ -587,8 +264,7 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-description">
-                                An interactive simulation demonstrating swarm intelligence through reinforcement
-                                learning, showcasing emergent behavior in ant colony optimization algorithms.
+                                An interactive simulation demonstrating swarm intelligence through reinforcement learning, showcasing emergent behavior in ant colony optimization algorithms.
                             </div>
                             <div class="project-links">
                                 <a href="https://github.com/jeffasante/ant-colony-rl" target="_blank">View Code</a>
@@ -596,9 +272,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
+                
                     <div class="project-card">
                         <div class="project-image-container">
                             <img src="assets/projects/coreface/1.png" alt="CoreFace" class="project-image">
@@ -607,6 +281,10 @@
                             <div>
                                 <div class="project-title">CoreFace</div>
                                 <div class="project-url">github.com/jeffasante</div>
+                                <div class="project-languages">
+                                    <span class="language-pill">JavaScript</span>
+                                    <span class="language-pill">WebAssembly</span>
+                                </div>
                             </div>
                             <div class="project-skills">
                                 Skills: Deep Learning · Web Assembly
@@ -614,121 +292,13 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-description">
-                                Local facial demographic analysis powered by WebAssembly and deep learning - fast,
-                                private, and secure with no server communication.
+                                Local facial demographic analysis powered by WebAssembly and deep learning - fast, private, and secure with no server communication.
                             </div>
                             <div class="project-links">
-                                <!-- <a href="https://github.com/jeffasante/ant-colony-rl" target="_blank">View Code</a> -->
                                 <a href="https://coreface.vercel.app" target="_blank">Try it Out</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/projects/rustviz.png" alt="RustViz" class="project-image">
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <div class="project-title">RustViz</div>
-                                <div class="project-url">github.com/jeffasante</div>
-                            </div>
-                            <div class="project-skills">
-                                Skills: Web Assembly · Data Science
-                            </div>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-description">
-                                A high-performance CSV analysis tool built with Rust and WebAssembly, providing
-                                statistical analysis and visualization capabilities directly in the browser.
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/jeffasante/rustviz" target="_blank">View Code</a>
-                                <a href="https://jeffasante.github.io/rustviz/" target="_blank">Try Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/projects/rl-ppo-ss/rl-ppo-ss-1.gif" alt="RL-PPO-SharpShooter"
-                                class="project-image">
-
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <div class="project-title">RL-PPO-SharpShooter</div>
-                                <div class="project-url">github.com/jeffasante</div>
-                            </div>
-                            <div class="project-skills">
-                                Skills: Reinforcement Learning · Game Development · Deep Learning
-                            </div>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-description">
-                                A bespoke 2D shooter game is demonstrating a PPO-powered AI, highlighting skills in
-                                reinforcement learning and game development.
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/jeffasante/RL-PPO-SharpShooter" target="_blank">View
-                                    Code</a>
-                                <!-- <a href="#" target="_blank">Try Demo</a> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/android-soundid-inference-1.png" alt="Sound ID" class="project-image">
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <div class="project-title">Sound ID</div>
-                                <div class="project-url">mobobi.com</div>
-                            </div>
-                            <div class="project-skills">
-                                Skills: Artificial Intelligence (AI) · Mobile Application Development
-                            </div>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-description">
-                                On-device audio classification project using YAMNet, a deep neural network. Optimized
-                                for real-time performance and cross-platform compatibility.
-                            </div>
-                            <div class="project-links">
-                                <!-- <a href="#" target="_blank">View Details</a>
-                                <a href="#" target="_blank">Live Demo</a> -->
-                                <a href="https://mobobi.com" target="_blank">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/projects/coreradio.png" alt="CoreRadio" class="project-image">
-
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <div class="project-title">CoreRadio</div>
-                                <div class="project-url">github.com/jeffasante</div>
-                            </div>
-                            <div class="project-skills">
-                                Skills: Vanilla JavaScript · Web Services API
-                            </div>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-description">
-                                CoreRadio is a modern web app offering global radio stations, blending nostalgic
-                                retro-style design with cutting-edge technology for a unique streaming experience.
-                            </div>
-                            <div class="project-links">
-                                <!-- <a href="#" target="_blank">View Code</a> -->
-                                <a href="https://coreradio.vercel.app/" target="_blank">Try Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
