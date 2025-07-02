@@ -1,2 +1,9 @@
+# .gitignore
 .DS_Store
-v1/
+tmp/
+tmp copy/
+tmp2/
+tmp3/
+tmp4/
+theme.js
+ignore/
