@@ -112,6 +112,14 @@ section {
     letter-spacing: 0.05em;
 }
 
+.location-info {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--muted-text-color);
+}
+
+
 /* --- Item Lists (Experience & Projects) --- */
 .item-list {
     border-top: 1px solid var(--border-color);
