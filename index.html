@@ -287,9 +287,9 @@
           }
           const repos = await response.json();
 
-          // Get projects with 2+ stars first, then fill with others if needed
-          const starredRepos = repos.filter((repo) => !repo.fork && repo.stargazers_count >= 2);
-          const otherRepos = repos.filter((repo) => !repo.fork && repo.stargazers_count < 2);
+          // Get projects with 2+ stars first, then fill with others if needed (exclude portfolio repo)
+          const starredRepos = repos.filter((repo) => !repo.fork && repo.stargazers_count >= 2 && repo.name.toLowerCase() !== 'jeffasante.github.io');
+          const otherRepos = repos.filter((repo) => !repo.fork && repo.stargazers_count < 2 && repo.name.toLowerCase() !== 'jeffasante.github.io');
           const featuredRepos = [...starredRepos, ...otherRepos].slice(0, 7);
 
           featuredContainer.innerHTML = ""; // Clear loading text
