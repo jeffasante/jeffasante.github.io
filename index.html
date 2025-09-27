@@ -307,12 +307,7 @@
             const description = repo.description || "No description provided.";
             const language = repo.language || "N/A";
 
-            projectItem.innerHTML = `
-              <div class="item-header">
-                <h3>${repo.name}</h3>
-                <div class="tags">${language.toUpperCase()}</div>
-              </div>
-              <p>${description}</p>
+            let linksHtml = `
               <a
                 class="item-link"
                 href="${repo.html_url}"
@@ -320,6 +315,52 @@
                 rel="noopener noreferrer"
                 >VIEW SOURCE →</a
               >
+            `;
+
+            // Add demo links for specific projects
+            if (repo.name.toLowerCase() === 'wasm-inspector') {
+              linksHtml = `
+                <a
+                  class="item-link"
+                  href="https://jeffasante.github.io/wasm-inspector/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >DEMO →</a
+                >
+                <a
+                  class="item-link"
+                  href="${repo.html_url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >VIEW SOURCE →</a
+                >
+              `;
+            } else if (repo.name.toLowerCase() === 'torpedo') {
+              linksHtml = `
+                <a
+                  class="item-link"
+                  href="https://jeffasante.github.io/torpedo/web/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >DEMO →</a
+                >
+                <a
+                  class="item-link"
+                  href="${repo.html_url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >VIEW SOURCE →</a
+                >
+              `;
+            }
+
+            projectItem.innerHTML = `
+              <div class="item-header">
+                <h3>${repo.name}</h3>
+                <div class="tags">${language.toUpperCase()}</div>
+              </div>
+              <p>${description}</p>
+              ${linksHtml}
             `;
             featuredContainer.appendChild(projectItem);
           });
