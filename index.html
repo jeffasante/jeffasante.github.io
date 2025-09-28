@@ -261,7 +261,17 @@
         .getElementById("cv-button")
         .addEventListener("click", function (event) {
           event.preventDefault();
-          window.print();
+          
+          // Check if mobile device
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+          
+          if (isMobile) {
+            // For mobile, simply try window.print() - most modern mobile browsers support it
+            window.print();
+          } else {
+            // Desktop: use standard print
+            window.print();
+          }
         });
 
       // --- GitHub Projects Modal Functionality ---

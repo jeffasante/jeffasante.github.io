@@ -379,10 +379,12 @@ footer {
     .item-link::before {
         content: "URL: ";
         font-weight: bold;
+        text-transform: none;
     }
     
     .item-link::after {
         content: " (" attr(href) ")";
+        text-transform: none;
     }
 
     /* Clean contact links for print - show as blocks */
@@ -396,30 +398,35 @@ footer {
         margin-right: 0;
         margin-bottom: 0.3rem;
         text-decoration: none;
+        text-transform: none;
     }
     
     .contact-links a[href^="mailto:"]::after {
         content: " (" attr(href) ")";
         font-size: 7pt;
         color: #666;
+        text-transform: none;
     }
     
     .contact-links a[href*="github.com"]::after {
         content: " (github.com/jeffasante)";
         font-size: 7pt;
         color: #666;
+        text-transform: none;
     }
     
     .contact-links a[href*="linkedin.com"]::after {
-        content: " (linkedin.com/in/jeffrey-asante)";
+        content: " (linkedin.com/in/jeffrey-asante-a69440231)";
         font-size: 7pt;
         color: #666;
+        text-transform: none;
     }
     
     .contact-links a[href*="stackoverflow.com"]::after {
-        content: " (stackoverflow.com/users/jeffasante)";
+        content: " (stackoverflow.com/users/13482983/jeffasante)";
         font-size: 7pt;
         color: #666;
+        text-transform: none;
     }
     
     .container {
