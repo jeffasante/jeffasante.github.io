@@ -361,12 +361,65 @@ footer {
         display: none;
     }
 
-    /* Hide other interactive/unnecessary elements */
-    .contact-links,
+    /* Hide only the view more button, but keep item links */
     footer,
-    .item-link,
     .view-more-container {
         display: none;
+    }
+
+    /* Show app/project links in print with URLs */
+    .item-link {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 7pt;
+        color: #666;
+        text-transform: none;
+    }
+    
+    .item-link::before {
+        content: "URL: ";
+        font-weight: bold;
+    }
+    
+    .item-link::after {
+        content: " (" attr(href) ")";
+    }
+
+    /* Clean contact links for print - show as blocks */
+    .contact-links {
+        display: block;
+        margin-top: 1rem;
+    }
+    
+    .contact-links a {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0.3rem;
+        text-decoration: none;
+    }
+    
+    .contact-links a[href^="mailto:"]::after {
+        content: " (" attr(href) ")";
+        font-size: 7pt;
+        color: #666;
+    }
+    
+    .contact-links a[href*="github.com"]::after {
+        content: " (github.com/jeffasante)";
+        font-size: 7pt;
+        color: #666;
+    }
+    
+    .contact-links a[href*="linkedin.com"]::after {
+        content: " (linkedin.com/in/jeffrey-asante)";
+        font-size: 7pt;
+        color: #666;
+    }
+    
+    .contact-links a[href*="stackoverflow.com"]::after {
+        content: " (stackoverflow.com/users/jeffasante)";
+        font-size: 7pt;
+        color: #666;
     }
     
     .container {
