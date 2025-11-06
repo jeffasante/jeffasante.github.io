@@ -229,6 +229,7 @@
 
     <footer>
       <span>© 2025 JEFFREY ASANTE</span>
+      <span>Visitors: <span id="visitor-count">Loading...</span></span>
     </footer>
   </div>
 
@@ -423,6 +424,17 @@
     openButton.addEventListener("click", fetchAndDisplayProjects);
     closeButton.addEventListener("click", closeModal);
     overlay.addEventListener("click", closeModal);
+  </script>
+
+  <script>
+    fetch('https://api.countapi.xyz/hit/jeffasante.github.io/visits')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('visitor-count').innerText = data.value;
+      })
+      .catch(err => {
+        document.getElementById('visitor-count').innerText = 'N/A';
+      });
   </script>
 </body>
 
