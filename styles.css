@@ -401,6 +401,11 @@ footer {
         text-transform: none;
     }
 
+    /* Hide availability badge in print */
+    .availability-badge {
+        display: none;
+    }
+
     /* Clean contact links for print - show as blocks */
     .contact-links {
         display: block;
