@@ -365,6 +365,7 @@ footer {
         line-height: 1.3;
         color: #000;
         background-color: #fff;
+        font-family: 'Manrope', sans-serif;
     }
 
     /* Keep the header, but hide the navigation within it */
