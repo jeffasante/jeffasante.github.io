@@ -119,6 +119,20 @@ section {
     color: var(--muted-text-color);
 }
 
+.availability-badge {
+    background-color: #007bff;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    image-rendering: pixelated;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
 
 /* --- Item Lists (Experience & Projects) --- */
 .item-list {
