@@ -484,7 +484,18 @@
       openReadmeModal();
 
       try {
-        // Fetch README from GitHub API
+        // First, fetch repository info to get the default branch
+        const repoInfoUrl = `https://api.github.com/repos/${repoFullName}`;
+        const repoInfoResponse = await fetch(repoInfoUrl);
+        
+        if (!repoInfoResponse.ok) {
+          throw new Error(`GitHub API Error: ${repoInfoResponse.status}`);
+        }
+        
+        const repoInfo = await repoInfoResponse.json();
+        const defaultBranch = repoInfo.default_branch || 'main'; // Fallback to 'main' if not found
+        
+        // Now fetch README from GitHub API
         const readmeUrl = `https://api.github.com/repos/${repoFullName}/readme`;
         const response = await fetch(readmeUrl, {
           headers: {
@@ -502,16 +513,16 @@
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = readmeHtml;
         
-        // Fix all image sources to use absolute GitHub URLs
+        // Fix all image sources to use absolute GitHub URLs with the correct default branch
         const images = tempDiv.querySelectorAll('img');
         images.forEach(img => {
           const src = img.getAttribute('src');
           if (src) {
             // If the image path is relative or starts with certain patterns
             if (!src.startsWith('http://') && !src.startsWith('https://')) {
-              // Convert to absolute GitHub raw URL
+              // Convert to absolute GitHub raw URL using the default branch
               const cleanSrc = src.startsWith('/') ? src.substring(1) : src;
-              img.setAttribute('src', `https://raw.githubusercontent.com/${repoFullName}/main/${cleanSrc}`);
+              img.setAttribute('src', `https://raw.githubusercontent.com/${repoFullName}/${defaultBranch}/${cleanSrc}`);
             } else if (src.includes('/blob/')) {
               // Convert GitHub blob URLs to raw URLs
               img.setAttribute('src', src.replace('/blob/', '/raw/'));
@@ -530,7 +541,7 @@
             if (href.startsWith('/')) {
               link.setAttribute('href', `https://github.com${href}`);
             } else {
-              link.setAttribute('href', `https://github.com/${repoFullName}/blob/main/${href}`);
+              link.setAttribute('href', `https://github.com/${repoFullName}/blob/${defaultBranch}/${href}`);
             }
           }
           // Make external links open in new tab
