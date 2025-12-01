@@ -253,6 +253,18 @@
     </div>
   </div>
 
+  <!-- README Modal Structure -->
+  <div id="readme-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content readme-modal-content">
+      <button class="modal-close-button">×</button>
+      <h2 id="readme-modal-title">README</h2>
+      <div id="readme-modal-content" class="readme-content">
+        <!-- README content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
   <script>
     // --- CV to PDF Functionality ---
     document
@@ -323,6 +335,7 @@
                 rel="noopener noreferrer"
                 >VIEW SOURCE →</a
               >
+              <button class="readme-button" data-repo="${repo.full_name}">README</button>
             `;
 
           // Add demo links for specific projects
@@ -342,6 +355,7 @@
                   rel="noopener noreferrer"
                   >VIEW SOURCE →</a
                 >
+                <button class="readme-button" data-repo="${repo.full_name}">README</button>
               `;
           } else if (repo.name.toLowerCase() === 'torpedo') {
             linksHtml = `
@@ -359,6 +373,7 @@
                   rel="noopener noreferrer"
                   >VIEW SOURCE →</a
                 >
+                <button class="readme-button" data-repo="${repo.full_name}">README</button>
               `;
           }
 
@@ -371,6 +386,14 @@
               ${linksHtml}
             `;
           featuredContainer.appendChild(projectItem);
+        });
+
+        // Add click handlers for README buttons
+        document.querySelectorAll('.readme-button').forEach(button => {
+          button.addEventListener('click', async (e) => {
+            const repoFullName = e.target.dataset.repo;
+            await showReadmeModal(repoFullName);
+          });
         });
       } catch (error) {
         console.error("Failed to load featured projects:", error);
@@ -432,6 +455,96 @@
     openButton.addEventListener("click", fetchAndDisplayProjects);
     closeButton.addEventListener("click", closeModal);
     overlay.addEventListener("click", closeModal);
+
+    // --- README Modal Functionality ---
+    const readmeModal = document.getElementById("readme-modal");
+    const readmeCloseButton = readmeModal.querySelector(".modal-close-button");
+    const readmeOverlay = readmeModal.querySelector(".modal-overlay");
+    const readmeContentDiv = document.getElementById("readme-modal-content");
+    const readmeTitle = document.getElementById("readme-modal-title");
+
+    const openReadmeModal = () => readmeModal.style.display = "flex";
+    const closeReadmeModal = () => readmeModal.style.display = "none";
+
+    readmeCloseButton.addEventListener("click", closeReadmeModal);
+    readmeOverlay.addEventListener("click", closeReadmeModal);
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeReadmeModal();
+        closeModal();
+      }
+    });
+
+    const showReadmeModal = async (repoFullName) => {
+      readmeTitle.textContent = `${repoFullName} - README`;
+      readmeContentDiv.innerHTML = '<p class="loading-text">Loading README...</p>';
+      openReadmeModal();
+
+      try {
+        // Fetch README from GitHub API
+        const readmeUrl = `https://api.github.com/repos/${repoFullName}/readme`;
+        const response = await fetch(readmeUrl, {
+          headers: {
+            'Accept': 'application/vnd.github.v3.html'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`GitHub API Error: ${response.status}`);
+        }
+
+        const readmeHtml = await response.text();
+        
+        // Create a temporary div to parse and fix the HTML
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = readmeHtml;
+        
+        // Fix all image sources to use absolute GitHub URLs
+        const images = tempDiv.querySelectorAll('img');
+        images.forEach(img => {
+          const src = img.getAttribute('src');
+          if (src) {
+            // If the image path is relative or starts with certain patterns
+            if (!src.startsWith('http://') && !src.startsWith('https://')) {
+              // Convert to absolute GitHub raw URL
+              const cleanSrc = src.startsWith('/') ? src.substring(1) : src;
+              img.setAttribute('src', `https://raw.githubusercontent.com/${repoFullName}/main/${cleanSrc}`);
+            } else if (src.includes('/blob/')) {
+              // Convert GitHub blob URLs to raw URLs
+              img.setAttribute('src', src.replace('/blob/', '/raw/'));
+            } else if (src.startsWith('/')) {
+              // Handle absolute paths that are relative to github.com
+              img.setAttribute('src', `https://github.com${src}`);
+            }
+          }
+        });
+        
+        // Fix all anchor links that might be relative
+        const links = tempDiv.querySelectorAll('a');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('#')) {
+            if (href.startsWith('/')) {
+              link.setAttribute('href', `https://github.com${href}`);
+            } else {
+              link.setAttribute('href', `https://github.com/${repoFullName}/blob/main/${href}`);
+            }
+          }
+          // Make external links open in new tab
+          if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+        
+        readmeContentDiv.innerHTML = tempDiv.innerHTML;
+      } catch (error) {
+        console.error("Failed to load README:", error);
+        readmeContentDiv.innerHTML = '<p class="error-text">Failed to load README. This repository may not have a README file.</p>';
+      }
+    };
   </script>
 
   <script>
