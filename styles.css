@@ -190,11 +190,17 @@ section {
   white-space: nowrap;
   margin-left: 0.5rem;
   vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .readme-button:hover {
   background-color: #666;
   transform: translateY(-1px);
+}
+
+.readme-button:active {
+  background-color: #555;
+  transform: translateY(0);
 }
 
 .item p {
@@ -510,6 +516,56 @@ footer {
   .modal-content {
     width: 95%;
     padding: 1.5rem 1.2rem;
+  }
+
+  /* README button mobile adjustments */
+  .readme-button {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.7rem;
+    margin-left: 0.4rem;
+  }
+
+  /* README modal mobile adjustments */
+  .readme-modal-content {
+    width: 95%;
+    max-width: 95%;
+    max-height: 85vh;
+    padding: 1.2rem;
+    font-size: 12px;
+  }
+
+  .readme-content {
+    font-size: 13px;
+  }
+
+  .readme-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .readme-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .readme-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .readme-content pre {
+    padding: 0.8rem;
+    font-size: 12px;
+    overflow-x: auto;
+  }
+
+  .readme-content table {
+    font-size: 12px;
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Ensure item links and buttons wrap nicely on mobile */
+  .item-link {
+    display: inline-block;
+    margin-bottom: 0.4rem;
   }
 }
 
