@@ -442,8 +442,11 @@
         });
       } catch (error) {
         console.error("Failed to load featured projects:", error);
-        featuredContainer.innerHTML =
-          '<p class="error-text">Failed to load featured projects.</p>';
+        if (error.message.includes("403")) {
+          featuredContainer.innerHTML = '<p class="error-text">Unable to load projects due to GitHub API rate limit. Please try again later.</p>';
+        } else {
+          featuredContainer.innerHTML = '<p class="error-text">Failed to load featured projects. Please try again later.</p>';
+        }
       }
     };
 
@@ -544,8 +547,11 @@
         displayPage(currentPage);
       } catch (error) {
         console.error("Failed to fetch projects:", error);
-        projectListContainer.innerHTML =
-          '<p class="error-text">Failed to load projects. Please try again later.</p>';
+        if (error.message.includes("403")) {
+          projectListContainer.innerHTML = '<p class="error-text">Unable to load projects due to GitHub API rate limit. Please try again later.</p>';
+        } else {
+          projectListContainer.innerHTML = '<p class="error-text">Failed to load projects. Please try again later.</p>';
+        }
       }
     };
 
@@ -692,20 +698,27 @@
         readmeContentDiv.innerHTML = tempDiv.innerHTML;
       } catch (error) {
         console.error("Failed to load README:", error);
-        readmeContentDiv.innerHTML = '<p class="error-text">Failed to load README. This repository may not have a README file.</p>';
+        if (error.message.includes("403")) {
+          readmeContentDiv.innerHTML = '<p class="error-text">Unable to load README due to GitHub API rate limit. Please try again later.</p>';
+        } else {
+          readmeContentDiv.innerHTML = '<p class="error-text">Failed to load README. This repository may not have a README file.</p>';
+        }
       }
     };
   </script>
 
   <script>
-    fetch('https://api.countapi.xyz/hit/jeffasante.github.io/visits')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('visitor-count').innerText = data.value;
-      })
-      .catch(err => {
-        document.getElementById('visitor-count').innerText = 'N/A';
-      });
+    // Visitor count - commented out due to SSL issues
+    // fetch('https://api.countapi.xyz/hit/jeffasante.github.io/visits')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     const visitorEl = document.getElementById('visitor-count');
+    //     if (visitorEl) visitorEl.innerText = data.value;
+    //   })
+    //   .catch(err => {
+    //     const visitorEl = document.getElementById('visitor-count');
+    //     if (visitorEl) visitorEl.innerText = 'N/A';
+    //   });
   </script>
 </body>
 
