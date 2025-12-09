@@ -177,10 +177,10 @@ section {
 .readme-button {
   display: inline-block;
   font-family: var(--main-font);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.35rem 0.9rem;
+  padding: 0.3rem 0.8rem;
   background-color: #888;
   color: #fff;
   border: none;
@@ -347,6 +347,76 @@ footer {
   text-align: center;
   padding: 1.5rem;
   color: var(--muted-text-color);
+}
+
+/* --- Pagination Controls --- */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination-button {
+  font-family: var(--main-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background-color: #888;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #666;
+  transform: translateY(-1px);
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#page-info {
+  font-size: 0.7rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Filter Controls --- */
+.filter-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-controls label {
+  font-size: 0.7rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filter-controls select {
+  font-family: var(--main-font);
+  font-size: 0.7rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 0.5rem;
 }
 
 /* --- README Modal Specific Styles --- */
