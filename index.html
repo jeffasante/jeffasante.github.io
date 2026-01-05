@@ -383,7 +383,7 @@
         const repos = allReposTemp;
 
         // Get top 5 by stars/forks, then top 5 most recent from the rest
-        const filteredRepos = repos.filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io' && repo.name.toLowerCase() !== 'employee-time-tracker');
+        const filteredRepos = repos.filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io' && repo.name.toLowerCase() !== 'employee-time-tracker' && repo.name.toLowerCase() !== 'skincare-analysis-api');
         const sortedByPopularity = filteredRepos
           .sort((a, b) => {
             if (b.stargazers_count !== a.stargazers_count) {
