@@ -1,11 +1,23 @@
-/* --- Global Styles & Typography --- */
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("assets/Chillax_Complete/Fonts/WEB/fonts/Chillax-Variable.woff2")
+      format("woff2-variations"),
+    url("assets/Chillax_Complete/Fonts/WEB/fonts/Chillax-Variable.woff")
+      format("woff");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
 
 :root {
-  --main-font: "Space Mono", monospace;
-  --text-color: #111;
+  --main-font:
+    "Chillax", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --text-color: #000;
   --muted-text-color: #666;
   --background-color: #fff;
-  --border-color: #e0e0e0;
+  --border-color: #ececec;
+  --accent-color: #000;
 }
 
 *,
@@ -16,14 +28,19 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--main-font);
   background-color: var(--background-color);
   color: var(--text-color);
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 .container {
@@ -47,22 +64,29 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
+  padding: 3rem 0;
+  font-size: 0.8rem;
+  letter-spacing: -0.01em;
 }
 
 .logo {
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
 }
 
 nav a {
-  margin-left: 1.5rem;
-  text-transform: uppercase;
+  text-transform: none;
+  font-weight: 400;
+  color: var(--muted-text-color);
 }
+
 nav a:hover {
-  text-decoration: underline;
+  color: var(--text-color);
   opacity: 1;
 }
 
@@ -72,73 +96,94 @@ main {
 }
 
 .intro {
-  padding: 4rem 0 5rem;
-  text-align: right;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.7rem;
-  font-weight: 700;
+  padding: 8rem 0 10rem;
+  text-align: left;
+  line-height: 1.1;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
 }
 
 .intro p:first-child {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro p {
+  opacity: 0.9;
 }
 
 /* --- Sections --- */
 section {
-  padding: 2.5rem 0;
+  padding: 4rem 0;
   border-top: 1px solid var(--border-color);
 }
 
 .section-title {
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
   color: var(--muted-text-color);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 /* --- About Section --- */
 .about-content p {
-  max-width: 75ch;
-  margin-bottom: 1.5rem;
+  max-width: 60ch;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .contact-links a {
-  margin-right: 1.5rem;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  text-decoration: underline;
-  letter-spacing: 0.05em;
+  margin-right: 2rem;
+  text-transform: none;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2px;
+  font-weight: 500;
+}
+
+.contact-links a:hover {
+  border-color: var(--text-color);
 }
 
 .location-info {
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
   color: var(--muted-text-color);
+  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 .availability-badge {
-  background-color: #007bff;
+  background-color: #000;
   color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
-  font-size: 0.6rem;
-  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.65rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  image-rendering: pixelated;
+  letter-spacing: 0.1em;
   display: inline-block;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+  vertical-align: middle;
 }
 
 /* --- Item Lists (Experience & Projects) --- */
 
 .item {
-  padding: 1.2rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  border-color: #000;
 }
 
 .item-header {
@@ -146,113 +191,123 @@ section {
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .item-header h3 {
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .item-header span,
 .item-header .tags {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--muted-text-color);
   letter-spacing: 0.05em;
-  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.item-header-right {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.item p {
+  max-width: 65ch;
+  margin-bottom: 1.5rem;
+  color: var(--muted-text-color);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.item-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.item-link:hover {
+  border-color: currentColor;
 }
 
 .readme-button {
   display: inline-block;
   font-family: var(--main-font);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.3rem 0.8rem;
-  background-color: #888;
-  color: #fff;
-  border: none;
-  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+  background-color: transparent;
+  color: var(--muted-text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   vertical-align: middle;
-  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
 }
 
 .readme-button:hover {
-  background-color: #666;
-  transform: translateY(-1px);
-}
-
-.readme-button:active {
-  background-color: #555;
-  transform: translateY(0);
-}
-
-.item p {
-  max-width: 70ch;
-  margin-bottom: 0.8rem;
-  color: #333;
-}
-
-.item-link {
-  display: inline-block;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  border-color: var(--text-color);
+  color: var(--text-color);
 }
 
 /* --- Projects Section --- */
 .view-more-container {
-  text-align: center;
-  padding-top: 1.5rem;
+  text-align: left;
+  padding-top: 3rem;
 }
 
 .action-button {
   font-family: var(--main-font);
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  padding: 0.7rem 1.2rem;
-  background-color: var(--text-color);
-  color: var(--background-color);
-  border: 1px solid var(--text-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-weight: 600;
 }
 
 .action-button:hover {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: transparent;
+  color: #000;
 }
 
 /* --- Skills & Footer --- */
 .skill-list {
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
   line-height: 1.8;
   color: var(--muted-text-color);
+  margin-bottom: 1.5rem;
+  max-width: 80ch;
+  font-weight: 400;
+}
+
+.skill-list strong {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-right: 0.5rem;
 }
 
 footer {
-  padding: 3rem 0 1.5rem;
-  text-align: center;
+  padding: 6rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: #999;
+  letter-spacing: 0.15em;
+  color: #bbb;
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
 }
 
 /* --- Modal Styles --- */
@@ -279,37 +334,40 @@ footer {
 .modal-content {
   position: relative;
   background-color: var(--background-color);
-  padding: 2rem;
-  border: 1px solid var(--border-color);
-  width: 90%;
-  max-width: 700px;
-  max-height: 85vh;
+  padding: 3rem;
+  width: 95%;
+  max-width: 800px;
+  max-height: 90vh;
   overflow-y: auto;
+  border: none;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-content h2 {
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 1.5rem;
-  color: var(--muted-text-color);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-weight: 600;
 }
 
 .modal-close-button {
   position: absolute;
-  top: 0.8rem;
-  right: 1.2rem;
+  top: 2rem;
+  right: 2rem;
   background: none;
   border: none;
-  font-family: sans-serif;
-  font-size: 1.5rem;
-  color: #aaa;
+  font-family: var(--main-font);
+  font-size: 2rem;
+  color: #000;
   cursor: pointer;
   line-height: 1;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
+  font-weight: 300;
 }
 .modal-close-button:hover {
-  color: #111;
+  opacity: 0.5;
 }
 
 .modal-project-list .item-header {
@@ -360,33 +418,33 @@ footer {
 .pagination-button {
   font-family: var(--main-font);
   font-size: 0.7rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.5rem 1rem;
-  background-color: #888;
-  color: #fff;
-  border: none;
-  border-radius: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-weight: 600;
 }
 
 .pagination-button:hover:not(:disabled) {
-  background-color: #666;
-  transform: translateY(-1px);
+  border-color: var(--text-color);
 }
 
 .pagination-button:disabled {
-  background-color: #ccc;
+  opacity: 0.3;
   cursor: not-allowed;
-  transform: none;
 }
 
 #page-info {
   font-size: 0.7rem;
   color: var(--muted-text-color);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  font-weight: 500;
 }
 
 /* --- Filter Controls --- */
@@ -423,8 +481,9 @@ footer {
 }
 
 .readme-content {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica", "Arial", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   font-size: 14px;
@@ -463,11 +522,11 @@ footer {
 }
 
 .readme-content code {
-  background-color: rgba(175, 184, 193, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  font-size: 85%;
-  font-family: "Space Mono", monospace;
+  font-size: 0.9em;
+  font-family: var(--main-font);
 }
 
 .readme-content pre {
