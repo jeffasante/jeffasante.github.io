@@ -330,24 +330,349 @@
     </div>
   </div>
 
+  <!-- CV Modal Structure -->
+  <div id="cv-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content cv-modal-content">
+      <button class="modal-close-button">×</button>
+      <h2>Select Professional Track</h2>
+      <div class="cv-options">
+        <div class="cv-option">
+          <span class="cv-name">Software Engineer</span>
+          <div class="cv-actions">
+            <button class="cv-action-btn preview" data-type="software-engineer">Preview</button>
+            <button class="cv-action-btn print" data-type="software-engineer">Print</button>
+          </div>
+        </div>
+        <div class="cv-option">
+          <span class="cv-name">Data Scientist</span>
+          <div class="cv-actions">
+            <button class="cv-action-btn preview" data-type="data-science">Preview</button>
+            <button class="cv-action-btn print" data-type="data-science">Print</button>
+          </div>
+        </div>
+        <div class="cv-option">
+          <span class="cv-name">Data Engineer</span>
+          <div class="cv-actions">
+            <button class="cv-action-btn preview" data-type="data-engineering">Preview</button>
+            <button class="cv-action-btn print" data-type="data-engineering">Print</button>
+          </div>
+        </div>
+        <div class="cv-option">
+          <span class="cv-name">AI Engineer</span>
+          <div class="cv-actions">
+            <button class="cv-action-btn preview" data-type="ai-engineer">Preview</button>
+            <button class="cv-action-btn print" data-type="ai-engineer">Print</button>
+          </div>
+        </div>
+        <div class="cv-option">
+          <span class="cv-name">AI/ML Software Engineer</span>
+          <div class="cv-actions">
+            <button class="cv-action-btn preview" data-type="ai-ml-software">Preview</button>
+            <button class="cv-action-btn print" data-type="ai-ml-software">Print</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV Preview Modal -->
+  <div id="cv-preview-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content cv-preview-modal-content">
+      <button class="modal-close-button">×</button>
+      <div class="cv-preview-header">
+        <h2 id="cv-preview-title">CV Preview</h2>
+        <button id="cv-preview-print" class="action-button">Print CV</button>
+      </div>
+      <div id="cv-preview-content" class="cv-preview-body">
+        <!-- CV content will be rendered here -->
+      </div>
+    </div>
+  </div>
+
   <script>
-    // --- CV to PDF Functionality ---
-    document
-      .getElementById("cv-button")
-      .addEventListener("click", function (event) {
-        event.preventDefault();
+    // --- CV Modal Functionality ---
+    const cvModal = document.getElementById("cv-modal");
+    const cvButton = document.getElementById("cv-button");
+    const cvCloseButton = cvModal.querySelector(".modal-close-button");
+    const cvOverlay = cvModal.querySelector(".modal-overlay");
 
-        // Check if mobile device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const openCvModal = () => cvModal.style.display = "flex";
+    const closeCvModal = () => cvModal.style.display = "none";
 
-        if (isMobile) {
-          // For mobile, simply try window.print() - most modern mobile browsers support it
-          window.print();
-        } else {
-          // Desktop: use standard print
-          window.print();
+    cvButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      openCvModal();
+    });
+
+    cvCloseButton.addEventListener("click", closeCvModal);
+    cvOverlay.addEventListener("click", closeCvModal);
+
+    const personas = {
+      'software-engineer': {
+        title: 'Software Engineer',
+        intro: 'Full-stack software engineer architecting high-performance applications with Python, Rust, Go, and JavaScript. Specialized in systems design, cross-platform development, and scalable backend architecture.',
+        aboutFocus: 'Full-stack software engineer building robust systems with Python, Rust, Go, and JavaScript. Experienced in cross-platform SDK development, mobile applications, and scalable backend architectures.',
+        skills: {
+          languages: 'PYTHON, GO, RUST, C/C++, JAVASCRIPT, SWIFT, KOTLIN',
+          frameworks: 'FLUTTER, REACT NATIVE, NODE.JS, REACT, MONGODB',
+          specializations: 'SOFTWARE ARCHITECTURE, MOBILE/WEB DEVELOPMENT, CROSS-PLATFORM SDK, API DESIGN, CI/CD, DATA STRUCTURES & ALGORITHMS'
+        },
+        experienceFilter: ['Software Engineer', 'Co-Founder', 'AI Developer'],
+        projectLanguages: ['JavaScript', 'TypeScript', 'Go', 'Rust', 'Dart', 'C++', 'C']
+      },
+      'data-science': {
+        title: 'Data Scientist',
+        intro: 'Data scientist leveraging statistical methods, machine learning, and data-driven insights to solve complex problems. Proven 80% accuracy improvements through advanced analytics.',
+        aboutFocus: 'Data scientist with expertise in statistical analysis, predictive modeling, and machine learning. Skilled in building data-driven web applications and improving prediction accuracy through advanced methods.',
+        skills: {
+          languages: 'PYTHON, R, SQL, JAVASCRIPT',
+          frameworks: 'PYTORCH, TENSORFLOW, PANDAS, SCIKIT-LEARN, MATPLOTLIB',
+          specializations: 'STATISTICAL ANALYSIS, PREDICTIVE MODELING, DATA VISUALIZATION, A/B TESTING, FEATURE ENGINEERING, RESEARCH METHODOLOGY'
+        },
+        experienceFilter: ['Data Scientist', 'AI Developer'],
+        projectLanguages: ['Python', 'Jupyter Notebook', 'R']
+      },
+      'data-engineering': {
+        title: 'Data Engineer',
+        intro: 'Data engineer building scalable data pipelines and robust infrastructure. Specialized in ETL processes, data collection systems, and real-time data processing.',
+        aboutFocus: 'Data engineer experienced in building data collection infrastructure, ETL pipelines, and scalable data systems for low-resource environments.',
+        skills: {
+          languages: 'PYTHON, GO, SQL, RUST',
+          frameworks: 'APACHE SPARK, AIRFLOW, MONGODB, POSTGRESQL',
+          specializations: 'ETL PIPELINES, DATA INFRASTRUCTURE, DATA COLLECTION, REAL-TIME PROCESSING, CLOUD COMPUTING, DATABASE OPTIMIZATION'
+        },
+        experienceFilter: ['Software Engineer', 'Data Scientist'],
+        projectLanguages: ['Python', 'Go', 'Rust', 'Shell']
+      },
+      'ai-engineer': {
+        title: 'AI Engineer',
+        intro: 'AI engineer architecting on-device AI and intelligent systems. Specialized in model optimization achieving 98% size reduction while maintaining performance.',
+        aboutFocus: 'AI engineer specializing in on-device AI, model optimization, and edge deployment. Achieved 98% model size reduction (2GB → 18MB) for offline-capable voice assistants.',
+        skills: {
+          languages: 'PYTHON, C/C++, RUST, SWIFT, KOTLIN',
+          frameworks: 'PYTORCH, TENSORFLOW LITE, ONNX, COREML',
+          specializations: 'ON-DEVICE AI, MODEL OPTIMIZATION, EDGE DEPLOYMENT, SPEECH RECOGNITION, COMPUTER VISION, MODEL QUANTIZATION'
+        },
+        experienceFilter: ['Software Engineer', 'AI Developer'],
+        projectLanguages: ['Python', 'C++', 'C', 'Rust', 'Swift', 'Kotlin']
+      },
+      'ai-ml-software': {
+        title: 'AI/ML Software Engineer',
+        intro: 'AI/ML software engineer bridging machine learning and production systems. Building end-to-end ML pipelines from research to deployment.',
+        aboutFocus: 'AI/ML software engineer with expertise in deploying machine learning models to production. Experienced in building cross-platform ML SDKs and scalable AI systems.',
+        skills: {
+          languages: 'PYTHON, RUST, GO, C/C++, JAVASCRIPT',
+          frameworks: 'PYTORCH, TENSORFLOW, JAX, FLUTTER, REACT NATIVE',
+          specializations: 'ML SYSTEMS, MODEL DEPLOYMENT, COMPUTER VISION, NLP, REINFORCEMENT LEARNING, CROSS-PLATFORM SDK'
+        },
+        experienceFilter: ['Software Engineer', 'AI Developer', 'Data Scientist'],
+        projectLanguages: ['Python', 'Jupyter Notebook', 'C++', 'Rust', 'Go']
+      }
+    };
+
+    // Store fetched projects for CV preview
+    let cachedProjects = [];
+
+    // CV Preview Modal Elements
+    const cvPreviewModal = document.getElementById('cv-preview-modal');
+    const cvPreviewContent = document.getElementById('cv-preview-content');
+    const cvPreviewTitle = document.getElementById('cv-preview-title');
+    const cvPreviewCloseButton = cvPreviewModal.querySelector('.modal-close-button');
+    const cvPreviewOverlay = cvPreviewModal.querySelector('.modal-overlay');
+    const cvPreviewPrintButton = document.getElementById('cv-preview-print');
+
+    const openCvPreviewModal = () => cvPreviewModal.style.display = 'flex';
+    const closeCvPreviewModal = () => cvPreviewModal.style.display = 'none';
+
+    cvPreviewCloseButton.addEventListener('click', closeCvPreviewModal);
+    cvPreviewOverlay.addEventListener('click', closeCvPreviewModal);
+
+    let currentPreviewType = null;
+
+    const generateCvPreview = async (type) => {
+      const persona = personas[type];
+      if (!persona) return;
+
+      currentPreviewType = type;
+      cvPreviewTitle.textContent = `${persona.title} CV Preview`;
+      cvPreviewContent.innerHTML = '<p class="loading-text">Generating CV preview...</p>';
+
+      // Get experience items
+      const experienceSection = document.getElementById('experience');
+      const experienceItems = experienceSection.querySelectorAll('.item');
+      let experienceHtml = '';
+
+      experienceItems.forEach(item => {
+        const title = item.querySelector('h3')?.textContent || '';
+        const matchesFilter = persona.experienceFilter.some(filter => title.toLowerCase().includes(filter.toLowerCase()));
+        if (matchesFilter) {
+          const dateSpan = item.querySelector('.item-header span')?.textContent || '';
+          const description = item.querySelector('p')?.textContent || '';
+          experienceHtml += `
+            <div class="cv-preview-item">
+              <div class="cv-preview-item-header">
+                <strong>${title}</strong>
+                <span>${dateSpan}</span>
+              </div>
+              <p>${description}</p>
+            </div>
+          `;
         }
       });
+
+      // Fetch projects if not cached
+      if (cachedProjects.length === 0) {
+        try {
+          const githubApiUrl = `https://api.github.com/users/jeffasante/repos?sort=updated&direction=desc&per_page=100`;
+          const response = await fetch(githubApiUrl);
+          if (response.ok) {
+            cachedProjects = await response.json();
+          }
+        } catch (e) {
+          console.error('Failed to fetch projects for CV:', e);
+        }
+      }
+
+      // Filter projects by language for the track
+      const filteredProjects = cachedProjects
+        .filter(repo => {
+          if (!repo.language) return false;
+          return persona.projectLanguages.some(lang => 
+            repo.language.toLowerCase() === lang.toLowerCase()
+          );
+        })
+        .filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io')
+        .slice(0, 5);
+
+      let projectsHtml = '';
+      filteredProjects.forEach(repo => {
+        const desc = repo.description || 'No description available.';
+        projectsHtml += `
+          <div class="cv-preview-item">
+            <div class="cv-preview-item-header">
+              <strong>${repo.name}</strong>
+              <span>${repo.language || 'N/A'}</span>
+            </div>
+            <p>${desc}</p>
+          </div>
+        `;
+      });
+
+      // Build preview HTML
+      cvPreviewContent.innerHTML = `
+        <div class="cv-preview-section cv-preview-header-section">
+          <h1>Jeffrey Oduro Asante</h1>
+          <p class="cv-preview-subtitle">${persona.title}</p>
+          <p class="cv-preview-contact">jeffaoduro@gmail.com • github.com/jeffasante • Ghana (Remote)</p>
+        </div>
+
+        <div class="cv-preview-section">
+          <h3>Summary</h3>
+          <p>${persona.aboutFocus}</p>
+        </div>
+
+        <div class="cv-preview-section">
+          <h3>Technical Skills</h3>
+          <p><strong>Languages:</strong> ${persona.skills.languages}</p>
+          <p><strong>Frameworks:</strong> ${persona.skills.frameworks}</p>
+          <p><strong>Specializations:</strong> ${persona.skills.specializations}</p>
+        </div>
+
+        <div class="cv-preview-section">
+          <h3>Experience</h3>
+          ${experienceHtml}
+        </div>
+
+        <div class="cv-preview-section">
+          <h3>Projects</h3>
+          ${projectsHtml || '<p>Loading projects...</p>'}
+        </div>
+      `;
+    };
+
+    cvPreviewPrintButton.addEventListener('click', () => {
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${personas[currentPreviewType]?.title || 'CV'} - Jeffrey Asante</title>
+          <style>
+            @page { 
+              size: A4; 
+              margin: 10mm 15mm; 
+            }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { 
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+              font-size: 8pt; 
+              line-height: 1.3; 
+              color: #000; 
+              max-width: 100%; 
+              padding: 0;
+            }
+            h1 { font-size: 14pt; margin-bottom: 2px; font-weight: 600; }
+            h3 { 
+              font-size: 8pt; 
+              text-transform: uppercase; 
+              letter-spacing: 0.08em; 
+              border-bottom: 0.5pt solid #999; 
+              padding-bottom: 2px; 
+              margin: 8px 0 4px 0;
+              font-weight: 600;
+            }
+            .cv-preview-header-section { 
+              text-align: center; 
+              border-bottom: 1pt solid #000; 
+              padding-bottom: 6px; 
+              margin-bottom: 6px;
+            }
+            .cv-preview-subtitle { font-size: 10pt; color: #333; margin: 2px 0; font-weight: 500; }
+            .cv-preview-contact { font-size: 7pt; color: #555; margin-top: 3px; }
+            .cv-preview-section { margin-bottom: 4px; }
+            .cv-preview-section p { font-size: 7.5pt; line-height: 1.35; margin: 2px 0; color: #222; }
+            .cv-preview-section strong { font-weight: 600; }
+            .cv-preview-item { margin-bottom: 5px; }
+            .cv-preview-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
+            .cv-preview-item-header strong { font-size: 8pt; font-weight: 600; }
+            .cv-preview-item-header span { font-size: 7pt; color: #555; }
+            .cv-preview-item p { font-size: 7pt; color: #333; margin: 0; line-height: 1.3; }
+            @media print {
+              body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            }
+          </style>
+        </head>
+        <body>
+          ${cvPreviewContent.innerHTML}
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => { printWindow.print(); printWindow.close(); }, 250);
+    });
+
+    // Use event delegation for CV actions
+    cvModal.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('cv-action-btn')) {
+        const type = e.target.dataset.type;
+        const isPreview = e.target.classList.contains('preview');
+
+        closeCvModal();
+
+        if (isPreview) {
+          openCvPreviewModal();
+          await generateCvPreview(type);
+        } else {
+          // Direct print
+          openCvPreviewModal();
+          await generateCvPreview(type);
+          setTimeout(() => cvPreviewPrintButton.click(), 500);
+        }
+      }
+    });
 
     // --- GitHub Projects Modal Functionality ---
     const modal = document.getElementById("project-modal");

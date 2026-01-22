@@ -112,6 +112,23 @@ main {
   opacity: 0.9;
 }
 
+.persona-highlight {
+  animation: persona-fade 1s ease;
+}
+
+@keyframes persona-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    color: #888;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    color: #000;
+  }
+}
+
 /* --- Sections --- */
 section {
   padding: 4rem 0;
@@ -476,6 +493,199 @@ footer {
   background-color: var(--background-color);
   color: var(--text-color);
   border-radius: 0.5rem;
+}
+
+/* --- CV Selection Modal --- */
+.cv-modal-content {
+  max-width: 450px;
+}
+
+.cv-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.cv-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.cv-option:hover {
+  border-color: #000;
+  background-color: #f9f9f9;
+}
+
+.cv-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.cv-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cv-action-btn {
+  font-family: var(--main-font);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cv-action-btn.preview:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.cv-action-btn.print {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.cv-action-btn.print:hover {
+  opacity: 0.8;
+}
+
+/* --- CV Preview Modal --- */
+.cv-preview-modal-content {
+  max-width: 900px;
+  max-height: 90vh;
+  padding: 0;
+}
+
+.cv-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background: #f9f9f9;
+}
+
+.cv-preview-header h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cv-preview-body {
+  padding: 2rem;
+  max-height: calc(90vh - 80px);
+  overflow-y: auto;
+  background: #fff;
+}
+
+.cv-preview-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.cv-preview-section:last-child {
+  border-bottom: none;
+}
+
+.cv-preview-header-section {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1.5rem;
+}
+
+.cv-preview-header-section h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
+}
+
+.cv-preview-subtitle {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0.3rem 0;
+  font-weight: 500;
+}
+
+.cv-preview-contact {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.cv-preview-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.cv-preview-section p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.cv-preview-section strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.cv-preview-item {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #eee;
+}
+
+.cv-preview-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cv-preview-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.cv-preview-item-header strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cv-preview-item-header span {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cv-preview-item p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
 }
 
 /* --- README Modal Specific Styles --- */
