@@ -182,6 +182,10 @@ section {
   transition: all 0.3s ease;
 }
 
+.item:last-child {
+  border-bottom: none;
+}
+
 .item:hover {
   border-color: #000;
 }
