@@ -241,16 +241,21 @@ section {
 
 .item-link {
   display: inline-block;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
 }
 
 .item-link:hover {
-  border-color: currentColor;
+  border-color: var(--text-color);
+  opacity: 1;
 }
 
 .readme-button {
@@ -267,9 +272,8 @@ section {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  margin-left: 1rem;
-  vertical-align: middle;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .readme-button:hover {
