@@ -604,6 +604,13 @@ footer {
   border: 0;
 }
 
+.mermaid {
+  background-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .intro {
