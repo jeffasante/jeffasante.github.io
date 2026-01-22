@@ -618,6 +618,52 @@ footer {
   letter-spacing: -0.02em;
 }
 
+/* CV Modal Mobile Refinements */
+@media (max-width: 600px) {
+  .cv-modal-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .cv-option {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 1.2rem;
+  }
+
+  .cv-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.8rem;
+  }
+
+  .cv-action-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 0;
+    font-size: 0.65rem;
+  }
+
+  .cv-preview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+
+  .cv-preview-header h2 {
+    font-size: 0.75rem;
+  }
+
+  .cv-preview-body {
+    padding: 1.2rem;
+  }
+
+  .cv-preview-header-section h1 {
+    font-size: 1.4rem;
+  }
+}
+
 .cv-preview-subtitle {
   font-size: 1.1rem;
   color: #444;
