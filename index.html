@@ -6,18 +6,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio of Jeffrey Asante. AI, Software Engineering, Data Science." />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="light" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="canonical" href="https://jeffasante.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jeffrey Asante" />
+  <meta property="og:title" content="Jeffrey Asante - Portfolio" />
+  <meta property="og:description" content="Portfolio of Jeffrey Asante. AI, Software Engineering, Data Science." />
+  <meta property="og:url" content="https://jeffasante.github.io/" />
+  <meta property="og:image" content="https://jeffasante.github.io/assets/image/mantra.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Jeffrey Asante - Portfolio" />
+  <meta name="twitter:description" content="Portfolio of Jeffrey Asante. AI, Software Engineering, Data Science." />
+
+  <link rel="icon" type="image/png" href="assets/image/mantra.png" />
+  <link rel="apple-touch-icon" href="assets/image/mantra.png" />
+  <link rel="preload" href="assets/Chillax_Complete/Fonts/WEB/fonts/Chillax-Variable.woff2" as="font"
+    type="font/woff2" crossorigin />
+
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'neutral',
-      securityLevel: 'loose',
-    });
-  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-70RBJL50PC"></script>
@@ -30,20 +38,21 @@
   </script>
 </head>
 
-<body>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="container">
     <header>
-      <div class="logo">Jeffrey Oduro Asante</div>
+      <a class="logo" href="#top">Jeffrey Oduro Asante</a>
       <nav>
         <a href="#apps">Apps</a>
         <a href="#experience">Work</a>
         <a href="#projects">Labs</a>
         <a href="#skills">Meta</a>
-        <a href="#" id="cv-button">CV</a>
+        <button type="button" id="cv-button" class="nav-button">CV</button>
       </nav>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <section class="intro">
         Architecting on-device AI <br/>
         & intelligent systems.
@@ -76,10 +85,10 @@
           <p class="location-info">GHANA (REMOTE) <span class="availability-badge">AVAILABLE TO WORK</span></p>
 
           <div class="contact-links">
-            <a href="mailto:jeffaoduro@gmail.com" target="_blank" rel="noopener noreferrer">Email</a>
+            <a href="mailto:jeffaoduro@gmail.com">Email</a>
             <a href="https://github.com/jeffasante" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BIC6%2FumQRS5as2ut5%2BfWvJg%3D%3D"
-              target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
             <a href="https://stackoverflow.com/users/13482983/jeffasante" target="_blank"
               rel="noopener noreferrer">Stack Overflow</a>
           </div>
@@ -301,11 +310,11 @@
   </div>
 
   <!-- Project Modal Structure -->
-  <div id="project-modal" class="modal">
+  <div id="project-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <button class="modal-close-button">×</button>
-      <h2>GitHub Projects</h2>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      <h2 id="project-modal-title">GitHub Projects</h2>
       <div class="filter-controls">
         <label for="language-filter">Filter by Language:</label>
         <select id="language-filter">
@@ -330,10 +339,10 @@
   </div>
 
   <!-- README Modal Structure -->
-  <div id="readme-modal" class="modal">
+  <div id="readme-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
-    <div class="modal-content readme-modal-content">
-      <button class="modal-close-button">×</button>
+    <div class="modal-content readme-modal-content" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
       <h2 id="readme-modal-title">README</h2>
       <div id="readme-modal-content" class="readme-content">
         <!-- README content will be loaded here -->
@@ -342,11 +351,11 @@
   </div>
 
   <!-- CV Modal Structure -->
-  <div id="cv-modal" class="modal">
+  <div id="cv-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
-    <div class="modal-content cv-modal-content">
-      <button class="modal-close-button">×</button>
-      <h2>Select Professional Track</h2>
+    <div class="modal-content cv-modal-content" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      <h2 id="cv-modal-title">Select Professional Track</h2>
       <div class="cv-options">
         <div class="cv-option">
           <span class="cv-name">Software Engineer</span>
@@ -409,10 +418,10 @@
   </div>
 
   <!-- CV Preview Modal -->
-  <div id="cv-preview-modal" class="modal">
+  <div id="cv-preview-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
-    <div class="modal-content cv-preview-modal-content">
-      <button class="modal-close-button">×</button>
+    <div class="modal-content cv-preview-modal-content" role="dialog" aria-modal="true" aria-labelledby="cv-preview-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
       <div class="cv-preview-header">
         <h2 id="cv-preview-title">CV Preview</h2>
         <button id="cv-preview-print" class="action-button">Print CV</button>
@@ -424,22 +433,138 @@
   </div>
 
   <script>
+    // --- Small helpers (a11y + caching) ---
+    const FOCUSABLE_SELECTOR =
+      'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const getCachedValue = (key, maxAgeMs) => {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') return null;
+        const age = Date.now() - (parsed.ts || 0);
+        if (age < 0 || age > maxAgeMs) return null;
+        return parsed.value ?? null;
+      } catch {
+        return null;
+      }
+    };
+
+    const setCachedValue = (key, value) => {
+      try {
+        localStorage.setItem(key, JSON.stringify({ ts: Date.now(), value }));
+      } catch {
+        // Ignore quota errors / disabled storage
+      }
+    };
+
+    const modalStack = [];
+    const getActiveModal = () => modalStack.length ? modalStack[modalStack.length - 1].modalEl : null;
+
+    const openDialog = (modalEl, triggerEl) => {
+      modalStack.push({
+        modalEl,
+        triggerEl: triggerEl || document.activeElement,
+      });
+
+      modalEl.style.display = 'flex';
+      modalEl.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      const firstFocusable = modalEl.querySelector(FOCUSABLE_SELECTOR);
+      (firstFocusable || modalEl).focus({ preventScroll: true });
+    };
+
+    const closeDialog = (modalEl) => {
+      if (!modalEl) return;
+
+      const index = modalStack.map(m => m.modalEl).lastIndexOf(modalEl);
+      if (index === -1) return;
+      const wasTop = index === modalStack.length - 1;
+      const [{ triggerEl }] = modalStack.splice(index, 1);
+
+      modalEl.style.display = 'none';
+      modalEl.setAttribute('aria-hidden', 'true');
+
+      if (modalStack.length === 0) {
+        document.body.classList.remove('modal-open');
+      }
+
+      if (wasTop && triggerEl && typeof triggerEl.focus === 'function') {
+        triggerEl.focus({ preventScroll: true });
+      }
+    };
+
+    document.addEventListener('keydown', (e) => {
+      const activeModalEl = getActiveModal();
+      if (!activeModalEl) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeDialog(activeModalEl);
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      const focusables = Array.from(activeModalEl.querySelectorAll(FOCUSABLE_SELECTOR))
+        .filter(el => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true');
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const isShift = e.shiftKey;
+
+      if (isShift && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!isShift && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    let mermaidLoadPromise = null;
+    const ensureMermaidLoaded = async () => {
+      if (window.mermaid) return window.mermaid;
+      if (mermaidLoadPromise) return mermaidLoadPromise;
+
+      mermaidLoadPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+        script.async = true;
+        script.onload = () => {
+          try {
+            window.mermaid.initialize({
+              startOnLoad: false,
+              theme: 'neutral',
+              securityLevel: 'strict',
+            });
+            resolve(window.mermaid);
+          } catch (err) {
+            reject(err);
+          }
+        };
+        script.onerror = () => reject(new Error('Failed to load Mermaid'));
+        document.head.appendChild(script);
+      });
+
+      return mermaidLoadPromise;
+    };
+
     // --- CV Modal Functionality ---
     const cvModal = document.getElementById("cv-modal");
     const cvButton = document.getElementById("cv-button");
     const cvCloseButton = cvModal.querySelector(".modal-close-button");
     const cvOverlay = cvModal.querySelector(".modal-overlay");
 
-    const openCvModal = () => cvModal.style.display = "flex";
-    const closeCvModal = () => cvModal.style.display = "none";
+    const openCvModal = () => openDialog(cvModal, cvButton);
+    const closeCvModal = () => closeDialog(cvModal);
 
-    cvButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      openCvModal();
-    });
-
-    cvCloseButton.addEventListener("click", closeCvModal);
-    cvOverlay.addEventListener("click", closeCvModal);
+    cvButton.addEventListener("click", () => openCvModal());
+    cvCloseButton.addEventListener("click", () => closeCvModal());
+    cvOverlay.addEventListener("click", () => closeCvModal());
 
     const personas = {
       'software-engineer': {
@@ -551,11 +676,11 @@
     const cvPreviewOverlay = cvPreviewModal.querySelector('.modal-overlay');
     const cvPreviewPrintButton = document.getElementById('cv-preview-print');
 
-    const openCvPreviewModal = () => cvPreviewModal.style.display = 'flex';
-    const closeCvPreviewModal = () => cvPreviewModal.style.display = 'none';
+    const openCvPreviewModal = (triggerEl) => openDialog(cvPreviewModal, triggerEl);
+    const closeCvPreviewModal = () => closeDialog(cvPreviewModal);
 
-    cvPreviewCloseButton.addEventListener('click', closeCvPreviewModal);
-    cvPreviewOverlay.addEventListener('click', closeCvPreviewModal);
+    cvPreviewCloseButton.addEventListener('click', () => closeCvPreviewModal());
+    cvPreviewOverlay.addEventListener('click', () => closeCvPreviewModal());
 
     let currentPreviewType = null;
 
@@ -725,17 +850,18 @@
     // Use event delegation for CV actions
     cvModal.addEventListener('click', async (e) => {
       if (e.target.classList.contains('cv-action-btn')) {
+        const triggerEl = e.target;
         const type = e.target.dataset.type;
         const isPreview = e.target.classList.contains('preview');
 
         closeCvModal();
 
         if (isPreview) {
-          openCvPreviewModal();
+          openCvPreviewModal(triggerEl);
           await generateCvPreview(type);
         } else {
           // Direct print
-          openCvPreviewModal();
+          openCvPreviewModal(triggerEl);
           await generateCvPreview(type);
           setTimeout(() => cvPreviewPrintButton.click(), 500);
         }
@@ -751,36 +877,43 @@
       document.getElementById("modal-project-list");
 
     const githubUsername = "jeffasante";
-    const githubApiUrl = `https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc&per_page=12`;
+    const githubApiUrl = `https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc&per_page=100`;
 
-    const openModal = () => (modal.style.display = "flex");
-    const closeModal = () => (modal.style.display = "none");
+    const openProjectModal = () => openDialog(modal, openButton);
+    const closeProjectModal = () => closeDialog(modal);
+
+    const REPOS_CACHE_KEY = `github_repos_${githubUsername}_v2`;
+    const REPOS_CACHE_MAX_AGE_MS = 1000 * 60 * 30; // 30 minutes
+
+    let reposCache = null;
+    const fetchAllRepos = async () => {
+      if (reposCache) return reposCache;
+
+      const cached = getCachedValue(REPOS_CACHE_KEY, REPOS_CACHE_MAX_AGE_MS);
+      if (Array.isArray(cached)) {
+        reposCache = cached;
+        return reposCache;
+      }
+
+      const allReposTemp = [];
+      for (let page = 1; page <= 10; page++) {
+        const response = await fetch(`${githubApiUrl}&page=${page}`);
+        if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
+        const repos = await response.json();
+        if (!Array.isArray(repos) || repos.length === 0) break;
+        allReposTemp.push(...repos);
+      }
+
+      reposCache = allReposTemp;
+      setCachedValue(REPOS_CACHE_KEY, reposCache);
+      return reposCache;
+    };
 
     const loadFeaturedProjects = async () => {
       const featuredContainer = document.getElementById("featured-projects-list");
 
       try {
-        let allReposTemp = [];
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const response = await fetch(`${githubApiUrl}&page=${page}`);
-          if (!response.ok) {
-            throw new Error(`GitHub API Error: ${response.status}`);
-          }
-          const repos = await response.json();
-          if (repos.length === 0) {
-            hasMore = false;
-          } else {
-            allReposTemp = allReposTemp.concat(repos);
-            page++;
-            // Safety limit
-            if (page > 10) hasMore = false;
-          }
-        }
-
-        const repos = allReposTemp;
+        const repos = await fetchAllRepos();
 
         // Get top 5 by stars/forks, then top 5 most recent from the rest
         const filteredRepos = repos.filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io' && repo.name.toLowerCase() !== 'employee-time-tracker' && repo.name.toLowerCase() !== 'skincare-analysis-api');
@@ -894,8 +1027,8 @@
         // Add click handlers for README buttons
         document.querySelectorAll('.readme-button').forEach(button => {
           button.addEventListener('click', async (e) => {
-            const repoFullName = e.target.dataset.repo;
-            await showReadmeModal(repoFullName);
+            const repoFullName = e.currentTarget.dataset.repo;
+            await showReadmeModal(repoFullName, e.currentTarget);
           });
         });
       } catch (error) {
@@ -948,8 +1081,8 @@
       // Add click handlers for README buttons
       document.querySelectorAll('.readme-button').forEach(button => {
         button.addEventListener('click', async (e) => {
-          const repoFullName = e.target.dataset.repo;
-          await showReadmeModal(repoFullName);
+          const repoFullName = e.currentTarget.dataset.repo;
+          await showReadmeModal(repoFullName, e.currentTarget);
         });
       });
     };
@@ -957,30 +1090,10 @@
     const fetchAndDisplayProjects = async () => {
       projectListContainer.innerHTML =
         '<p class="loading-text">Loading projects...</p>';
-      openModal();
+      openProjectModal();
 
       try {
-        let allReposTemp = [];
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const response = await fetch(`${githubApiUrl}&page=${page}`);
-          if (!response.ok) {
-            throw new Error(`GitHub API Error: ${response.status}`);
-          }
-          const repos = await response.json();
-          if (repos.length === 0) {
-            hasMore = false;
-          } else {
-            allReposTemp = allReposTemp.concat(repos);
-            page++;
-            // Safety limit to prevent infinite loop
-            if (page > 10) hasMore = false;
-          }
-        }
-
-        allRepos = allReposTemp;
+        allRepos = await fetchAllRepos();
         // Sort by most recent initially
         allRepos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
         filteredRepos = [...allRepos];
@@ -1017,8 +1130,8 @@
     loadFeaturedProjects();
 
     openButton.addEventListener("click", fetchAndDisplayProjects);
-    closeButton.addEventListener("click", closeModal);
-    overlay.addEventListener("click", closeModal);
+    closeButton.addEventListener("click", closeProjectModal);
+    overlay.addEventListener("click", closeProjectModal);
 
     const applyFilter = () => {
       const selectedLanguage = document.getElementById("language-filter").value;
@@ -1066,50 +1179,43 @@
     const readmeContentDiv = document.getElementById("readme-modal-content");
     const readmeTitle = document.getElementById("readme-modal-title");
 
-    const openReadmeModal = () => readmeModal.style.display = "flex";
-    const closeReadmeModal = () => readmeModal.style.display = "none";
+    const openReadmeModal = (triggerEl) => openDialog(readmeModal, triggerEl);
+    const closeReadmeModal = () => closeDialog(readmeModal);
 
-    readmeCloseButton.addEventListener("click", closeReadmeModal);
-    readmeOverlay.addEventListener("click", closeReadmeModal);
+    readmeCloseButton.addEventListener("click", () => closeReadmeModal());
+    readmeOverlay.addEventListener("click", () => closeReadmeModal());
 
-    // Close modal on Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeReadmeModal();
-        closeModal();
-      }
-    });
-
-    const showReadmeModal = async (repoFullName) => {
+    const README_CACHE_MAX_AGE_MS = 1000 * 60 * 60 * 24; // 24 hours
+    const showReadmeModal = async (repoFullName, triggerEl) => {
       readmeTitle.textContent = `${repoFullName} - README`;
       readmeContentDiv.innerHTML = '<p class="loading-text">Loading README...</p>';
-      openReadmeModal();
+      openReadmeModal(triggerEl);
 
       try {
-        // First, fetch repository info to get the default branch
-        const repoInfoUrl = `https://api.github.com/repos/${repoFullName}`;
-        const repoInfoResponse = await fetch(repoInfoUrl);
+        const repos = await fetchAllRepos();
+        const repoInfo = repos.find(r => r.full_name === repoFullName);
+        const defaultBranch = repoInfo?.default_branch || 'main';
 
-        if (!repoInfoResponse.ok) {
-          throw new Error(`GitHub API Error: ${repoInfoResponse.status}`);
-        }
+        const readmeCacheKey = `github_readme_html_${repoFullName}_${defaultBranch}_v1`;
+        const cachedReadme = getCachedValue(readmeCacheKey, README_CACHE_MAX_AGE_MS);
 
-        const repoInfo = await repoInfoResponse.json();
-        const defaultBranch = repoInfo.default_branch || 'main'; // Fallback to 'main' if not found
+        let readmeHtml = typeof cachedReadme === 'string' ? cachedReadme : null;
+        if (!readmeHtml) {
+          // Fetch README from GitHub API
+          const readmeUrl = `https://api.github.com/repos/${repoFullName}/readme`;
+          const response = await fetch(readmeUrl, {
+            headers: {
+              'Accept': 'application/vnd.github.v3.html'
+            }
+          });
 
-        // Now fetch README from GitHub API
-        const readmeUrl = `https://api.github.com/repos/${repoFullName}/readme`;
-        const response = await fetch(readmeUrl, {
-          headers: {
-            'Accept': 'application/vnd.github.v3.html'
+          if (!response.ok) {
+            throw new Error(`GitHub API Error: ${response.status}`);
           }
-        });
 
-        if (!response.ok) {
-          throw new Error(`GitHub API Error: ${response.status}`);
+          readmeHtml = await response.text();
+          setCachedValue(readmeCacheKey, readmeHtml);
         }
-
-        const readmeHtml = await response.text();
 
         // Create a temporary div to parse and fix the HTML
         const tempDiv = document.createElement('div');
@@ -1119,6 +1225,9 @@
         const images = tempDiv.querySelectorAll('img');
         images.forEach(img => {
           const src = img.getAttribute('src');
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+          if (!img.hasAttribute('alt')) img.setAttribute('alt', '');
           if (src) {
             // If the image path is relative or starts with certain patterns
             if (!src.startsWith('http://') && !src.startsWith('https://')) {
@@ -1171,9 +1280,14 @@
 
         // Initialize mermaid for the new content
         if (tempDiv.querySelector('.mermaid')) {
-          await mermaid.run({
-            nodes: readmeContentDiv.querySelectorAll('.mermaid')
-          });
+          try {
+            await ensureMermaidLoaded();
+            await window.mermaid.run({
+              nodes: readmeContentDiv.querySelectorAll('.mermaid')
+            });
+          } catch (err) {
+            console.error('Failed to render Mermaid diagrams:', err);
+          }
         }
       } catch (error) {
         console.error("Failed to load README:", error);
