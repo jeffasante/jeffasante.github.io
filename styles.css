@@ -641,11 +641,11 @@ body.modal-open {
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem;
-  border: 1px solid var(--border-color);
+  border: 1px dashed var(--border-color); /* Dashed border */
   border-radius: var(--card-radius);
   transition: all 0.2s ease;
   letter-spacing: -0.01em;
-  background: #fff;
+  background: transparent;
 }
 
 .cv-option:hover {
@@ -668,29 +668,32 @@ body.modal-open {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.4rem 0.8rem;
-  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  border-radius: var(--pill-radius);
   cursor: pointer;
-  border: 1px solid var(--border-color);
+  border: 1px dashed var(--border-color);
   background: transparent;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.2s ease;
+  color: var(--muted-text-color);
 }
 
 .cv-action-btn.preview:hover {
-  background-color: #000;
+  background-color: var(--accent-color);
   color: #fff;
-  border-color: #000;
+  border-style: solid;
+  border-color: var(--accent-color);
 }
 
 .cv-action-btn.print {
-  background-color: #000;
-  color: #fff;
-  border-color: #000;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
 }
 
 .cv-action-btn.print:hover {
-  opacity: 0.8;
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
 /* --- CV Preview Modal --- */
@@ -704,9 +707,9 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--border-color);
-  background: #f9f9f9;
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px dashed var(--border-color);
+  background: var(--background-color);
 }
 
 .cv-preview-header h2 {
@@ -718,10 +721,10 @@ body.modal-open {
 }
 
 .cv-preview-body {
-  padding: 2rem;
+  padding: 3rem;
   max-height: calc(90vh - 80px);
   overflow-y: auto;
-  background: #fff;
+  background: var(--background-color);
 }
 
 .cv-preview-section {
@@ -736,15 +739,17 @@ body.modal-open {
 
 .cv-preview-header-section {
   text-align: center;
-  border-bottom: 2px solid #000;
-  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--accent-color);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .cv-preview-header-section h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  letter-spacing: -0.02em;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+  color: var(--accent-color);
 }
 
 /* CV Modal Mobile Refinements */
@@ -807,12 +812,13 @@ body.modal-open {
 }
 
 .cv-preview-section h3 {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #000;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: var(--muted-text-color);
+  opacity: 0.6;
 }
 
 .cv-preview-section p {
