@@ -216,36 +216,26 @@ section {
 .inline-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px; /* Softer square profile like inspiration */
+  padding: 0.1rem 0.6rem;
+  border-radius: 6px;
   font-weight: 600;
-  margin: 0 0.2rem;
-  font-size: 0.95em;
+  margin: 0 0.1rem;
+  font-size: 0.9em;
   vertical-align: baseline;
-}
-
-.inline-pill.green {
-  background-color: #dcfce7;
-  color: #166534;
-}
-.inline-pill.orange {
-  background-color: #ffedd5;
-  color: #9a3412;
-}
-.inline-pill.blue {
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: var(--border-color); /* Neutral gray */
+  color: var(--text-color);
 }
 
 .footnote {
   display: inline-block;
-  font-size: 0.75rem;
-  color: var(--muted-text-color);
+  font-size: 0.8rem;
+  color: var(--text-color);
   background: var(--border-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: 6px;
-  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 8px; /* Matching the rounded corners in user image */
+  margin-top: 1rem;
   font-weight: 500;
+  opacity: 0.8;
 }
 
 sup {
