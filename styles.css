@@ -253,33 +253,17 @@ section {
 /* --- Item Lists (Experience & Projects) --- */
 
 .item {
-  position: relative;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
 }
 
 .item:last-child {
-  border-bottom: none !important;
+  border-bottom: none;
 }
 
-#apps .item,
-#projects .item {
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-#apps .item:hover,
-#projects .item:hover {
-  background-color: #fff;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  margin-left: -0.8rem;
-  margin-right: -0.8rem;
-  border-radius: var(--card-radius);
-}
-
-.item:hover .item-header h3 {
-  color: var(--accent-color);
+.item:hover {
+  border-color: var(--accent-color);
 }
 
 .item-header {
@@ -292,32 +276,10 @@ section {
 }
 
 .item-header h3 {
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: -0.01em;
   font-weight: 600;
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-#apps .item-header h3::after,
-#projects .item-header h3::after {
-  content: "view";
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--muted-text-color);
-  border: 1px solid var(--border-color);
-  padding: 2px 6px;
-  border-radius: var(--pill-radius);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-#apps .item:hover h3::after,
-#projects .item:hover h3::after {
-  opacity: 1;
+  color: var(--accent-color);
 }
 
 .item-header span,
@@ -332,40 +294,34 @@ section {
   font-weight: 600;
 }
 
-#apps .item p,
-#projects .item p {
-  display: -webkit-box;
-  -webkit-line-clamp: 1; /* Truncate to one line for brevity */
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: 0.8rem;
-  color: var(--muted-text-color);
-  margin-top: 0.4rem;
-  line-height: 1.4;
-  font-weight: 500;
-  max-width: 90%;
-}
-
-#apps .item-link,
-#projects .item-link,
-#projects .readme-button {
-  display: none; /* Hidden in list view, shown in modal */
-}
-
-/* Experience items keep their descriptions */
-#experience .item {
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-#experience .item p {
-  display: block;
+.item p {
   max-width: 65ch;
-  margin-top: 0.8rem;
+  margin-bottom: 1rem;
   color: var(--muted-text-color);
   font-size: 0.85rem;
   line-height: 1.7;
+}
+
+.item-link {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--pill-radius);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+  background: #fff;
+  color: var(--text-color);
+}
+
+.item-link:hover {
+  border-color: var(--accent-color);
+  background: var(--background-color);
+  opacity: 1;
 }
 
 .readme-button {
@@ -699,53 +655,6 @@ body.modal-open {
   max-width: 900px;
   max-height: 90vh;
   padding: 0;
-}
-
-.item-detail-header {
-  margin-bottom: 2rem;
-}
-
-.item-detail-header h2 {
-  font-size: 1.5rem !important;
-  letter-spacing: -0.02em !important;
-  margin-bottom: 0.5rem !important;
-  text-transform: none !important;
-}
-
-.item-detail-header .tags {
-  display: inline-block;
-  background: var(--border-color);
-  color: var(--muted-text-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--pill-radius);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.item-detail-description {
-  margin-bottom: 2.5rem;
-}
-
-.item-detail-description p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: var(--text-color);
-  margin-bottom: 1.2rem;
-}
-
-.item-detail-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  border-top: 1px solid var(--border-color);
-  padding-top: 2rem;
-}
-
-.item-detail-links .item-link,
-.item-detail-links .readme-button {
-  display: block; /* Show them in modal */
-  margin: 0;
 }
 
 .cv-preview-header {
