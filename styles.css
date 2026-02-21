@@ -502,22 +502,30 @@ body.modal-open {
   font-weight: 600;
 }
 
+/* Consistently positioned close button */
 .modal-close-button {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: none;
   border: none;
   font-family: var(--main-font);
-  font-size: 2rem;
-  color: #000;
+  font-size: 1.5rem;
+  color: var(--text-color);
   cursor: pointer;
   line-height: 1;
   transition: opacity 0.2s ease;
   font-weight: 300;
+  z-index: 100;
 }
+
 .modal-close-button:hover {
   opacity: 0.5;
+}
+
+.cv-preview-modal-content .modal-close-button {
+  top: 1.6rem;
+  right: 1.5rem;
 }
 
 .modal-project-list .item-header {
@@ -707,7 +715,7 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2.5rem;
+  padding: 1.2rem 4.5rem 1.2rem 2.5rem; /* Extra right room for the close button */
   border-bottom: 1px dashed var(--border-color);
   background: var(--background-color);
 }
