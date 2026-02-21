@@ -334,7 +334,17 @@ section {
 
 #apps .item p,
 #projects .item p {
-  display: none; /* Hidden in list view, shown in modal */
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Truncate to one line for brevity */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.8rem;
+  color: var(--muted-text-color);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 90%;
 }
 
 #apps .item-link,
