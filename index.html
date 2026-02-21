@@ -370,6 +370,24 @@
     </div>
   </div>
 
+  <!-- Item Detail Modal Structure -->
+  <div id="item-detail-modal" class="modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="item-detail-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      <div class="item-detail-header">
+        <h2 id="item-detail-title">Project Title</h2>
+        <div id="item-detail-tags" class="tags">TAGS</div>
+      </div>
+      <div id="item-detail-description" class="about-content">
+        <!-- Full description will be loaded here -->
+      </div>
+      <div id="item-detail-links" class="item-detail-links">
+        <!-- Links will be loaded here -->
+      </div>
+    </div>
+  </div>
+
   <!-- CV Modal Structure -->
   <div id="cv-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
@@ -515,6 +533,54 @@
         triggerEl.focus({ preventScroll: true });
       }
     };
+
+    // --- Item Detail Modal Functionality ---
+    const itemDetailModal = document.getElementById("item-detail-modal");
+    const itemDetailTitle = document.getElementById("item-detail-title");
+    const itemDetailTags = document.getElementById("item-detail-tags");
+    const itemDetailDesc = document.getElementById("item-detail-description");
+    const itemDetailLinks = document.getElementById("item-detail-links");
+    const itemDetailCloseBtn = itemDetailModal.querySelector(".modal-close-button");
+    const itemDetailOverlay = itemDetailModal.querySelector(".modal-overlay");
+
+    const openItemDetailModal = (triggerEl) => openDialog(itemDetailModal, triggerEl);
+    const closeItemDetailModal = () => closeDialog(itemDetailModal);
+
+    itemDetailCloseBtn.addEventListener("click", () => closeItemDetailModal());
+    itemDetailOverlay.addEventListener("click", () => closeItemDetailModal());
+
+    // Event delegation for project items
+    document.addEventListener("click", (e) => {
+      const item = e.target.closest(".item");
+      if (!item) return;
+
+      // Don't trigger if clicking a link or button directly inside the item
+      if (e.target.closest("a, button")) return;
+
+      const title = item.querySelector("h3")?.childNodes[0]?.textContent?.trim() || "";
+      const tags = item.querySelector(".tags")?.textContent || "";
+      const description = item.querySelector("p")?.innerHTML || "";
+      const links = item.querySelectorAll(".item-link, .readme-button");
+
+      itemDetailTitle.textContent = title;
+      itemDetailTags.textContent = tags;
+      itemDetailDesc.innerHTML = `<p>${description}</p>`;
+      
+      itemDetailLinks.innerHTML = "";
+      links.forEach(link => {
+        const clonedLink = link.cloneNode(true);
+        // If it's a readme button, we need to re-add the click listener
+        if (clonedLink.classList.contains('readme-button')) {
+          clonedLink.addEventListener('click', async (btnEvt) => {
+            const repoFullName = btnEvt.currentTarget.dataset.repo;
+            await showReadmeModal(repoFullName, btnEvt.currentTarget);
+          });
+        }
+        itemDetailLinks.appendChild(clonedLink);
+      });
+
+      openItemDetailModal(item);
+    });
 
     document.addEventListener('keydown', (e) => {
       const activeModalEl = getActiveModal();
