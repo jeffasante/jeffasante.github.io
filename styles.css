@@ -205,12 +205,57 @@ section {
 
 /* --- About Section --- */
 .about-content p {
-  max-width: 60ch;
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
-  line-height: 1.4;
+  max-width: 65ch;
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem; /* Slightly larger for that friendly feel */
+  line-height: 1.6;
   font-weight: 500;
   letter-spacing: -0.02em;
+}
+
+.inline-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px; /* Softer square profile like inspiration */
+  font-weight: 600;
+  margin: 0 0.2rem;
+  font-size: 0.95em;
+  vertical-align: baseline;
+}
+
+.inline-pill.green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+.inline-pill.orange {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+.inline-pill.blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.footnote {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  background: var(--border-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+sup {
+  font-size: 0.6em;
+  background: var(--border-color);
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-left: 3px;
+  vertical-align: super;
+  font-weight: 700;
 }
 
 .contact-links a {
