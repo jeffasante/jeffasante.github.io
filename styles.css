@@ -13,11 +13,11 @@
 :root {
   --main-font:
     "Chillax", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --text-color: #fafaf9; /* As specified in user styling image */
-  --muted-text-color: #a1a1aa; /* Zinc-400 */
-  --background-color: #09090b; /* Zinc-950 */
-  --border-color: #18181b; /* Zinc-900 */
-  --accent-color: #ffffff;
+  --text-color: #18181b; /* Zinc-900 */
+  --muted-text-color: #3f3f46; /* Zinc-700 */
+  --background-color: #f4f4f5; /* Zinc-100 */
+  --border-color: #e4e4e7; /* Zinc-200 */
+  --accent-color: #09090b; /* Zinc-950 */
   --pill-radius: 9999px;
   --card-radius: 8px;
 }
@@ -223,15 +223,15 @@ section {
   margin: 0 0.1rem;
   font-size: 0.9em;
   vertical-align: baseline;
-  background-color: #18181b; /* Zinc-900 */
+  background-color: var(--border-color); /* Neutral gray */
   color: var(--text-color);
 }
 
 .footnote {
   display: inline-block;
   font-size: 0.8rem;
-  color: var(--muted-text-color);
-  background: #18181b;
+  color: var(--text-color);
+  background: var(--border-color);
   padding: 0.4rem 1rem;
   border-radius: 8px;
   margin-top: 1rem;
@@ -412,7 +412,7 @@ sup {
   background-color: var(--accent-color);
   border-style: solid;
   border-color: var(--accent-color);
-  color: var(--background-color); /* Inverted for readability */
+  color: #fff;
 }
 
 /* --- Skills & Footer --- */
@@ -476,8 +476,8 @@ body.modal-open {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
 
 .modal-content {
@@ -688,7 +688,7 @@ body.modal-open {
 
 .cv-action-btn.preview:hover {
   background-color: var(--accent-color);
-  color: var(--background-color);
+  color: #fff;
   border-style: solid;
   border-color: var(--accent-color);
 }
@@ -696,12 +696,12 @@ body.modal-open {
 .cv-action-btn.print {
   background-color: transparent;
   color: var(--text-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--accent-color);
 }
 
 .cv-action-btn.print:hover {
   background-color: var(--accent-color);
-  color: var(--background-color);
+  color: #fff;
 }
 
 /* --- CV Preview Modal --- */
