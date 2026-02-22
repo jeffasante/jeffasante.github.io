@@ -215,16 +215,16 @@ section {
 }
 
 .technical-highlight {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.1rem 0.6rem;
+  display: inline;
+  padding: 0.2rem 0.5rem;
   border-radius: 6px;
   font-weight: 600;
   margin: 0 0.1rem;
   font-size: 0.9em;
-  vertical-align: baseline;
   background-color: var(--border-color);
   color: var(--text-color);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .footnote-indicator {
