@@ -103,7 +103,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0; /* Reduced from 3rem */
+  padding: 1.2rem 0; /* Tightened from 2rem */
   font-size: 0.85rem;
   letter-spacing: -0.01em;
 }
@@ -153,7 +153,7 @@ main {
 }
 
 .intro {
-  padding: 5rem 0 6rem;
+  padding: 3rem 0 2rem; /* Tightened from 4rem bottom */
   text-align: left;
   line-height: 1.25;
   font-size: 1.5rem;
@@ -190,7 +190,7 @@ main {
 
 /* --- Sections --- */
 section {
-  padding: 2.5rem 0; /* Reduced from 4rem */
+  padding: 1.2rem 0; /* Ultra-tightened from 1.5rem */
   border-top: 1px dashed var(--border-color);
 }
 
@@ -200,7 +200,7 @@ section {
   letter-spacing: 0.15em;
   font-weight: 600;
   color: var(--muted-text-color);
-  margin-bottom: 2rem;
+  margin-bottom: 0.8rem; /* Ultra-tightened from 1.2rem */
   opacity: 0.6; /* More ghostly presence */
 }
 
@@ -295,7 +295,7 @@ section {
 /* --- Item Lists (Experience & Projects) --- */
 
 .item {
-  padding: 1.5rem 0; /* Reduced from 2.5rem */
+  padding: 0.8rem 0; /* Ultra-tightened from 1rem */
   border-bottom: 1px dashed var(--border-color);
   transition: all 0.2s ease;
 }
@@ -438,7 +438,7 @@ section {
 }
 
 footer {
-  padding: 5rem 0 3rem; /* Reduced from 10rem/6rem */
+  padding: 3rem 0 2rem; /* Tightened from 5rem/3rem */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -449,7 +449,7 @@ footer {
   letter-spacing: 0.2em;
   color: var(--muted-text-color);
   border-top: 1px dashed var(--border-color);
-  margin-top: 4rem; /* Reduced from 6rem */
+  margin-top: 2rem; /* Tightened from 4rem */
   opacity: 0.5;
 }
 
