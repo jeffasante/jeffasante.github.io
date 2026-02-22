@@ -238,18 +238,19 @@ section {
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* Further reduced from 1rem */
+  gap: 0.2rem; /* Near-zero gap for tight layout */
 }
 
 .footnote-pill {
-  display: inline-block;
+  display: inline-block; /* Ensure it only takes up text width */
   font-size: 0.8rem;
   color: var(--text-color);
   background: var(--border-color);
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
-  margin-top: 0.5rem;
+  padding: 0.2rem 0.6rem; /* Tighter padding */
+  border-radius: 6px;
+  margin-top: 0.2rem; /* Tight top margin */
   font-weight: 500;
+  width: fit-content; /* Double insurance for width */
 }
 
 .contact-links a {
