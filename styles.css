@@ -13,11 +13,11 @@
 :root {
   --main-font:
     "Chillax", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --text-color: #18181b; /* Zinc-900 (Darker) */
-  --muted-text-color: #3f3f46; /* Zinc-700 (Darker) */
-  --background-color: #f4f4f5; /* Zinc-100 */
-  --border-color: #e4e4e7; /* Zinc-200 */
-  --accent-color: #09090b; /* Zinc-950 (Almost Black) */
+  --text-color: #fafaf9; /* As specified in user styling image */
+  --muted-text-color: #a1a1aa; /* Zinc-400 */
+  --background-color: #09090b; /* Zinc-950 */
+  --border-color: #18181b; /* Zinc-900 */
+  --accent-color: #ffffff;
   --pill-radius: 9999px;
   --card-radius: 8px;
 }
@@ -38,11 +38,12 @@ body {
   font-family: var(--main-font);
   background-color: var(--background-color);
   color: var(--text-color);
-  font-size: 14px; /* Increased from 12px */
-  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 500; /* As specified: medium */
+  line-height: 1.5; /* As specified: 21px/14px */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01em;
+  letter-spacing: normal; /* As specified */
 }
 
 .container {
@@ -152,7 +153,7 @@ main {
 }
 
 .intro {
-  padding: 5rem 0 6rem; /* Reduced from 8rem/10rem */
+  padding: 5rem 0 6rem;
   text-align: left;
   line-height: 1.25;
   font-size: 1.5rem;
@@ -222,20 +223,19 @@ section {
   margin: 0 0.1rem;
   font-size: 0.9em;
   vertical-align: baseline;
-  background-color: var(--border-color); /* Neutral gray */
+  background-color: #18181b; /* Zinc-900 */
   color: var(--text-color);
 }
 
 .footnote {
   display: inline-block;
   font-size: 0.8rem;
-  color: var(--text-color);
-  background: var(--border-color);
+  color: var(--muted-text-color);
+  background: #18181b;
   padding: 0.4rem 1rem;
-  border-radius: 8px; /* Matching the rounded corners in user image */
+  border-radius: 8px;
   margin-top: 1rem;
   font-weight: 500;
-  opacity: 0.8;
 }
 
 sup {
@@ -412,7 +412,7 @@ sup {
   background-color: var(--accent-color);
   border-style: solid;
   border-color: var(--accent-color);
-  color: #fff;
+  color: var(--background-color); /* Inverted for readability */
 }
 
 /* --- Skills & Footer --- */
@@ -476,8 +476,8 @@ body.modal-open {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
 }
 
 .modal-content {
@@ -688,7 +688,7 @@ body.modal-open {
 
 .cv-action-btn.preview:hover {
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--background-color);
   border-style: solid;
   border-color: var(--accent-color);
 }
@@ -696,12 +696,12 @@ body.modal-open {
 .cv-action-btn.print {
   background-color: transparent;
   color: var(--text-color);
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--border-color);
 }
 
 .cv-action-btn.print:hover {
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--background-color);
 }
 
 /* --- CV Preview Modal --- */
