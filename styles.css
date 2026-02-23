@@ -118,7 +118,7 @@ header {
 
 nav {
   display: flex;
-  gap: 2.5rem; /* Increased gap */
+  gap: 1rem; /* Further reduced for a tighter look */
 }
 
 nav a {
@@ -1041,9 +1041,11 @@ body.modal-open {
     align-items: flex-start;
     gap: 0.4rem;
   }
+  nav {
+    gap: 0.8rem; /* Tighter gap on mobile */
+  }
   nav a {
-    margin-left: 0;
-    margin-right: 1.2rem;
+    margin-right: 0;
   }
   .intro {
     padding: 3rem 0;
