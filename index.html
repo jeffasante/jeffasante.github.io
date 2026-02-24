@@ -46,6 +46,7 @@
       <nav>
         <a href="#apps">Apps</a>
         <a href="#experience">Work</a>
+        <a href="#education">Education</a>
         <a href="#projects">Labs</a>
         <a href="#skills">Meta</a>
         <button type="button" id="cv-button" class="nav-button">CV</button>
@@ -151,6 +152,30 @@
               development (Node.js, React, MongoDB) from MVP to production.
               Increased user retention by 40% through data-driven feature
               optimization.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="item-list">
+          <div class="item">
+            <div class="item-header">
+              <h3>University of Professional Studies, Accra (UPSA)</h3>
+              <!-- <span>DATES</span> -->
+            </div>
+            <p>
+              Bachelor of Science - BS, Information Technology Management
+            </p>
+          </div>
+          <div class="item">
+            <div class="item-header">
+              <h3>Regent University College of Science and Technology</h3>
+              <!-- <span>DATES</span> -->
+            </div>
+            <p>
+              Undergraduate Studies in Computer Science
             </p>
           </div>
         </div>
@@ -758,6 +783,24 @@
         `;
       });
 
+      // Get education items
+      const educationSection = document.getElementById('education');
+      const educationItems = educationSection ? educationSection.querySelectorAll('.item') : [];
+      let educationHtml = '';
+
+      educationItems.forEach(item => {
+        const title = item.querySelector('h3')?.textContent || '';
+        const description = item.querySelector('p')?.textContent || '';
+        educationHtml += `
+          <div class="cv-preview-item" style="margin-bottom: 8px;">
+            <div class="cv-preview-item-header">
+              <strong>${title}</strong>
+            </div>
+            <p>${description}</p>
+          </div>
+        `;
+      });
+
       // Build preview HTML
       cvPreviewContent.innerHTML = `
         <div class="cv-preview-section cv-preview-header-section">
@@ -781,6 +824,11 @@
         <div class="cv-preview-section">
           <h3>Professional Experience</h3>
           ${experienceHtml || '<p>Detailed experience available upon request.</p>'}
+        </div>
+
+        <div class="cv-preview-section">
+          <h3>Education</h3>
+          ${educationHtml || '<p>Detailed education available upon request.</p>'}
         </div>
 
         <div class="cv-preview-section">
