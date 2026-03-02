@@ -344,6 +344,24 @@ section {
   line-height: 1.7;
 }
 
+.item ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+  max-width: 65ch;
+}
+
+.item ul li {
+  color: var(--muted-text-color);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 0.3rem;
+}
+
+.item ul li:last-child {
+  margin-bottom: 0;
+}
+
 .item-link {
   display: inline-block;
   font-size: 0.65rem;
@@ -721,7 +739,7 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 4.5rem 1.2rem 2.5rem; /* Extra right room for the close button */
+  padding: 1.2rem 4.5rem 1.2rem 2.5rem;
   border-bottom: 1px dashed var(--border-color);
   background: var(--background-color);
 }
@@ -738,32 +756,173 @@ body.modal-open {
   padding: 3rem;
   max-height: calc(90vh - 80px);
   overflow-y: auto;
-  background: var(--background-color);
+  background: #fff;
+  color: #1a1a1a;
 }
 
+/* CV Header — left-aligned name, contact right */
+.cv-preview-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: none;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.cv-preview-header-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.cv-preview-contact {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.cv-preview-contact a {
+  color: #555;
+  text-decoration: none;
+}
+
+.cv-preview-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Section headers — bold, with thin underline */
 .cv-preview-section {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .cv-preview-section:last-child {
   border-bottom: none;
 }
 
-.cv-preview-header-section {
-  text-align: center;
-  border-bottom: 1px dashed var(--accent-color);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+.cv-preview-section h3 {
+  font-size: 1.15rem;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ddd;
+  color: #1a1a1a;
+  opacity: 1;
 }
 
-.cv-preview-header-section h1 {
-  font-size: 2.2rem;
+.cv-preview-section p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.cv-preview-section strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Experience / Project items */
+.cv-preview-item {
+  margin-bottom: 1.2rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cv-preview-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cv-preview-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.3rem;
+}
+
+.cv-preview-item-header strong {
+  font-size: 0.9rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.03em;
-  color: var(--accent-color);
+  color: #1a1a1a;
+}
+
+.cv-preview-item-header span {
+  font-size: 0.8rem;
+  color: #555;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.cv-preview-item p {
+  font-size: 0.82rem;
+  color: #444;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Tech tag pills */
+.cv-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.cv-tech-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  background: #f0f0f0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+/* Bullet list for experience achievements */
+.cv-preview-item ul {
+  list-style: disc;
+  padding-left: 1.3rem;
+  margin: 0.4rem 0 0 0;
+}
+
+.cv-preview-item ul li {
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 0.3rem;
+}
+
+.cv-preview-item ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Subtitle (role line under company) */
+.cv-preview-subtitle {
+  font-size: 0.82rem;
+  color: #555;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Additional info section */
+.cv-additional-info {
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.6;
 }
 
 /* CV Modal Mobile Refinements */
@@ -807,80 +966,18 @@ body.modal-open {
     padding: 1.2rem;
   }
 
+  .cv-preview-header-section {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .cv-preview-header-section h1 {
     font-size: 1.4rem;
   }
-}
 
-.cv-preview-subtitle {
-  font-size: 1.1rem;
-  color: #444;
-  margin: 0.3rem 0;
-  font-weight: 500;
-}
-
-.cv-preview-contact {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 0.5rem;
-}
-
-.cv-preview-section h3 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  color: var(--muted-text-color);
-  opacity: 0.6;
-}
-
-.cv-preview-section p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.cv-preview-section strong {
-  font-weight: 600;
-  color: #000;
-}
-
-.cv-preview-item {
-  margin-bottom: 1.2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px dashed #eee;
-}
-
-.cv-preview-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.cv-preview-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
-}
-
-.cv-preview-item-header strong {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.cv-preview-item-header span {
-  font-size: 0.75rem;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.cv-preview-item p {
-  font-size: 0.85rem;
-  color: #555;
-  margin: 0;
+  .cv-preview-contact {
+    text-align: left;
+  }
 }
 
 /* --- README Modal Specific Styles --- */
