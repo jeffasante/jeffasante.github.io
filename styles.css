@@ -118,7 +118,8 @@ header {
 
 nav {
   display: flex;
-  gap: 1rem; /* Further reduced for a tighter look */
+  gap: 1.25rem; /* Slightly more space for the pill */
+  align-items: center; /* Center everything vertically */
 }
 
 nav a {
@@ -1343,4 +1344,195 @@ body.modal-open {
     border-top: none;
     padding-top: 0;
   }
+}
+
+/* --- Reads Modal List Styles --- */
+.reads-modal-content {
+  max-width: 860px;
+  background-color: var(--background-color);
+  padding: 2.5rem 3rem;
+  border-radius: var(--card-radius);
+  color: var(--text-color);
+}
+.readme-modal-content {
+  max-width: 800px;
+}
+
+.reads-modal-content h2 {
+  font-family: var(--main-font);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.reads-modal-content .modal-close-button {
+  top: 2rem;
+  right: 2rem;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  border-radius: 2px;
+  background: transparent;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.reads-modal-content .modal-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+
+.readme-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.readme-modal-header .modal-close-button {
+  position: static;
+  font-size: 1.5rem;
+}
+
+#readme-back-button:hover {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+.reads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reads-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-radius: 4px;
+  gap: 1rem;
+}
+
+.reads-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.reads-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.reads-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Mobile: stack date below title on narrow screens */
+@media (max-width: 600px) {
+  .reads-modal-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .reads-modal-content .modal-close-button {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .reads-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 1rem 0;
+  }
+
+  .reads-date {
+    align-self: flex-start;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    text-align: left !important;
+  }
+}
+
+.reads-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  font-family: var(--main-font);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.reads-tag {
+  font-family: var(--main-font);
+  font-size: 0.6rem;
+  text-transform: lowercase;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  padding: 1px 7px;
+  border-radius: 9999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.reads-description {
+  font-size: 0.72rem;
+  color: var(--muted-text-color);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.reads-date {
+  font-size: 0.72rem;
+  color: var(--muted-text-color);
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: right;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+/* --- Reads Pill Styling --- */
+.reads-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--border-color); /* Light gray naturally */
+  padding: 6px 14px;
+  border-radius: 40px; /* Fully rounded pill */
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-color) !important;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.reads-pill:hover {
+  background-color: #e5e5e5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  opacity: 1 !important;
+}
+
+.reads-pill svg {
+  flex-shrink: 0;
+  stroke: var(--text-color);
 }

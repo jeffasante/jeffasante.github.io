@@ -49,6 +49,10 @@
         <a href="#projects">Labs</a>
         <a href="#skills">Meta</a>
         <button type="button" id="cv-button" class="nav-button">CV</button>
+        <a href="#" id="read-nav-link" class="reads-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; opacity: 0.8;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Reads
+        </a>
       </nav>
     </header>
 
@@ -362,8 +366,18 @@
   <div id="readme-modal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
     <div class="modal-content readme-modal-content" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title">
-      <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      <div class="readme-modal-header">
+        <button id="readme-back-button" class="nav-button" aria-label="Go Back" style="display: none; align-items: center; gap: 4px; border: none; background: none; cursor: pointer; color: var(--muted-text-color); font-weight: 600; font-family: var(--main-font); padding: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back
+        </button>
+        <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      </div>
       <h2 id="readme-modal-title">README</h2>
+      <a id="readme-view-source" class="reads-pill" href="#" target="_blank" rel="noopener noreferrer" style="margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 6px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        View Full
+      </a>
       <div id="readme-modal-content" class="readme-content">
         <!-- README content will be loaded here -->
       </div>
@@ -448,6 +462,18 @@
       </div>
       <div id="cv-preview-content" class="cv-preview-body">
         <!-- CV content will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Read Modal Structure -->
+  <div id="read-modal" class="modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content reads-modal-content" role="dialog" aria-modal="true" aria-labelledby="read-modal-title">
+      <button class="modal-close-button" type="button" aria-label="Close">×</button>
+      <h2 id="read-modal-title">Reads</h2>
+      <div id="read-repo-list" class="reads-list">
+        <!-- Repos will be loaded here -->
       </div>
     </div>
   </div>
@@ -1302,7 +1328,7 @@
         document.querySelectorAll('.readme-button').forEach(button => {
           button.addEventListener('click', async (e) => {
             const repoFullName = e.currentTarget.dataset.repo;
-            await showReadmeModal(repoFullName, e.currentTarget);
+            await showReadmeModal(repoFullName, e.currentTarget); // No backing modal for featured projects
           });
         });
       } catch (error) {
@@ -1356,7 +1382,7 @@
       document.querySelectorAll('.readme-button').forEach(button => {
         button.addEventListener('click', async (e) => {
           const repoFullName = e.currentTarget.dataset.repo;
-          await showReadmeModal(repoFullName, e.currentTarget);
+          await showReadmeModal(repoFullName, e.currentTarget, 'projects');
         });
       });
     };
@@ -1452,6 +1478,9 @@
     const readmeOverlay = readmeModal.querySelector(".modal-overlay");
     const readmeContentDiv = document.getElementById("readme-modal-content");
     const readmeTitle = document.getElementById("readme-modal-title");
+    const readmeBackButton = document.getElementById("readme-back-button");
+    const readmeViewSource = document.getElementById("readme-view-source");
+    let readmeSourceModal = null; // 'projects' or 'reads'
 
     const openReadmeModal = (triggerEl) => openDialog(readmeModal, triggerEl);
     const closeReadmeModal = () => closeDialog(readmeModal);
@@ -1459,9 +1488,29 @@
     readmeCloseButton.addEventListener("click", () => closeReadmeModal());
     readmeOverlay.addEventListener("click", () => closeReadmeModal());
 
+    readmeBackButton.addEventListener("click", () => {
+      closeReadmeModal();
+      if (readmeSourceModal === 'projects') {
+        const openButton = document.getElementById("view-projects-button");
+        if (openButton) openDialog(document.getElementById("project-modal"), openButton);
+      } else if (readmeSourceModal === 'reads') {
+        const readNavButton = document.getElementById("read-nav-link");
+        if (readNavButton) openDialog(document.getElementById("read-modal"), readNavButton);
+      }
+    });
+
     const README_CACHE_MAX_AGE_MS = 1000 * 60 * 60 * 24; // 24 hours
-    const showReadmeModal = async (repoFullName, triggerEl) => {
-      readmeTitle.textContent = `${repoFullName} - README`;
+    const showReadmeModal = async (repoFullName, triggerEl, sourceModal = null) => {
+      readmeSourceModal = sourceModal;
+      if (readmeSourceModal) {
+        readmeBackButton.style.display = 'inline-flex';
+      } else {
+        readmeBackButton.style.display = 'none';
+      }
+
+      readmeViewSource.href = `https://github.com/${repoFullName}`;
+
+      readmeTitle.textContent = `${repoFullName}`;
       readmeContentDiv.innerHTML = '<p class="loading-text">Loading README...</p>';
       openReadmeModal(triggerEl);
 
@@ -1572,6 +1621,116 @@
         }
       }
     };
+
+    // --- Read Modal Functionality ---
+    const readNavButton = document.getElementById("read-nav-link");
+    const readModal = document.getElementById("read-modal");
+    const readRepoList = document.getElementById("read-repo-list");
+    const readCloseButton = readModal.querySelector(".modal-close-button");
+    const readOverlay = readModal.querySelector(".modal-overlay");
+
+    const openReadModal = () => openDialog(readModal, readNavButton);
+    const closeReadModal = () => closeDialog(readModal);
+
+    readCloseButton.addEventListener("click", () => closeReadModal());
+    readOverlay.addEventListener("click", () => closeReadModal());
+
+    readNavButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      openReadModal();
+      
+      if (readRepoList.children.length === 0 || readRepoList.querySelector('.loading-text')) {
+        readRepoList.innerHTML = '<p class="loading-text">Loading repositories...</p>';
+        try {
+          const repos = await fetchAllRepos();
+          readRepoList.innerHTML = "";
+          
+          const explicitReads = [
+            'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
+            'latent-reasoning-transformer', 'adaptive-ecg-detector', 'facade', 'torpedo',
+            'gazetrack', 'nimble', 'Unofficial-GCN-Kipf-Welling-Implementation',
+            'ant-colony-rl', 'position-weight-matrix', 'chrome-dino-RL',
+            'authorship-attribution', 'spokenDigit-DCGAN'
+          ].map(n => n.toLowerCase());
+
+          const researchRepos = repos.filter(repo => {
+            const name = repo.name.toLowerCase();
+            if (explicitReads.includes(name)) return true;
+
+            const desc = (repo.description || '').toLowerCase();
+            const topics = (repo.topics || []).map(t => t.toLowerCase());
+            
+            const isEngineering = name.includes('docker') || name.includes('infra') || name.includes('setup') || name.includes('devops') ||
+                                  desc.includes('docker') || desc.includes('setup') || desc.includes('infrastructure') ||
+                                  topics.includes('docker') || topics.includes('devops') || topics.includes('tooling');
+            if (isEngineering) return false;
+
+            return name.includes('research') || 
+                   name.includes('study') || 
+                   name.includes('paper') ||
+                   name.includes('experiment') ||
+                   name.includes('analysis') ||
+                   name.includes('exploration') ||
+                   name.includes('radical') ||
+                   name.includes('compression') ||
+                   name.includes('quantization') ||
+                   name.includes('inference') ||
+                   name.includes('on-device') ||
+                   topics.includes('research') ||
+                   topics.includes('paper') ||
+                   topics.includes('experiment') ||
+                   topics.includes('study') ||
+                   topics.includes('exploration') ||
+                   topics.includes('proof-of-concept') ||
+                   topics.includes('algorithm') ||
+                   topics.includes('machine-learning') ||
+                   topics.includes('quantization') ||
+                   desc.includes('research') ||
+                   desc.includes('paper-implementation') ||
+                   desc.includes('radical') ||
+                   desc.includes('compression') ||
+                   desc.includes('inference') ||
+                   desc.includes('research-driven');
+          }).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+          if (researchRepos.length === 0) {
+            readRepoList.innerHTML = '<p class="error-text">No research works found.</p>';
+            return;
+          }
+
+          researchRepos.forEach(repo => {
+            const row = document.createElement("div");
+            row.className = "reads-row";
+            
+            const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+            const date = new Date(repo.updated_at).toLocaleDateString('en-GB', dateOptions);
+            const languageTag = repo.language ? `<span class="reads-tag">${repo.language.toLowerCase()}</span>` : '';
+            const description = repo.description ? `<div class="reads-description">${repo.description}</div>` : '';
+            
+            row.innerHTML = `
+              <div class="reads-info">
+                <div class="reads-title-row">
+                  <span class="reads-title">${repo.name}</span>
+                  ${languageTag}
+                </div>
+                ${description}
+              </div>
+              <span class="reads-date">${date}</span>
+            `;
+            
+            row.addEventListener('click', async () => {
+              closeReadModal();
+              await showReadmeModal(repo.full_name, readNavButton, 'reads');
+            });
+            
+            readRepoList.appendChild(row);
+          });
+        } catch (error) {
+          console.error("Failed to load read repositories:", error);
+          readRepoList.innerHTML = '<p class="error-text">Failed to load repositories.</p>';
+        }
+      }
+    });
   </script>
 
   <script>
