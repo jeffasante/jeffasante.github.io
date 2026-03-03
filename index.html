@@ -1691,7 +1691,7 @@
                    desc.includes('compression') ||
                    desc.includes('inference') ||
                    desc.includes('research-driven');
-          }).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+          }).sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
           if (researchRepos.length === 0) {
             readRepoList.innerHTML = '<p class="error-text">No research works found.</p>';
@@ -1703,7 +1703,7 @@
             row.className = "reads-row";
             
             const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
-            const date = new Date(repo.updated_at).toLocaleDateString('en-GB', dateOptions);
+            const date = new Date(repo.pushed_at).toLocaleDateString('en-GB', dateOptions);
             const languageTag = repo.language ? `<span class="reads-tag">${repo.language.toLowerCase()}</span>` : '';
             const description = repo.description ? `<div class="reads-description">${repo.description}</div>` : '';
             
