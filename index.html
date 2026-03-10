@@ -1375,7 +1375,26 @@
                 >
                 <button class="readme-button" data-repo="${repo.full_name}">README</button>
               `;
+          } else if (repo.name.toLowerCase() === 'oxide-xla') {
+            linksHtml = `
+                <a
+                  class="item-link"
+                  href="https://jeffasante.github.io/oxide-xla/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >DEMO -></a
+                >
+                <a
+                  class="item-link"
+                  href="${repo.html_url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >VIEW SOURCE -></a
+                >
+                <button class="readme-button" data-repo="${repo.full_name}">README</button>
+              `;
           }
+
 
           projectItem.innerHTML = `
               <div class="item-header">
