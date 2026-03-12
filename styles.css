@@ -330,20 +330,19 @@ section {
 .app-card {
   padding-bottom: 1.5rem;
   border: none;
-  border-bottom: 1px dashed var(--border-color); /* Matches reference */
+  border-bottom: 1px dashed var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   transition: all 0.2s ease;
 }
 
-.app-card:hover {
-  border-color: var(--accent-color);
-}
-
-
 .app-card:last-child {
   border-bottom: none;
+}
+
+.app-card:hover {
+  border-color: var(--accent-color);
 }
 
 .app-card-header {
@@ -394,7 +393,7 @@ section {
   font-weight: 700;
   text-decoration: none;
   color: var(--accent-color);
-  border: 2px dashed var(--border-color); /* aligned with featured projects */
+  border: 1px dashed #cccccc;
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   text-transform: uppercase;
