@@ -1744,19 +1744,27 @@ body:not(.lite-view) #lite-content {
 
 .lite-item {
   color: #111111;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.lite-item b, 
+.lite-item strong {
+  font-weight: 600;
+  color: #000;
 }
 
 .lite-item a {
-  color: #111111;
+  color: #000;
   text-decoration: underline;
-  text-decoration-color: #ccc;
-  text-underline-offset: 2px;
+  text-decoration-color: #ddd;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   transition: all 0.2s;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .lite-item a:hover {
