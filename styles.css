@@ -319,84 +319,101 @@ section {
 /* --- Item Lists (Experience & Projects) --- */
 
 /* --- App Grid (4-col) --- */
+/* List View for Published Apps (In-depth) */
+/* Reference-style List for Published Apps (In-depth) */
 .app-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* Increased spacing between items */
 }
 
 .app-card {
-  padding: 1rem;
-  border: 1px dashed var(--border-color);
-  border-collapse: collapse;
+  padding-bottom: 1.5rem;
+  border: none;
+  border-bottom: 1px dashed var(--border-color); /* Matches reference */
   display: flex;
   flex-direction: column;
+  gap: 0.8rem;
   transition: all 0.2s ease;
 }
 
-/* Prevent double borders by removing right/bottom on cells */
-.app-card:not(:nth-child(4n)) {
-  border-right: none;
-}
-
-.app-card:nth-last-child(-n+4):nth-child(4n+1),
-.app-card:nth-last-child(-n+4):nth-child(4n+1) ~ .app-card {
-  border-bottom: none;
-}
-
 .app-card:hover {
-  background: rgba(0,0,0,0.02);
   border-color: var(--accent-color);
+}
+
+
+.app-card:last-child {
+  border-bottom: none;
 }
 
 .app-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.6rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.2rem;
 }
 
 .app-card-header h3 {
-  font-size: 0.9rem;
-  letter-spacing: -0.01em;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 800;
   color: var(--accent-color);
   margin: 0;
+  letter-spacing: -0.012em;
+}
+
+.app-card-header .tags {
+  font-size: 0.58rem;
+  font-weight: 700;
+  background: var(--border-color);
+  color: var(--muted-text-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
 }
 
 .app-card p {
-  font-size: 0.78rem;
-  color: var(--muted-text-color);
-  line-height: 1.55;
-  flex: 1;
-  margin-bottom: 0.8rem;
-  max-width: none;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 80ch;
+  opacity: 0.75;
 }
 
 .app-card-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: auto;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
 }
 
 .app-card .item-link {
-  font-size: 0.6rem;
-  padding: 0.35rem 0.8rem;
-  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--accent-color);
+  border: 2px dashed var(--border-color); /* aligned with featured projects */
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  background: transparent;
 }
 
-@media (max-width: 768px) {
-  .app-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.app-card .item-link:hover {
+  background: var(--accent-color);
+  border-style: solid;
+  border-color: var(--accent-color);
+  color: #fff;
 }
 
-@media (max-width: 480px) {
-  .app-grid {
-    grid-template-columns: 1fr;
-  }
-}
+
+
+
+/* End of App List Styles */
 
 
 .item {
@@ -1730,16 +1747,19 @@ body:not(.lite-view) #lite-content {
 
 /* Lite Content Styling */
 .lite-section {
-  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem; /* Matched to heywinit.xyz 3rem gap */
 }
 
 .lite-label {
-  font-size: 13px;
-  color: #bbb;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
+  font-size: 14px; /* Exact match to heywinit.xyz */
+  color: #888888; /* Exact match to heywinit.xyz tertiary */
+  margin-bottom: 0.1rem;
+  font-weight: 400;
   text-transform: lowercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .lite-item {
