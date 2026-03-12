@@ -1674,10 +1674,29 @@ body.lite-view section {
 
 body.lite-view nav {
   position: absolute;
-  top: 4rem;
+  top: 4.5rem;
   right: 0;
   display: flex !important;
   gap: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  body.lite-view header {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  body.lite-view nav {
+    position: static;
+    align-self: flex-start;
+    order: -1; /* Place nav pills above logo on mobile */
+  }
+  
+  body.lite-view .logo {
+    margin-bottom: 0;
+  }
 }
 
 /* Strictly hide all other nav items */
