@@ -51,12 +51,10 @@
         <a href="#skills">Meta</a>
         <button type="button" id="cv-button" class="nav-button">CV</button>
         <a href="#" id="read-nav-link" class="reads-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; opacity: 0.8;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
           Reads
         </a>
         <button type="button" id="lite-toggle" class="lite-pill" title="Toggle Minimal View">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-          Lite
+          <span id="lite-toggle-text">Lite</span>
         </button>
       </nav>
     </header>
@@ -130,8 +128,12 @@
 
           <span class="footnote-pill">1. Also known as Jeff.</span>
 
-          <p class="location-info">GHANA (REMOTE) <a href="https://calendar.app.google/XyTcM2zrEiDArhZ9A" target="_blank"
-              rel="noopener noreferrer" class="availability-badge">AVAILABLE TO WORK</a></p>
+          <p class="location-info">GHANA (REMOTE)
+            
+            <!-- <a href="https://calendar.app.google/XyTcM2zrEiDArhZ9A" target="_blank"
+              rel="noopener noreferrer" class="availability-badge">AVAILABLE TO WORK</a> -->
+            
+            </p>
 
           <div class="contact-links" id="contact-pill">
             <a href="mailto:jeffaoduro@gmail.com" title="Email">
@@ -1870,15 +1872,17 @@
     const liteToggle = document.getElementById("lite-toggle");
     const body = document.body;
 
+    const liteToggleText = document.getElementById("lite-toggle-text");
+
     const setLiteMode = (isLite) => {
       if (isLite) {
         body.classList.add("lite-view");
-        liteToggle.textContent = "In-depth";
+        if (liteToggleText) liteToggleText.textContent = "In-depth";
         liteToggle.title = "View full detailed portfolio";
         setCachedValue("portfolio-view-lite", true);
       } else {
         body.classList.remove("lite-view");
-        liteToggle.textContent = "Minimal";
+        if (liteToggleText) liteToggleText.textContent = "Minimal";
         liteToggle.title = "Switch to minimalist view";
         setCachedValue("portfolio-view-lite", false);
       }
