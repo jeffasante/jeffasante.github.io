@@ -26,6 +26,7 @@
     type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-70RBJL50PC"></script>
@@ -38,7 +39,7 @@
   </script>
 </head>
 
-<body id="top">
+<body id="top" class="lite-view">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="container">
     <header>
@@ -53,6 +54,10 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; opacity: 0.8;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
           Reads
         </a>
+        <button type="button" id="lite-toggle" class="lite-pill" title="Toggle Minimal View">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          Lite
+        </button>
       </nav>
     </header>
 
@@ -62,7 +67,58 @@
         & intelligent systems.
       </section>
 
-      <section id="about">
+      <!-- Lite View Content (heywinit.xyz style) -->
+      <div id="lite-content">
+        <section class="lite-section">
+          <div class="lite-label">now</div>
+          <div class="lite-item">Exploring WebGPU and on-device inference for Transformer models.</div>
+          <div class="lite-item">Building OxideXLA — Rust transpiler for PyTorch → JAX with WebGL support.</div>
+        </section>
+
+        <section class="lite-section">
+          <div class="lite-label">was</div>
+          <div class="lite-item">Mobobi — Software Engineer (AI/ML) building Abena AI. Architected full-stack offline assistant; Flutter/Rust SDK; 98% model reduction; 5+ country data collection infrastructure.</div>
+        </section>
+
+        <section class="lite-section">
+          <div class="lite-label">work</div>
+          <div class="lite-item">Freelance — Data Scientist, Web/Mobile & Backend</div>
+          <div class="lite-item">Zinary — AI Developer</div>
+          <div class="lite-item">Anaanse — Co-Founder</div>
+        </section>
+
+        <section class="lite-section">
+          <div class="lite-label">projects</div>
+          <div class="lite-item"><a href="https://foundarchive.netlify.app/" target="_blank">Found</a> — Immersive mobile browser for human history</div>
+          <div class="lite-item"><a href="https://focusblur.netlify.app" target="_blank">focusblur</a> — macOS tool for distraction-free work</div>
+          <div class="lite-item"><a href="https://getcue.netlify.app/" target="_blank">Cue</a> — Private movie recommendations</div>
+          <div class="lite-item"><a href="https://getnudge.netlify.app/" target="_blank">Nudge</a> — Location-based alerts and reminders</div>
+          <div class="lite-item"><a href="https://tinkapp.netlify.app/" target="_blank">tink.</a> — AR effects and AI image tools</div>
+          <div class="lite-item"><a href="https://gettapes.netlify.app/" target="_blank">Tapes</a> — Audio workspace and recording studio</div>
+          <div class="lite-item"><a href="https://pathly.netlify.app/" target="_blank">Pathly</a> — Path-finding puzzle game</div>
+          <div class="lite-item"><a href="https://bigspenderbudget.netlify.app/" target="_blank">BigSpender</a> — Private on-device finance manager</div>
+          <div class="lite-item"><a href="https://stash-desktop.netlify.app" target="_blank">Stash</a> — Desktop clipboard shelf and file batch-processor</div>
+          <div class="lite-item"><a href="https://idx-support.netlify.netlify.app/" target="_blank">idX</a> — On-device AI inventory manager</div>
+          <div class="lite-item"><a href="https://sharkx.netlify.app/" target="_blank">SharkX</a> — Remote interview transparency tool</div>
+          <div class="lite-item"><a href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank">SlimeArcade</a> — Physics-based volleyball game</div>
+        </section>
+
+        <section class="lite-section">
+          <div class="lite-label">links</div>
+          <div class="lite-item">
+            <a href="https://github.com/jeffasante" target="_blank">github</a>, 
+            <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231/" target="_blank">linkedin</a>, 
+            <a href="mailto:jeffaoduro@gmail.com">email</a>
+          </div>
+        </section>
+
+        <div class="lite-more-container">
+          <a href="#" id="lite-more-link" class="lite-more-btn">see more...</a>
+        </div>
+      </div>
+
+      <!-- In-depth Detailed Content (Current Version) -->
+      <div id="in-depth-content">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
           <p>
@@ -71,6 +127,7 @@
           <p>
             I specialize in <span class="technical-highlight">on-device AI</span>, reinforcement learning, computer vision, and NLP with proven results: 98% model size reduction and 80% accuracy improvements. I'm also an <span class="technical-highlight">open-source contributor</span> exploring game development.
           </p>
+
           <span class="footnote-pill">1. Also known as Jeff.</span>
 
           <p class="location-info">GHANA (REMOTE) <a href="https://calendar.app.google/XyTcM2zrEiDArhZ9A" target="_blank"
@@ -124,7 +181,7 @@
               <li>Architected the full-stack system for Abena AI, an offline voice assistant serving 6+ African languages across iOS and Android, from system design through production deployment</li>
               <li>Built a cross-platform SDK in Flutter and Rust with a clean API surface, enabling third-party developers to integrate speech features in under 30 minutes</li>
               <li>Reduced on-device model size by 98% (2GB to 18MB) through quantization and pruning, shipping performant inference on mid-range mobile hardware</li>
-              <li>Designed and deployed data collection infrastructure across 5 countries, gathering 5m+ labeled audio samples for low-resource languages including Twi, Pidgin, and Yoruba</li>
+              <li>Designed and deployed data collection infrastructure across 5+ countries, gathering 5m+ labeled audio samples for low-resource languages including Twi, Pidgin, Yoruba, etc.</li>
             </ul>
           </div>
           <div class="item">
@@ -187,158 +244,144 @@
 
       <section id="apps">
         <h2 class="section-title">Published Apps</h2>
-        <div class="item-list">
+        <div class="app-grid">
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Found</h3>
               <div class="tags">MOBILE / IMMERSIVE BROWSER</div>
             </div>
-            <p>
-              Found is a premium, immersive mobile browser designed as a gateway to the Internet Archive's vast library of human history. It surfaces millions of public domain movies, audio recordings, books, and vintage photographs through a highly personalized, privacy-first interface. Features a custom Hybrid RL recommendation system that learns user preferences in real-time.
-            </p>
-            <a class="item-link" href="https://foundarchive.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            <p>Premium mobile browser for the Internet Archive. Hybrid RL recommendations, millions of public domain films, audio and books.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://foundarchive.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            </div>
           </div>
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>focusblur</h3>
               <div class="tags">MACOS / PRODUCTIVITY</div>
             </div>
-            <p>
-              A small Mac app that helps you focus by dimming or blurring everything except the window you're using. It removes distractions, keeps your workspace calm, and makes it easier to stay present while you work, write, or browse.
-            </p>
-            <a class="item-link" href="https://focusblur.netlify.app" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            <p>macOS tool that dims everything except your active window so you can stay in flow.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://focusblur.netlify.app" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            </div>
           </div>
 
-          <div class="item">
-
-
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Cue</h3>
               <div class="tags">MOBILE / CINEMA CURATION</div>
             </div>
-            <p>
-              Get movie recommendations based on your unique taste. Find your next favorite movie based on what you've already watched - Cue works instantly and offline to give you private recommendations, with cross-app sharing that automatically indexes your watchlist.
-            </p>
-            <a class="item-link" href="https://getcue.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            <p>Private, offline movie recommendations based on what you've already watched. No account, no data sent anywhere.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://getcue.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            </div>
           </div>
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Nudge</h3>
               <div class="tags">MOBILE / HYPER-LOCAL</div>
             </div>
-            <p>
-              Reminds you of things you'd forget at the door or when walking past a spot. Set a nudge for any location and get alerted the moment you arrive, leave, or are nearby. 
-            </p>
-            <a class="item-link" href="https://getnudge.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            <p>Location-triggered reminders. Get alerted the moment you arrive, leave, or pass a spot.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://getnudge.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            </div>
           </div>
-          <div class="item">
-            <div class="item-header">
+
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>tink.</h3>
               <div class="tags">MOBILE / AR/AI</div>
             </div>
-            <p>
-              Remove backgrounds, upscale images, generate depth maps, and experiment with AR effects and motion-tracking - all from your phone's camera. Includes spatial computing explorations with gyroscope-based physics.
-            </p>
-            <a class="item-link" href="https://tinkapp.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            <p>Remove backgrounds, upscale images, generate depth maps, and experiment with AR + gyroscope physics — all from your camera.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://tinkapp.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+            </div>
           </div>
-          <div class="item">
-            <div class="item-header">
+
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Tapes</h3>
               <div class="tags">MOBILE / MUSIC MANAGEMENT</div>
             </div>
-            <p>
-              Record voice memos, instruments, or field recordings. Listen to songs, separate vocals from music (stems), find tempo and key, trim clips, layer tracks, and organize everything into projects. A recording studio in your pocket - no internet required.
-            </p>
-            <a class="item-link" href="https://gettapes.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
-            <a class="item-link" href="https://apps.apple.com/us/app/tapes-audio-workspace/id6756759101" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            <p>Recording studio in your pocket. Stems, tempo, key detection, track layering — no internet required.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://gettapes.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+              <a class="item-link" href="https://apps.apple.com/us/app/tapes-audio-workspace/id6756759101" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            </div>
           </div>
-          <div class="item">
-            <div class="item-header">
+
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Pathly</h3>
               <div class="tags">MOBILE / PUZZLE GAME</div>
             </div>
-            <p>
-              Slide tiles, find the path. 300+ levels with a global leaderboard. Simple concept, surprisingly addictive.
-            </p>
-            <a class="item-link" href="https://pathly.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
-            <a class="item-link" href="https://apps.apple.com/us/app/pathly-puzzle/id6756085161" target="_blank" rel="noopener noreferrer">APP STORE -></a>
-          </div>
-          <div class="item">
-            <div class="item-header">
-              <h3>BigSpender Budget</h3>
-              <div class="tags">MOBILE / FINANCE</div>
+            <p>Slide tiles. Find the path. 300+ levels with a global leaderboard.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://pathly.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+              <a class="item-link" href="https://apps.apple.com/us/app/pathly-puzzle/id6756085161" target="_blank" rel="noopener noreferrer">APP STORE -></a>
             </div>
-            <p>
-              Know exactly how much you can spend today. Scan receipts, auto-categorize expenses, and stay on budget - all your financial data stays private on your device.
-            </p>
-            <a class="item-link" href="https://bigspenderbudget.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
-            <a class="item-link" href="https://apps.apple.com/app/bigspender-budget/id6754263659" target="_blank" rel="noopener noreferrer">APP STORE -></a>
           </div>
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
+              <h3>BigSpender</h3>
+              <div class="tags">MOBILE / FINANCE</div>
+            </div>
+            <p>Know exactly what you can spend today. Scan receipts, auto-categorize, stay on budget — fully offline.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://bigspenderbudget.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+              <a class="item-link" href="https://apps.apple.com/app/bigspender-budget/id6754263659" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            </div>
+          </div>
+
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>Stash</h3>
               <div class="tags">MACOS / PRODUCTIVITY</div>
             </div>
-            <p>
-              Drag files, text, links, and media to your menu bar from any app. Caption images, edit text, merge and split PDFs, batch-process files, and sync everything across your Macs with iCloud.
-            </p>
-            <a class="item-link" href="https://stash-desktop.netlify.app" target="_blank" rel="noopener noreferrer">VIEW -></a>
-            <a class="item-link" href="https://apps.apple.com/app/stash-clipboard-shelf/id6752602271" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            <p>Menu bar shelf for files, text, links and media. Batch-process PDFs, caption images, sync via iCloud.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://stash-desktop.netlify.app" target="_blank" rel="noopener noreferrer">VIEW -></a>
+              <a class="item-link" href="https://apps.apple.com/app/stash-clipboard-shelf/id6752602271" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            </div>
           </div>
 
-          <div class="item">
-            <div class="item-header">
-              <h3>idX - AI Inventory</h3>
+          <div class="app-card">
+            <div class="app-card-header">
+              <h3>idX – AI Inventory</h3>
               <div class="tags">iOS / ON-DEVICE AI</div>
             </div>
-            <p>
-              Scan any item with idX to instantly build your personal inventory. Track value and expiry dates, find items with AR, and get notified before things expire. Your entire inventory, completely offline.
-            </p>
-            <a class="item-link" href="https://idx-support.netlify.app/" target="_blank"
-              rel="noopener noreferrer">VIEW -></a>
-            <a class="item-link" href="https://apps.apple.com/app/idx/id6751609886" target="_blank"
-              rel="noopener noreferrer">APP STORE -></a>
+            <p>Scan items to build a private inventory. Track value, expiry, find with AR — completely offline.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://idx-support.netlify.app/" target="_blank" rel="noopener noreferrer">VIEW -></a>
+              <a class="item-link" href="https://apps.apple.com/app/idx/id6751609886" target="_blank" rel="noopener noreferrer">APP STORE -></a>
+            </div>
           </div>
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>SharkX</h3>
               <div class="tags">MACOS / INTERVIEW TOOL</div>
             </div>
-            <p>
-              See exactly what apps are running during a remote interview. Full transparency for both sides.
-            </p>
-            <a class="item-link" href="https://sharkx.netlify.app/" target="_blank" rel="noopener noreferrer">LAUNCH APP
-              -></a>
+            <p>See exactly what apps are running during a remote interview. Full transparency for both sides.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://sharkx.netlify.app/" target="_blank" rel="noopener noreferrer">LAUNCH APP -></a>
+            </div>
           </div>
 
-          <div class="item">
-            <div class="item-header">
+          <div class="app-card">
+            <div class="app-card-header">
               <h3>SlimeArcade</h3>
               <div class="tags">MOBILE GAME / PHYSICS</div>
             </div>
-            <p>
-              Bouncy volleyball against a clever CPU opponent. Simple controls, real challenge. iOS and Android.
-            </p>
-            <a class="item-link" href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank"
-              rel="noopener noreferrer">APP STORE -></a>
-          </div>
-
-          <!-- <div class="item">
-            <div class="item-header">
-              <h3>Toot</h3>
-              <div class="tags">iOS / SIGNAL PROCESSING</div>
+            <p>Bouncy volleyball against a clever CPU opponent. Simple controls, surprisingly addictive.</p>
+            <div class="app-card-links">
+              <a class="item-link" href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank" rel="noopener noreferrer">APP STORE -></a>
             </div>
-            <p>
-              Send messages through sound waves. Communicate with nearby devices without bluetooth, wifi, or any connection at all.
-            </p>
-            <a class="item-link" href="http://tootme.netlify.app" target="_blank" rel="noopener noreferrer">VIEW -></a>
-          </div> -->
-
+          </div>
 
         </div>
       </section>
@@ -355,6 +398,7 @@
           View All Projects on GitHub
         </button>
       </div>
+    </div>
     </main>
 
     <footer>
@@ -1821,6 +1865,45 @@
         }
       }
     });
+
+    // --- Lite View Toggle Logic ---
+    const liteToggle = document.getElementById("lite-toggle");
+    const body = document.body;
+
+    const setLiteMode = (isLite) => {
+      if (isLite) {
+        body.classList.add("lite-view");
+        liteToggle.textContent = "In-depth";
+        liteToggle.title = "View full detailed portfolio";
+        setCachedValue("portfolio-view-lite", true);
+      } else {
+        body.classList.remove("lite-view");
+        liteToggle.textContent = "Minimal";
+        liteToggle.title = "Switch to minimalist view";
+        setCachedValue("portfolio-view-lite", false);
+      }
+    };
+
+    // Initialize from cache (Default to true if no cache)
+    const cachedView = getCachedValue("portfolio-view-lite", 1000 * 60 * 60 * 24 * 30);
+    if (cachedView === false) {
+      setLiteMode(false);
+    } else {
+      setLiteMode(true); // Default or explicit Lite
+    }
+
+    liteToggle.addEventListener("click", () => {
+      const isCurrentlyLite = body.classList.contains("lite-view");
+      setLiteMode(!isCurrentlyLite);
+    });
+
+    const liteMoreLink = document.getElementById("lite-more-link");
+    if (liteMoreLink) {
+      liteMoreLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        setLiteMode(false);
+      });
+    }
   </script>
 
   <script>
