@@ -254,20 +254,41 @@ section {
   width: fit-content; /* Double insurance for width */
 }
 
+.contact-links {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 0.2rem;
+  background-color: #facc15; /* yellow-400 */
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--pill-radius);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: -0.01em;
+  width: fit-content;
+}
+
+.contact-links::before {
+  content: "— CONTACT";
+  margin-right: 0.2rem;
+  opacity: 0.9;
+}
+
 .contact-links a {
-  margin-right: 2.5rem;
-  text-transform: none;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 4px;
-  font-weight: 600;
-  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
 }
 
 .contact-links a:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
+  opacity: 0.6;
+  transform: translateY(-1px);
 }
 
 .location-info {
@@ -275,21 +296,21 @@ section {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   color: var(--muted-text-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.2rem;
   font-weight: 500;
 }
 
 .availability-badge {
   background-color: #10b981; /* Emerald-500 for a pop of color as seen on degreat */
   color: white;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: var(--pill-radius);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   display: inline-block;
-  margin-left: 1.5rem;
+  margin-left: 0.75rem;
   vertical-align: middle;
 }
 
