@@ -228,6 +228,108 @@ section {
   -webkit-box-decoration-break: clone;
 }
 
+/* T-Shaped Engineer & Popover */
+.t-shaped-engineer {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  font-weight: 700;
+  padding-bottom: 2px;
+  /* Dashed-dot pattern: 8px dash, 2px gap, 2px dot, 2px gap = 14px total */
+  background: linear-gradient(90deg, currentColor 8px, transparent 8px 10px, currentColor 10px 12px, transparent 12px 14px) 0 100% / 14px 2px repeat-x;
+}
+
+.t-shaped-popover {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 130%; /* Slightly closer to the text */
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  width: 290px; /* More compact width */
+  background: #ffffff;
+  color: #111111;
+  padding: 0; 
+  border-radius: 12px; /* Slightly less rounded for a tighter feel */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+  z-index: 2000;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1); 
+  text-align: left;
+  line-height: 1.6;
+  overflow: visible; 
+  pointer-events: none;
+}
+
+.t-shaped-engineer:hover .t-shaped-popover,
+.t-shaped-engineer:focus .t-shaped-popover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.popover-main {
+  padding: 1.25rem 1.4rem; /* Balanced, compact padding */
+  font-size: 0.88rem;
+  font-family: var(--main-font);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; /* Tighter gap between title and body */
+}
+
+.popover-main strong {
+  display: block;
+  font-size: 1.05rem; /* More balanced title size */
+  color: #000;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.1rem;
+}
+
+.popover-arrow {
+  position: absolute;
+  bottom: 100%; /* Move to top of popover */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ffffff; /* Arrow points up */
+}
+
+.popover-footer {
+  margin-top: 0.6rem; /* Much smaller margin */
+  display: flex;
+  justify-content: flex-start;
+  opacity: 0.2;
+}
+
+.t-shaped-engineer:hover .popover-footer {
+  opacity: 0.5;
+}
+
+.gear-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #111;
+}
+
+@media (max-width: 600px) {
+  .t-shaped-popover {
+    width: 260px;
+    left: 0;
+    transform: translateY(10px);
+  }
+  .t-shaped-engineer:hover .t-shaped-popover {
+    transform: translateY(0);
+  }
+  .popover-arrow {
+    left: 20%;
+  }
+}
+
 .footnote-indicator {
   font-size: 0.7rem;
   font-weight: 800;
