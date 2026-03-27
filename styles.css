@@ -331,6 +331,7 @@ section {
     font-size: 1rem;
     line-height: 1.55;
     margin-bottom: 1rem;
+    max-width: none;
   }
 
   .t-shaped-popover {
@@ -367,6 +368,7 @@ section {
   .skill-list {
     font-size: 0.68rem;
     line-height: 1.6;
+    max-width: none;
   }
 
   .skill-list strong {
@@ -380,6 +382,7 @@ section {
   .item p, .item ul li {
     font-size: 0.78rem;
     line-height: 1.6;
+    max-width: none;
   }
 }
 
