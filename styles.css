@@ -334,29 +334,39 @@ section {
     max-width: none;
   }
 
+  .t-shaped-engineer {
+    position: static;
+  }
+
   .t-shaped-popover {
-    width: 260px;
-    left: auto;
-    right: 0;
-    transform: translateY(10px);
+    width: calc(100% - 2.5rem);
+    max-width: 320px;
+    left: 50%;
+    top: 3.5rem; /* Sit below the intro line */
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
   }
 
   .popover-arrow {
-    left: auto;
-    right: 30px;
+    display: none;
   }
 
   .popover-main {
-    padding: 1rem 1.1rem;
-    font-size: 0.8rem;
+    padding: 1.1rem 1.25rem;
+    font-size: 0.85rem;
   }
 
   .popover-main strong {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .t-shaped-engineer:hover .t-shaped-popover {
-    transform: translateY(0);
+  .t-shaped-engineer:hover .t-shaped-popover,
+  .t-shaped-engineer:focus .t-shaped-popover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
   }
 
   .section-title {
@@ -398,6 +408,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.2rem; /* Near-zero gap for tight layout */
+  position: relative; /* Added to anchor popovers on mobile */
 }
 
 .footnote-pill {
