@@ -334,9 +334,15 @@ section {
   }
 
   .t-shaped-popover {
-    width: 250px;
-    left: 0;
+    width: 260px;
+    left: auto;
+    right: 0;
     transform: translateY(10px);
+  }
+
+  .popover-arrow {
+    left: auto;
+    right: 30px;
   }
 
   .popover-main {
@@ -350,10 +356,6 @@ section {
 
   .t-shaped-engineer:hover .t-shaped-popover {
     transform: translateY(0);
-  }
-
-  .popover-arrow {
-    left: 20%;
   }
 
   .section-title {
