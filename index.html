@@ -27,6 +27,7 @@
 
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-70RBJL50PC"></script>
@@ -702,6 +703,32 @@
       });
 
       return mermaidLoadPromise;
+    };
+
+    let latexLoadPromise = null;
+    const ensureLatexLoaded = async () => {
+      if (window.renderMathInElement) return true;
+      if (latexLoadPromise) return latexLoadPromise;
+
+      latexLoadPromise = new Promise((resolve, reject) => {
+        // Load main KaTeX script
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js';
+        script.async = true;
+        script.onload = () => {
+          // Load auto-render extension
+          const autoRenderScript = document.createElement('script');
+          autoRenderScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js';
+          autoRenderScript.async = true;
+          autoRenderScript.onload = () => resolve(true);
+          autoRenderScript.onerror = () => reject(new Error('Failed to load KaTeX auto-render'));
+          document.head.appendChild(autoRenderScript);
+        };
+        script.onerror = () => reject(new Error('Failed to load KaTeX'));
+        document.head.appendChild(script);
+      });
+
+      return latexLoadPromise;
     };
 
     // --- CV Modal Functionality ---
@@ -1775,6 +1802,24 @@
           } catch (err) {
             console.error('Failed to render Mermaid diagrams:', err);
           }
+        }
+
+        // Render LaTeX equations in the README
+        try {
+          await ensureLatexLoaded();
+          if (window.renderMathInElement) {
+            renderMathInElement(readmeContentDiv, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+              ],
+              throwOnError: false
+            });
+          }
+        } catch (err) {
+          console.error('Failed to render LaTeX math:', err);
         }
       } catch (error) {
         console.error("Failed to load README:", error);
