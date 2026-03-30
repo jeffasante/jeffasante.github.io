@@ -70,15 +70,16 @@
       <div id="lite-content">
         <section class="lite-section">
           <div class="lite-label">now</div>
-          <div class="lite-item">Exploring <b>on-device AI acceleration</b> across <b>WebGPU</b>, Metal, and hardware-native shaders for deep learning and generative models.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">OxideXLA</a> — Rust-powered PyTorch → JAX transpiler; FX/ONNX to primitives in &lt;1ms; validated on ResNet-18 with MSE &lt; 1e-10.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a> — Neuro-symbolic interpretability tool reverse-engineering PyTorch models into math/logic via Symbolic Regression.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">RepoGym</a> — RL environment for AI coding agents built from Git history.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">Asbestos</a> — Researching native llama.cpp embedding into Kotlin, Swift, and Desktop for autonomous on-device multimodal agents with system-level tool execution (Shell/File) and VLM.</div>
+          <div class="lite-item">exploring <b>on-device ai acceleration</b> across <b>webgpu</b>, metal, and hardware-native shaders for deep learning and generative models.</div>
+          <div class="lite-item">building <a href="https://github.com/jeffasante/cellm" target="_blank">cellm</a> — ground-up rust llm/vlm engine for cli/ios/android; paged kv cache and multi-session concurrency for &lt;512mb ram devices. not a wrapper.</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a> — rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10.</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a> — neuro-symbolic interpretability tool reverse-engineering pytorch models into math/logic via symbolic regression.</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">repogym</a> — rl environment for ai coding agents built from git history.</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">asbestos</a> — researching native llama.cpp embedding into kotlin, swift, and desktop for autonomous on-device multimodal agents with system-level tool execution (shell/file) and vlm.</div>
           <div id="more-now-items" style="display: none;">
-            <div class="lite-item"> <a href="https://github.com/jeffasante/datasense" target="_blank">DataSense</a> — An open-source tool that ingests raw multimodal data (images, audio, video, tabular, text, or any combination), extracts a dataset fingerprint, and recommends the best ML architecture with a human-readable explanation of why it will work. (short)</div>
-            <div class="lite-item"><a href="https://github.com/jeffasante/triton-kernels" target="_blank">Triton Kernels</a> — Custom Triton kernels for LLM inference primitives — fused attention, int8 matmul, and RoPE. Benchmarked on T4. (my study)</div>
-            <div class="lite-item">Building <a href="https://github.com/jeffasante/osmosis-inductive-architecture" target="_blank">Osmosis</a> — An abstract reasoning engine for ARC-AGI-3 using a neuro-symbolic Bridge (Discrete Verifier + Continuous Encoder). ( i dont know if im right)</div>
+            <div class="lite-item"> <a href="https://github.com/jeffasante/datasense" target="_blank">datasense</a> — an open-source tool that ingests raw multimodal data (images, audio, video, tabular, text, or any combination), extracts a dataset fingerprint, and recommends the best ml architecture with a human-readable explanation of why it will work. (short)</div>
+            <div class="lite-item"><a href="https://github.com/jeffasante/triton-kernels" target="_blank">triton kernels</a> — custom triton kernels for llm inference primitives — fused attention, int8 matmul, and rope. benchmarked on t4. (my study)</div>
+            <div class="lite-item">building <a href="https://github.com/jeffasante/osmosis-inductive-architecture" target="_blank">osmosis</a> — an abstract reasoning engine for arc-agi-3 using a neuro-symbolic bridge (discrete verifier + continuous encoder). ( i dont know if im right)</div>
           </div>
           <a href="#" id="view-more-now" class="lite-more-btn" style="margin-top: 0.1rem; display: inline-block; font-size: 0.75rem; opacity: 0.6;">view more...</a>
         
@@ -1855,7 +1856,7 @@
           readRepoList.innerHTML = "";
           
           const explicitReads = [
-            'RepoGym', 'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
+            'cellm', 'RepoGym', 'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
             'latent-reasoning-transformer', 'adaptive-ecg-detector', 'facade', 'torpedo',
             'gazetrack', 'nimble', 'Unofficial-GCN-Kipf-Welling-Implementation',
             'ant-colony-rl', 'position-weight-matrix', 'chrome-dino-RL',
