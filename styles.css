@@ -2023,31 +2023,46 @@ body:not(.lite-view) #lite-content {
   background-color: #eeeeee;
 }
 
-body.lite-view .reads-pill {
-  background-color: rgba(0, 0, 0, 0.03);
-  color: #111 !important;
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+body.lite-view .reads-pill,
+body.lite-view .lite-pill {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-transform: lowercase !important;
+  letter-spacing: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font-family: "Inter Tight", sans-serif !important;
 }
 
-body.lite-view .reads-pill svg {
-  stroke: #111;
+body.lite-view .reads-pill {
+  color: #888888 !important;
+}
+
+body.lite-view .reads-pill:hover {
+  color: #111111 !important;
 }
 
 body.lite-view .lite-pill {
-  background-color: #111;
-  color: #fff !important;
+  color: #111111 !important;
 }
 
 body.lite-view .lite-pill:hover {
-  background-color: #333;
+  opacity: 0.7;
 }
 
+body.lite-view nav {
+  gap: 2rem !important;
+}
+
+body.lite-view .reads-pill svg,
 body.lite-view .lite-pill svg {
-  stroke: #fff;
+  display: none !important; /* Remove icons for the ultra-minimal look */
 }
 
 /* Footer in Lite Mode */
@@ -2077,4 +2092,92 @@ body.lite-view .footer-logo {
 
 .lite-more-btn:hover {
   color: #000 !important;
+}
+
+/* --- Lite View Modal Overrides --- */
+body.lite-view .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.2) !important; /* Softer version of standard overlay */
+  backdrop-filter: blur(2px) !important;
+}
+
+body.lite-view .reads-modal-content {
+  background-color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+  border: 1px solid #eee !important;
+  max-width: 860px !important; /* Restore standard width */
+  width: 95% !important;
+  padding: 3rem !important;
+}
+
+body.lite-view .reads-modal-content h2 {
+  font-family: "Inter Tight", sans-serif !important;
+  text-transform: lowercase !important;
+  letter-spacing: -0.01em !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  margin-bottom: 2rem !important;
+  color: #111 !important;
+}
+
+body.lite-view .reads-modal-content .modal-close-button {
+  border: none !important;
+  background: none !important;
+  top: 1.5rem !important;
+  right: 1.5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 200 !important;
+  color: #aaa !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+body.lite-view .reads-modal-content .modal-close-button:hover {
+  color: #111 !important;
+  background: none !important;
+}
+
+body.lite-view .reads-row {
+  border-bottom: 1px solid #f5f5f5 !important;
+  padding: 1.2rem 0 !important;
+  cursor: pointer;
+}
+
+body.lite-view .reads-row:hover {
+  background-color: #fafafa !important;
+}
+
+body.lite-view .reads-title {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #111 !important;
+}
+
+body.lite-view .reads-tag {
+  background: #f8f8f8 !important; /* Very subtle grey instead of blue */
+  color: #888 !important;
+  font-weight: 500 !important;
+  padding: 2px 8px !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  margin-left: 0.5rem !important;
+  border: 1px solid #eee !important;
+}
+
+body.lite-view .reads-description {
+  font-size: 14px !important;
+  color: #777 !important;
+  line-height: 1.6 !important;
+  margin-top: 0.3rem !important;
+}
+
+body.lite-view .reads-date {
+  font-size: 12px !important;
+  color: #bbb !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 600px) {
+  body.lite-view .reads-modal-content {
+    padding: 2rem 1.2rem !important;
+  }
 }

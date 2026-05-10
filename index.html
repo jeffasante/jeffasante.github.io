@@ -71,12 +71,13 @@
         <section class="lite-section">
           <div class="lite-label">now</div>
           <div class="lite-item">exploring <b>on-device ai acceleration</b> across <b>webgpu</b>, metal, and hardware-native shaders for deep learning and generative models.</div>
-          <div class="lite-item">building <a href="https://github.com/jeffasante/cellm" target="_blank">cellm</a> — ground-up rust llm/vlm engine for cli/ios/android; paged kv cache and multi-session concurrency for &lt;512mb ram devices. not a wrapper.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a> — rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10.</div>
+          <div class="lite-item">building <a href="https://jeffasante.github.io/cellm/" target="_blank">cellm</a> — ground-up rust llm/vlm engine for cli/ios/android; paged kv cache and multi-session concurrency for &lt;512mb ram devices. not a wrapper.</div>
+          <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">FlowState-research</a> — research engine for an autonomous audio mixing engine that uses Computer Vision (TinyCNN) to analyze spectral textures and execute DSP transitions like "Dub Throws" and "Drops" in real-time. <a href="https://jeffasante.github.io/FlowState-research/" target="_blank">link to it to demo.</a></div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a> — rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10. <a href="https://jeffasante.github.io/oxide-xla/" target="_blank">link to it to demo.</a></div>
           <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a> — neuro-symbolic interpretability tool reverse-engineering pytorch models into math/logic via symbolic regression.</div>
           <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">repogym</a> — rl environment for ai coding agents built from git history.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">asbestos</a> — researching native llama.cpp embedding into kotlin, swift, and desktop for autonomous on-device multimodal agents with system-level tool execution (shell/file) and vlm.</div>
           <div id="more-now-items" style="display: none;">
+           <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">asbestos</a> — researching native llama.cpp embedding into kotlin, swift, and desktop for autonomous on-device multimodal agents with system-level tool execution (shell/file) and vlm.</div>
             <div class="lite-item"> <a href="https://github.com/jeffasante/datasense" target="_blank">datasense</a> — an open-source tool that ingests raw multimodal data (images, audio, video, tabular, text, or any combination), extracts a dataset fingerprint, and recommends the best ml architecture with a human-readable explanation of why it will work. (short)</div>
             <div class="lite-item"><a href="https://github.com/jeffasante/triton-kernels" target="_blank">triton kernels</a> — custom triton kernels for llm inference primitives — fused attention, int8 matmul, and rope. benchmarked on t4. (my study)</div>
             <div class="lite-item">building <a href="https://github.com/jeffasante/osmosis-inductive-architecture" target="_blank">osmosis</a> — an abstract reasoning engine for arc-agi-3 using a neuro-symbolic bridge (discrete verifier + continuous encoder). ( i dont know if im right)</div>
@@ -1955,12 +1956,12 @@
     const setLiteMode = (isLite) => {
       if (isLite) {
         body.classList.add("lite-view");
-        if (liteToggleText) liteToggleText.textContent = "In-depth";
+        if (liteToggleText) liteToggleText.textContent = "in-depth";
         liteToggle.title = "View full detailed portfolio";
         setCachedValue("portfolio-view-lite", true);
       } else {
         body.classList.remove("lite-view");
-        if (liteToggleText) liteToggleText.textContent = "Minimal";
+        if (liteToggleText) liteToggleText.textContent = "minimal";
         liteToggle.title = "Switch to minimalist view";
         setCachedValue("portfolio-view-lite", false);
       }
