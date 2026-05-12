@@ -54,9 +54,9 @@
         <a href="#" id="read-nav-link" class="reads-pill">
           Reads
         </a>
-        <button type="button" id="lite-toggle" class="lite-pill" title="Toggle Minimal View">
+        <!-- <button type="button" id="lite-toggle" class="lite-pill" title="Toggle Minimal View">
           <span id="lite-toggle-text">Lite</span>
-        </button>
+        </button> -->
       </nav>
     </header>
 
@@ -100,12 +100,14 @@
 
         <section class="lite-section">
           <div class="lite-label">projects</div>
-          <div class="lite-item"><a href="https://foundarchive.netlify.app/" target="_blank">Found</a> — Immersive mobile browser for human history</div>
+          <div class="lite-item"><a href="https://whoknow.netlify.app/" target="_blank">WhoKnows</a> — Never forget who to reach out to.</div>
+          <div class="lite-item"><a href="https://foundarchive.netlify.app/" target="_blank">Found</a> — Discover and share the most significant creations in human history</div>
           <div class="lite-item"><a href="https://focusblur.netlify.app" target="_blank">focusblur</a> — macOS tool for distraction-free work</div>
           <div class="lite-item"><a href="https://getcue.netlify.app/" target="_blank">Cue</a> — Private movie recommendations</div>
           <div class="lite-item"><a href="https://getnudge.netlify.app/" target="_blank">Nudge</a> — Location-based alerts and reminders</div>
           <div class="lite-item"><a href="https://tinkapp.netlify.app/" target="_blank">tink.</a> — AR effects and AI image tools</div>
           <div class="lite-item"><a href="https://gettapes.netlify.app/" target="_blank">Tapes</a> — Audio workspace and recording studio</div>
+          <div class="lite-item"><a href="https://puttpop.netlify.app/" target="_blank">Puttpop</a> — MiniGolf for your pocket</div>
           <div class="lite-item"><a href="https://pathly.netlify.app/" target="_blank">Pathly</a> — Path-finding puzzle game</div>
           <div class="lite-item"><a href="https://bigspenderbudget.netlify.app/" target="_blank">BigSpender</a> — Private on-device finance manager</div>
           <div class="lite-item"><a href="https://stash-desktop.netlify.app" target="_blank">Stash</a> — Desktop clipboard shelf and file batch-processor</div>
@@ -124,9 +126,9 @@
           </div>
         </section>
 
-        <div class="lite-more-container">
+        <!-- <div class="lite-more-container">
           <a href="#" id="lite-more-link" class="lite-more-btn">see more...</a>
-        </div>
+        </div> -->
       </div>
 
       <!-- In-depth Detailed Content (Current Version) -->
@@ -1947,38 +1949,21 @@
       }
     });
 
-    // --- Lite View Toggle Logic ---
-    const liteToggle = document.getElementById("lite-toggle");
+    // --- Lite View Force Logic ---
     const body = document.body;
-
-    const liteToggleText = document.getElementById("lite-toggle-text");
 
     const setLiteMode = (isLite) => {
       if (isLite) {
         body.classList.add("lite-view");
-        if (liteToggleText) liteToggleText.textContent = "in-depth";
-        liteToggle.title = "View full detailed portfolio";
         setCachedValue("portfolio-view-lite", true);
       } else {
         body.classList.remove("lite-view");
-        if (liteToggleText) liteToggleText.textContent = "minimal";
-        liteToggle.title = "Switch to minimalist view";
         setCachedValue("portfolio-view-lite", false);
       }
     };
 
-    // Initialize from cache (Default to true if no cache)
-    const cachedView = getCachedValue("portfolio-view-lite", 1000 * 60 * 60 * 24 * 30);
-    if (cachedView === false) {
-      setLiteMode(false);
-    } else {
-      setLiteMode(true); // Default or explicit Lite
-    }
-
-    liteToggle.addEventListener("click", () => {
-      const isCurrentlyLite = body.classList.contains("lite-view");
-      setLiteMode(!isCurrentlyLite);
-    });
+    // Always default to Lite/Minimal
+    setLiteMode(true);
 
     const liteMoreLink = document.getElementById("lite-more-link");
     if (liteMoreLink) {
