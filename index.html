@@ -26,7 +26,9 @@
     type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
 
   <!-- Google tag (gtag.js) -->
@@ -70,50 +72,51 @@
       <div id="lite-content">
         <section class="lite-section">
           <div class="lite-label">now</div>
+          <div class="lite-item">working with a company on <b>sre & ai</b>.</div>
           <div class="lite-item">exploring <b>on-device ai acceleration</b> across <b>webgpu</b>, metal, and hardware-native shaders for deep learning and generative models.</div>
-          <div class="lite-item">building <a href="https://jeffasante.github.io/cellm/" target="_blank">cellm</a> — ground-up rust llm/vlm engine for cli/ios/android; paged kv cache and multi-session concurrency for &lt;512mb ram devices. not a wrapper.</div>
-          <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">FlowState-research</a> — research engine for an autonomous audio mixing engine that uses Computer Vision (TinyCNN) to analyze spectral textures and execute DSP transitions like "Dub Throws" and "Drops" in real-time. <a href="https://jeffasante.github.io/FlowState-research/" target="_blank">link to it to demo.</a></div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a> — rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10. <a href="https://jeffasante.github.io/oxide-xla/" target="_blank">link to it to demo.</a></div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a> — neuro-symbolic interpretability tool reverse-engineering pytorch models into math/logic via symbolic regression.</div>
-          <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">repogym</a> — rl environment for ai coding agents built from git history.</div>
-          <div id="more-now-items" style="display: none;">
-           <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">asbestos</a> — researching native llama.cpp embedding into kotlin, swift, and desktop for autonomous on-device multimodal agents with system-level tool execution (shell/file) and vlm.</div>
-            <div class="lite-item"> <a href="https://github.com/jeffasante/datasense" target="_blank">datasense</a> — an open-source tool that ingests raw multimodal data (images, audio, video, tabular, text, or any combination), extracts a dataset fingerprint, and recommends the best ml architecture with a human-readable explanation of why it will work. (short)</div>
-            <div class="lite-item"><a href="https://github.com/jeffasante/triton-kernels" target="_blank">triton kernels</a> — custom triton kernels for llm inference primitives — fused attention, int8 matmul, and rope. benchmarked on t4. (my study)</div>
-            <div class="lite-item">building <a href="https://github.com/jeffasante/osmosis-inductive-architecture" target="_blank">osmosis</a> — an abstract reasoning engine for arc-agi-3 using a neuro-symbolic bridge (discrete verifier + continuous encoder). ( i dont know if im right)</div>
-          </div>
-          <a href="#" id="view-more-now" class="lite-more-btn" style="margin-top: 0.1rem; display: inline-block; font-size: 0.75rem; opacity: 0.6;">view more...</a>
-        
+          <div class="lite-item">building <a href="https://jeffasante.github.io/cellm/" target="_blank">cellm</a>, a ground-up rust llm/vlm engine for cli/ios/android; paged kv cache and multi-session concurrency for &lt;512mb ram devices. not a wrapper.</div>
+       
         </section>
 
         <section class="lite-section">
           <div class="lite-label">was</div>
-          <div class="lite-item"><b>Mobobi</b> — Software Engineer (AI/ML) building Abena AI. Architected full-stack offline assistant; Flutter/Rust SDK; 98% model reduction; 5+ country data collection infrastructure.</div>
+          <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">FlowState-research</a>, a research engine for an autonomous audio mixing engine using Computer Vision (TinyCNN) to analyze spectral textures and execute DSP transitions like "Dub Throws" and "Drops" in real-time. <a href="https://github.com/jeffasante/FlowState-research/" target="_blank">link to it to demo.</a></div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a>, a rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10. <a href="https://jeffasante.github.io/oxide-xla/" target="_blank">link to it to demo.</a></div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a>, a neuro-symbolic interpretability tool reverse-engineering pytorch models into math/logic via symbolic regression.</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">repogym</a>, an rl environment for ai coding agents built from git history.</div>
+          <div id="more-now-items" style="display: none;">
+           <div class="lite-item"><a href="https://github.com/jeffasante/asbestos" target="_blank">asbestos</a>, researching native llama.cpp embedding into kotlin, swift, and desktop for autonomous on-device multimodal agents with system-level tool execution (shell/file) and vlm.</div>
+            <div class="lite-item"> <a href="https://github.com/jeffasante/datasense" target="_blank">datasense</a>, an open-source tool that ingests raw multimodal data (images, audio, video, tabular, text, or any combination), extracts a dataset fingerprint, and recommends the best ml architecture with a human-readable explanation of why it will work. (short)</div>
+            <div class="lite-item"><a href="https://github.com/jeffasante/triton-kernels" target="_blank">triton kernels</a>, custom triton kernels for llm inference primitives like fused attention, int8 matmul, and rope, benchmarked on t4. (my study)</div>
+            <div class="lite-item">building <a href="https://github.com/jeffasante/osmosis-inductive-architecture" target="_blank">osmosis</a>, an abstract reasoning engine for arc-agi-3 using a neuro-symbolic bridge (discrete verifier + continuous encoder). ( i dont know if im right)</div>
+          </div>
+          <a href="#" id="view-more-now" class="lite-more-btn" style="margin-top: 0.1rem; display: inline-block; font-size: 0.75rem; opacity: 0.6;">view more...</a>
+          <div class="lite-item" style="margin-top: 0.8rem;"><b>Mobobi</b>, as a Software Engineer (AI/ML) building Abena AI. Architected full-stack offline assistant; ios/kotlin/rust sdk; 98% model reduction; 5+ country data collection infrastructure.</div>
         </section>
 
         <section class="lite-section">
           <div class="lite-label">work</div>
-          <div class="lite-item"><b>Freelance</b> — Data Scientist, Web/Mobile & Backend</div>
-          <div class="lite-item"><b>Zinary</b> — AI Developer</div>
-          <div class="lite-item"><b>Anaanse</b> — Co-Founder</div>
+          <div class="lite-item"><b>freelance</b>, as a Data Scientist, Web/Mobile & Backend</div>
+          <div class="lite-item"><b>zinary</b>, as an AI Developer</div>
+          <div class="lite-item"><b>naanse</b>, as a Co-Founder</div>
         </section>
 
         <section class="lite-section">
           <div class="lite-label">projects</div>
-          <div class="lite-item"><a href="https://whoknow.netlify.app/" target="_blank">WhoKnows</a> — Never forget who to reach out to.</div>
-          <div class="lite-item"><a href="https://foundarchive.netlify.app/" target="_blank">Found</a> — Discover and share the most significant creations in human history</div>
-          <div class="lite-item"><a href="https://focusblur.netlify.app" target="_blank">focusblur</a> — macOS tool for distraction-free work</div>
-          <div class="lite-item"><a href="https://getcue.netlify.app/" target="_blank">Cue</a> — Private movie recommendations</div>
-          <div class="lite-item"><a href="https://getnudge.netlify.app/" target="_blank">Nudge</a> — Location-based alerts and reminders</div>
-          <div class="lite-item"><a href="https://tinkapp.netlify.app/" target="_blank">tink.</a> — AR effects and AI image tools</div>
-          <div class="lite-item"><a href="https://gettapes.netlify.app/" target="_blank">Tapes</a> — Audio workspace and recording studio</div>
-          <div class="lite-item"><a href="https://puttpop.netlify.app/" target="_blank">Puttpop</a> — MiniGolf for your pocket</div>
-          <div class="lite-item"><a href="https://pathly.netlify.app/" target="_blank">Pathly</a> — Path-finding puzzle game</div>
-          <div class="lite-item"><a href="https://bigspenderbudget.netlify.app/" target="_blank">BigSpender</a> — Private on-device finance manager</div>
-          <div class="lite-item"><a href="https://stash-desktop.netlify.app" target="_blank">Stash</a> — Desktop clipboard shelf and file batch-processor</div>
-          <div class="lite-item"><a href="https://idx-support.netlify.netlify.app/" target="_blank">idX</a> — On-device AI inventory manager</div>
-          <div class="lite-item"><a href="https://sharkx.netlify.app/" target="_blank">SharkX</a> — Remote interview transparency tool</div>
-          <div class="lite-item"><a href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank">SlimeArcade</a> — Physics-based volleyball game</div>
+          <div class="lite-item"><a href="https://whoknow.netlify.app/" target="_blank">whoKnows</a>, to never forget who to reach out to.</div>
+          <div class="lite-item"><a href="https://foundarchive.netlify.app/" target="_blank">found</a>, discovering and sharing the most significant creations in human history</div>
+          <div class="lite-item"><a href="https://focusblur.netlify.app" target="_blank">focusblur</a>, a macOS tool for distraction-free work</div>
+          <div class="lite-item"><a href="https://getcue.netlify.app/" target="_blank">cue</a>, private movie recommendations</div>
+          <div class="lite-item"><a href="https://getnudge.netlify.app/" target="_blank">nudge</a>, location-based alerts and reminders</div>
+          <div class="lite-item"><a href="https://tinkapp.netlify.app/" target="_blank">tink.</a>, offering AR effects and AI image tools</div>
+          <div class="lite-item"><a href="https://gettapes.netlify.app/" target="_blank">tapes</a>, a minimalist audio workspace and recording studio</div>
+          <div class="lite-item"><a href="https://puttpop.netlify.app/" target="_blank">puttpop</a>, minigolf for your pocket</div>
+          <div class="lite-item"><a href="https://pathly.netlify.app/" target="_blank">pathly</a>, a path-finding puzzle game</div>
+          <div class="lite-item"><a href="https://bigspenderbudget.netlify.app/" target="_blank">bigSpender</a>, a private on-device finance manager</div>
+          <div class="lite-item"><a href="https://stash-desktop.netlify.app" target="_blank">stash</a>, a desktop clipboard shelf and file batch-processor</div>
+          <div class="lite-item"><a href="https://idx-support.netlify.netlify.app/" target="_blank">idX</a>, an on-device AI inventory manager</div>
+          <div class="lite-item"><a href="https://sharkx.netlify.app/" target="_blank">SharkX</a>, a remote interview transparency tool</div>
+          <div class="lite-item"><a href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank">slimeArcade</a>, a physics-based volleyball game</div>
         </section>
 
         <section class="lite-section">
@@ -121,6 +124,7 @@
           <div class="lite-item">
             <a href="https://github.com/jeffasante" target="_blank">github</a>, 
             <a href="https://huggingface.co/jeffasante" target="_blank">hugging face</a>, 
+            <a href="https://stackoverflow.com/users/13482983/jeffasante" target="_blank">stack-overflow</a>, 
             <a href="https://www.linkedin.com/in/jeffrey-asante-a69440231/" target="_blank">linkedin</a>, 
             <a href="mailto:jeffaoduro@gmail.com">email</a>
           </div>

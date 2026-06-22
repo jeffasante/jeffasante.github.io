@@ -1873,7 +1873,7 @@ body.modal-open {
 body.lite-view {
   background-color: #ffffff !important;
   color: #111111 !important;
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.625 !important;
@@ -2037,7 +2037,7 @@ body.lite-view .lite-pill {
   min-height: 0 !important;
   box-shadow: none !important;
   transform: none !important;
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
 }
 
 body.lite-view .reads-pill {
@@ -2111,7 +2111,7 @@ body.lite-view .reads-modal-content {
 }
 
 body.lite-view .reads-modal-content h2 {
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   text-transform: lowercase !important;
   letter-spacing: -0.03em !important;
   font-weight: 600 !important;
@@ -2169,7 +2169,7 @@ body.lite-view .reads-info {
 }
 
 body.lite-view .reads-title {
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-size: 16px !important;
   font-weight: 600 !important;
   color: #000 !important;
@@ -2179,7 +2179,7 @@ body.lite-view .reads-title {
 body.lite-view .reads-tag {
   background: none !important; /* Removed background */
   color: #999 !important;
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-weight: 600 !important;
   padding: 0 !important; /* Removed padding */
   border-radius: 0 !important;
@@ -2191,7 +2191,7 @@ body.lite-view .reads-tag {
 }
 
 body.lite-view .reads-description {
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-size: 0.8rem !important;
   color: var(--muted-text-color) !important;
   line-height: 1.4 !important;
@@ -2200,7 +2200,7 @@ body.lite-view .reads-description {
 }
 
 body.lite-view .reads-date {
-  font-family: "Inter Tight", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-size: 0.7rem !important;
   color: #ccc !important;
   font-weight: 500 !important;
