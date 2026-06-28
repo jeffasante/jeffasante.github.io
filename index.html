@@ -80,7 +80,7 @@
 
         <section class="lite-section">
           <div class="lite-label">was</div>
-          <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">FlowState-research</a>, a research engine for an autonomous audio mixing engine using Computer Vision (TinyCNN) to analyze spectral textures and execute DSP transitions like "Dub Throws" and "Drops" in real-time. <a href="https://github.com/jeffasante/FlowState-research/" target="_blank">link to it to demo.</a></div>
+          <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">FlowState-research</a>, a research engine for an autonomous audio mixing engine using Computer Vision (TinyCNN) to analyze spectral textures and execute DSP transitions like "Dub Throws" and "Drops" in real-time. <a href="https://jeffasante.github.io/FlowState-research/" target="_blank">link to it to demo.</a></div>
           <div class="lite-item"><a href="https://github.com/jeffasante/oxide-xla" target="_blank">oxidexla</a>, a rust-powered pytorch → jax transpiler; fx/onnx to primitives in &lt;1ms; validated on resnet-18 with mse &lt; 1e-10. <a href="https://jeffasante.github.io/oxide-xla/" target="_blank">link to it to demo.</a></div>
           <div class="lite-item"><a href="https://github.com/jeffasante/glassbox" target="_blank">glassbox</a>, a neuro-symbolic interpretability tool reverse-engineering pytorch models into math/logic via symbolic regression.</div>
           <div class="lite-item"><a href="https://github.com/jeffasante/RepoGym" target="_blank">repogym</a>, an rl environment for ai coding agents built from git history.</div>
@@ -117,6 +117,13 @@
           <div class="lite-item"><a href="https://idx-support.netlify.app/" target="_blank">idX</a>, an on-device AI inventory manager</div>
           <div class="lite-item"><a href="https://sharkx.netlify.app/" target="_blank">SharkX</a>, a remote interview transparency tool</div>
           <div class="lite-item"><a href="https://apps.apple.com/app/slime-arcade/id6751785505" target="_blank">slimeArcade</a>, a physics-based volleyball game</div>
+        </section>
+
+        <section class="lite-section">
+          <div class="lite-label">recent pushes</div>
+          <div id="github-recent-pushes">
+            <div class="lite-item" style="opacity: 0.5;">loading recent pushes...</div>
+          </div>
         </section>
 
         <section class="lite-section">
@@ -1629,8 +1636,40 @@
       }
     };
 
+    const loadRecentPushes = async () => {
+      const container = document.getElementById("github-recent-pushes");
+      if (!container) return;
+
+      try {
+        const repos = await fetchAllRepos();
+        const sorted = repos
+          .filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io')
+          .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+          .slice(0, 3);
+
+        container.innerHTML = "";
+
+        if (sorted.length === 0) {
+          container.innerHTML = '<div class="lite-item">no recent pushes found.</div>';
+          return;
+        }
+
+        sorted.forEach(repo => {
+          const item = document.createElement("div");
+          item.className = "lite-item";
+          const desc = repo.description ? `, ${repo.description}` : '';
+          item.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name.toLowerCase()}</a>${desc.toLowerCase()}`;
+          container.appendChild(item);
+        });
+      } catch (error) {
+        console.error("Failed to load recent pushes:", error);
+        container.innerHTML = '<div class="lite-item" style="opacity: 0.5;">unable to load recent pushes.</div>';
+      }
+    };
+
     // Load featured projects on page load
     loadFeaturedProjects();
+    loadRecentPushes();
 
     openButton.addEventListener("click", fetchAndDisplayProjects);
     closeButton.addEventListener("click", closeProjectModal);
