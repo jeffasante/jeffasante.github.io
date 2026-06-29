@@ -124,6 +124,8 @@
           <div id="github-recent-pushes">
             <div class="lite-item" style="opacity: 0.5;">loading recent pushes...</div>
           </div>
+          <div id="more-recent-pushes" style="display: none;"></div>
+          <a href="#" id="view-more-recent" class="lite-more-btn" style="margin-top: 0.1rem; display: none; font-size: 0.75rem; opacity: 0.6;">view more...</a>
         </section>
 
         <section class="lite-section">
@@ -1638,29 +1640,48 @@
 
     const loadRecentPushes = async () => {
       const container = document.getElementById("github-recent-pushes");
-      if (!container) return;
+      const moreContainer = document.getElementById("more-recent-pushes");
+      const viewMoreBtn = document.getElementById("view-more-recent");
+      if (!container || !moreContainer || !viewMoreBtn) return;
 
       try {
         const repos = await fetchAllRepos();
         const sorted = repos
           .filter(repo => repo.name.toLowerCase() !== 'jeffasante.github.io')
           .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-          .slice(0, 3);
+          .slice(0, 8);
 
         container.innerHTML = "";
+        moreContainer.innerHTML = "";
+        viewMoreBtn.style.display = "none";
 
         if (sorted.length === 0) {
           container.innerHTML = '<div class="lite-item">no recent pushes found.</div>';
           return;
         }
 
-        sorted.forEach(repo => {
+        sorted.forEach((repo, index) => {
           const item = document.createElement("div");
           item.className = "lite-item";
           const desc = repo.description ? `, ${repo.description}` : '';
           item.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name.toLowerCase()}</a>${desc.toLowerCase()}`;
-          container.appendChild(item);
+          
+          if (index < 3) {
+            container.appendChild(item);
+          } else {
+            moreContainer.appendChild(item);
+          }
         });
+
+        if (sorted.length > 3) {
+          viewMoreBtn.style.display = "inline-block";
+          viewMoreBtn.onclick = (e) => {
+            e.preventDefault();
+            const isHidden = moreContainer.style.display === "none";
+            moreContainer.style.display = isHidden ? "block" : "none";
+            viewMoreBtn.textContent = isHidden ? "view less..." : "view more...";
+          };
+        }
       } catch (error) {
         console.error("Failed to load recent pushes:", error);
         container.innerHTML = '<div class="lite-item" style="opacity: 0.5;">unable to load recent pushes.</div>';
