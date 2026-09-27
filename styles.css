@@ -1935,25 +1935,38 @@ body.modal-open {
 
 /* --- Lite View (heywinit.xyz style) --- */
 body.lite-view {
-  background-color: #ffffff !important;
+  background-color: #fdfdfc !important;
   color: #111111 !important;
-  font-family: "Geist Mono", monospace !important;
+  font-family: "Inter", system-ui, sans-serif !important;
   font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.625 !important;
-  letter-spacing: -0.01em !important;
+  font-weight: 460 !important;
+  line-height: 20px !important;
+  letter-spacing: -0.00563rem !important;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Top fade so content scrolls out softly */
+body.lite-view::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(#fdfdfc, rgba(253, 253, 252, 0));
+  pointer-events: none;
+  z-index: 10;
+}
+
 body.lite-view .container {
-  max-width: 600px;
-  background-color: #ffffff;
-  padding: 0 1.5rem;
+  max-width: 36.375rem;
+  background-color: transparent;
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
 body.lite-view header {
-  padding: 6rem 0 2rem;
+  padding: 5rem 0 0;
   border: none;
   display: flex;
   justify-content: space-between;
@@ -1962,7 +1975,7 @@ body.lite-view header {
 }
 
 /* Reset all section defaults leaking from standard view */
-body.lite-view section {
+body.lite-view section:not(.intro) {
   border: none !important;
   padding: 0 !important;
 }
@@ -1974,8 +1987,12 @@ body.lite-view nav {
 }
 
 @media (max-width: 600px) {
+  body.lite-view .container {
+    padding: 0 1.5rem;
+  }
+
   body.lite-view header {
-    padding-top: 3rem;
+    padding-top: 2rem;
     flex-direction: column;
     gap: 1.5rem;
   }
@@ -1991,9 +2008,9 @@ body.lite-view nav > *:not(.reads-pill):not(.lite-pill) {
 }
 
 body.lite-view .logo {
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: inherit;
   color: #111111;
   text-decoration: none;
   display: block;
@@ -2001,12 +2018,12 @@ body.lite-view .logo {
 
 
 body.lite-view .intro {
-  padding: 0 0 4rem;
-  font-size: 16px;
-  font-weight: 400;
-  color: #888;
+  padding: 0 0 3rem;
+  font-size: 14px;
+  font-weight: 460;
+  color: rgba(0, 0, 0, 0.4);
   max-width: none;
-  line-height: 1.5;
+  line-height: 20px;
   border: none;
   text-transform: lowercase;
 }
@@ -2029,41 +2046,52 @@ body:not(.lite-view) #lite-content {
 }
 
 .lite-label {
-  font-size: 14px; /* Exact match to heywinit.xyz */
-  color: #888888; /* Exact match to heywinit.xyz tertiary */
-  margin-bottom: 0.1rem;
-  font-weight: 400;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f2f2f2;
+  font-weight: 460;
   text-transform: lowercase;
-  letter-spacing: 0.01em;
 }
 
 .lite-item {
   color: #111111;
   margin-bottom: 0.2rem;
-  font-weight: 400;
-  font-size: 14px; /* Unified to 14px (0.875rem) on desktop & mobile */
-  line-height: 1.43; /* 20px / 14px line-height */
-  letter-spacing: -0.00563rem; /* -0.09008px spacing */
+  font-weight: 460;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.00563rem;
 }
 
 .lite-item b, 
 .lite-item strong {
-  font-weight: 600;
-  color: #000;
+  font-weight: 500;
+  color: #111;
 }
 
+/* Hairline underline drawn as a pseudo-element (benji.org style) */
 .lite-item a {
-  color: #000;
-  text-decoration: underline;
-  text-decoration-color: #ddd;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  transition: all 0.2s;
-  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  font-weight: inherit;
 }
 
-.lite-item a:hover {
-  text-decoration-color: #111111;
+.lite-item a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  border-radius: 2px;
+  background: #d9d9d9;
+  transition: background 0.2s;
+}
+
+.lite-item a:hover::before {
+  background: #666;
 }
 
 /* Update Pill Styles for Both Modes */
@@ -2094,7 +2122,7 @@ body.lite-view .lite-pill {
   padding: 0 !important;
   border-radius: 0 !important;
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 460 !important;
   text-transform: lowercase !important;
   letter-spacing: 0 !important;
   height: auto !important;
@@ -2105,7 +2133,7 @@ body.lite-view .lite-pill {
 }
 
 body.lite-view .reads-pill {
-  color: #888888 !important;
+  color: rgba(0, 0, 0, 0.4) !important;
 }
 
 body.lite-view .reads-pill:hover {
@@ -2132,13 +2160,24 @@ body.lite-view .lite-pill svg {
 /* Footer in Lite Mode */
 body.lite-view footer {
   border: none;
-  padding: 4rem 0 2rem;
+  padding: 2.5rem 0 5rem;
+  flex-direction: column;
   align-items: flex-start;
-  opacity: 0.4;
+  opacity: 1;
+  text-transform: lowercase;
+  font-size: 13px;
+  font-weight: 460;
+  letter-spacing: -0.0025rem;
+  color: rgba(0, 0, 0, 0.4);
 }
 
-body.lite-view .footer-logo {
-  margin-bottom: 1rem;
+body.lite-view footer::before {
+  content: "";
+  display: block;
+  width: 3.125rem;
+  height: 1px;
+  background: #ededed;
+  margin-bottom: 2.375rem;
 }
 
 .lite-more-container {
@@ -2147,15 +2186,166 @@ body.lite-view .footer-logo {
 }
 
 .lite-more-btn {
-  font-size: 0.8rem;
-  color: #888 !important;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4) !important;
   text-decoration: none !important;
-  font-weight: 500;
+  font-weight: 460;
+  align-self: flex-start;
   transition: color 0.2s;
 }
 
+/* Items inside the toggle wrappers sit outside the section's flex gap;
+   give them the same rhythm as their siblings. */
+#github-recent-pushes .lite-item,
+#more-recent-pushes .lite-item,
+#more-now-items .lite-item,
+#more-projects .lite-item {
+  margin-bottom: calc(0.5rem + 0.2rem);
+}
+
+#github-recent-pushes .lite-item:last-child,
+#more-recent-pushes .lite-item:last-child,
+#more-now-items .lite-item:last-child,
+#more-projects .lite-item:last-child {
+  margin-bottom: 0.2rem;
+}
+
 .lite-more-btn:hover {
-  color: #000 !important;
+  color: #111 !important;
+}
+
+/* --- Inline demos (benji.org/agentation style) --- */
+.demo {
+  margin: 1rem 0 1.5rem;
+  animation: demoIn 0.4s ease both;
+}
+
+.demo[hidden] {
+  display: none;
+}
+
+.demo-browser {
+  background: #f6f5f4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.demo-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.demo-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.demo-dots i,
+.demo-close {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.demo-close {
+  position: relative;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Enlarge the hit area without growing the dot. */
+.demo-close::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+.demo-close::after {
+  content: "×";
+  position: absolute;
+  inset: 0;
+  font: 600 8px/8px system-ui, sans-serif;
+  color: rgba(0, 0, 0, .55);
+  opacity: 0;
+}
+
+.demo-close:hover::after,
+.demo-close:focus-visible::after {
+  opacity: 1;
+}
+
+.demo-dots i:nth-child(2) { background: #febc2e; }
+.demo-dots i:nth-child(3) { background: #28c840; }
+
+.demo-address {
+  flex: 1;
+  min-width: 0;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: #f2f2f2;
+  font-size: 11px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+.demo-address:hover {
+  color: #111;
+}
+
+/* The page renders at 2x and is scaled down, so it reads as a desktop miniature. */
+.demo-viewport {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.demo-viewport iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  background: #fff;
+}
+
+.demo figcaption {
+  margin-top: 1.25rem;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes demoIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .demo-viewport {
+    height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo {
+    animation: none;
+  }
 }
 
 /* --- Lite View Modal Overrides --- */
