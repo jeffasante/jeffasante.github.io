@@ -534,20 +534,29 @@
     <div class="modal-overlay"></div>
     <div class="modal-content readme-modal-content" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title">
       <div class="readme-modal-header">
-        <button id="readme-back-button" class="nav-button" aria-label="Go Back" style="display: none; align-items: center; gap: 4px; border: none; background: none; cursor: pointer; color: var(--muted-text-color); font-weight: 600; font-family: var(--main-font); padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-          Back
+        <button id="readme-back-button" class="nav-button" type="button" aria-label="Go Back" style="display: inline-flex; align-items: center; gap: 4px; border: none; background: none; cursor: pointer; color: var(--muted-text-color); font-weight: 600; font-family: var(--main-font); padding: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+          <span id="readme-back-label">Back</span>
         </button>
         <button class="modal-close-button" type="button" aria-label="Close">×</button>
       </div>
-      <h2 id="readme-modal-title">README</h2>
-      <a id="readme-view-source" class="reads-pill" href="#" target="_blank" rel="noopener noreferrer" style="margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 6px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        View Full
-      </a>
-      <div id="readme-modal-content" class="readme-content">
-        <!-- README content will be loaded here -->
+      <div id="readme-toc" class="readme-toc" role="navigation" aria-label="On this page" hidden>
+        <p id="readme-toc-title" class="readme-toc-title"></p>
+        <ul id="readme-toc-list"></ul>
       </div>
+      <article class="readme-article">
+        <div class="readme-article-header">
+          <h2 id="readme-modal-title">README</h2>
+          <time id="readme-date" class="readme-date"></time>
+        </div>
+        <a id="readme-view-source" class="reads-pill" href="#" target="_blank" rel="noopener noreferrer" style="margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          View Full
+        </a>
+        <div id="readme-modal-content" class="readme-content">
+          <!-- README content will be loaded here -->
+        </div>
+      </article>
     </div>
   </div>
 
@@ -1821,7 +1830,75 @@
     const readmeTitle = document.getElementById("readme-modal-title");
     const readmeBackButton = document.getElementById("readme-back-button");
     const readmeViewSource = document.getElementById("readme-view-source");
+    const readmeBackLabel = document.getElementById("readme-back-label");
+    const readmeDate = document.getElementById("readme-date");
+    const readmeToc = document.getElementById("readme-toc");
+    const readmeTocTitle = document.getElementById("readme-toc-title");
+    const readmeTocList = document.getElementById("readme-toc-list");
+    const readmeScroller = readmeModal.querySelector(".readme-modal-content");
+    let readmeTocObserver = null;
     let readmeSourceModal = null; // 'projects' or 'reads'
+
+    const resetReadmeToc = () => {
+      if (readmeTocObserver) readmeTocObserver.disconnect();
+      readmeTocObserver = null;
+      readmeTocList.innerHTML = '';
+      readmeToc.hidden = true;
+    };
+
+    // Left-column "on this page" list built from the README's own headings,
+    // with the section currently on screen highlighted.
+    const buildReadmeToc = (title) => {
+      resetReadmeToc();
+      const headings = [...readmeContentDiv.querySelectorAll('h2, h3')]
+        .filter(h => h.textContent.trim());
+      if (headings.length < 2) return;
+
+      readmeTocTitle.textContent = title;
+      const linkFor = new Map();
+      headings.forEach((heading, i) => {
+        heading.id = `readme-section-${i}`;
+        const li = document.createElement('li');
+        if (heading.tagName === 'H3') li.className = 'readme-toc-sub';
+        const a = document.createElement('a');
+        a.href = `#${heading.id}`;
+        a.textContent = heading.textContent.trim();
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          heading.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          heading.classList.remove('readme-target');
+          void heading.offsetWidth; // restart the highlight animation
+          heading.classList.add('readme-target');
+        });
+        li.appendChild(a);
+        readmeTocList.appendChild(li);
+        linkFor.set(heading, a);
+      });
+      readmeToc.hidden = false;
+
+      const visible = new Set();
+      const setActive = () => {
+        const current = headings.find(h => visible.has(h)) ||
+          [...headings].reverse().find(h => h.getBoundingClientRect().top < 0) ||
+          headings[0];
+        linkFor.forEach((a, h) => a.classList.toggle('is-active', h === current));
+        readmeToc.classList.toggle('is-scrolled', readmeScroller.scrollTop > 80);
+      };
+      readmeTocObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        setActive();
+      }, { root: readmeScroller, rootMargin: '0px 0px -60% 0px' });
+      headings.forEach(h => readmeTocObserver.observe(h));
+      setActive();
+    };
+
+    readmeScroller.addEventListener('scroll', () => {
+      readmeToc.classList.toggle('is-scrolled', readmeScroller.scrollTop > 80);
+    }, { passive: true });
 
     const openReadmeModal = (triggerEl) => openDialog(readmeModal, triggerEl);
     const closeReadmeModal = () => closeDialog(readmeModal);
@@ -1831,6 +1908,7 @@
 
     readmeBackButton.addEventListener("click", () => {
       closeReadmeModal();
+      resetReadmeToc();
       if (readmeSourceModal === 'projects') {
         const openButton = document.getElementById("view-projects-button");
         if (openButton) openDialog(document.getElementById("project-modal"), openButton);
@@ -1843,22 +1921,30 @@
     const README_CACHE_MAX_AGE_MS = 1000 * 60 * 60 * 24; // 24 hours
     const showReadmeModal = async (repoFullName, triggerEl, sourceModal = null) => {
       readmeSourceModal = sourceModal;
-      if (readmeSourceModal) {
-        readmeBackButton.style.display = 'inline-flex';
-      } else {
-        readmeBackButton.style.display = 'none';
-      }
+      readmeBackLabel.textContent = sourceModal === 'reads' ? 'Reads'
+        : sourceModal === 'projects' ? 'Projects' : 'Index';
+      readmeBackButton.dataset.source = sourceModal || '';
 
       readmeViewSource.href = `https://github.com/${repoFullName}`;
 
       readmeTitle.textContent = `${repoFullName}`;
+      readmeDate.textContent = '';
+      readmeDate.removeAttribute('datetime');
+      resetReadmeToc();
       readmeContentDiv.innerHTML = '<p class="loading-text">Loading README...</p>';
       openReadmeModal(triggerEl);
+      readmeScroller.scrollTop = 0;
 
       try {
         const repos = await fetchAllRepos();
         const repoInfo = repos.find(r => r.full_name === repoFullName);
         const defaultBranch = repoInfo?.default_branch || 'main';
+
+        if (repoInfo?.pushed_at) {
+          const pushed = new Date(repoInfo.pushed_at);
+          readmeDate.dateTime = repoInfo.pushed_at;
+          readmeDate.textContent = `${pushed.getDate()} ${pushed.toLocaleDateString('en-GB', { month: 'long' })}, ${pushed.getFullYear()}`;
+        }
 
         const readmeCacheKey = `github_readme_html_${repoFullName}_${defaultBranch}_v1`;
         const cachedReadme = getCachedValue(readmeCacheKey, README_CACHE_MAX_AGE_MS);
@@ -1971,6 +2057,8 @@
         } catch (err) {
           console.error('Failed to render LaTeX math:', err);
         }
+
+        buildReadmeToc(repoInfo?.name || repoFullName.split('/').pop());
       } catch (error) {
         console.error("Failed to load README:", error);
         if (error.message.includes("403")) {

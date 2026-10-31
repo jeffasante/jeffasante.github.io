@@ -2458,10 +2458,15 @@ body.lite-view .readme-modal-content {
   background-color: #ffffff !important;
 }
 
+body.lite-view #read-modal .modal-overlay {
+  background-color: #fdfdfc !important;
+  backdrop-filter: none !important;
+}
+
 body.lite-view .reads-modal-content {
-  background-color: #ffffff !important;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.1) !important;
-  border: 1px solid #f0f0f0 !important;
+  background-color: #fdfdfc !important;
+  box-shadow: none !important;
+  border: 0 !important;
   max-width: 700px !important;
   width: 95% !important;
   padding: 1.5rem !important; /* Compact padding */
@@ -2483,7 +2488,7 @@ body.lite-view .reads-modal-content .modal-close-button {
   background: none !important;
   top: 1.2rem !important;
   right: 1.2rem !important;
-  font-size: 1.2rem !important;
+  font-size: 2rem !important;
   font-weight: 300 !important;
   color: #999 !important;
   width: auto !important;
@@ -2675,6 +2680,327 @@ body.lite-view .readme-content img {
 
 body.lite-view .readme-content hr {
   border-top: 1px solid #f0f0f0;
+}
+
+/* --- README as an article page (lite view) ---
+   Full-page reading view: back link + "on this page" list pinned in the left
+   gutter, a narrow centred column with title and date, quiet 14px body. */
+.readme-date:empty {
+  display: none;
+}
+
+body:not(.lite-view) .readme-toc,
+body:not(.lite-view) #readme-back-button[data-source=""] {
+  display: none !important;
+}
+
+body.lite-view #readme-modal .modal-overlay {
+  display: none;
+}
+
+body.lite-view #readme-modal .readme-modal-content {
+  position: fixed !important;
+  inset: 0;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 5rem 1rem 6rem !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  background-color: #fdfdfc !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Soft fade so text scrolls away under the top edge */
+body.lite-view #readme-modal .readme-modal-content::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(#fdfdfc 40%, rgba(253, 253, 252, 0));
+  pointer-events: none;
+  z-index: 2;
+}
+
+body.lite-view #readme-modal .readme-modal-header {
+  margin: 0;
+}
+
+body.lite-view #readme-back-button {
+  position: fixed;
+  top: 5rem;
+  left: 5rem;
+  z-index: 3;
+  gap: 0.25rem !important;
+  padding: 0.25rem 0 !important;
+  line-height: 20px;
+  letter-spacing: -0.00563rem;
+  transition: color 0.1s;
+}
+
+body.lite-view #readme-back-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+body.lite-view #readme-back-button:hover {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+body.lite-view #readme-modal .modal-close-button {
+  position: fixed !important;
+  top: 5rem !important;
+  right: 5rem !important;
+  z-index: 3;
+  font-size: 1.25rem;
+  line-height: 28px;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.1s;
+}
+
+body.lite-view #readme-modal .modal-close-button:hover {
+  color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+}
+
+body.lite-view .readme-toc {
+  position: fixed;
+  top: calc(5rem + 28px);
+  left: 5rem;
+  z-index: 3;
+  max-width: 10rem;
+  padding-top: 1.875rem;
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+  animation: readmeFadeIn 0.4s ease both;
+}
+
+body.lite-view .readme-toc-title {
+  margin: 0;
+  padding-bottom: 1rem;
+  font-size: 13px;
+  font-weight: 460;
+  line-height: 1.2;
+  color: rgba(18, 18, 18, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+body.lite-view .readme-toc.is-scrolled .readme-toc-title {
+  opacity: 1;
+}
+
+body.lite-view .readme-toc ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.lite-view .readme-toc li.readme-toc-sub {
+  padding-left: 0.625rem;
+}
+
+body.lite-view .readme-toc a {
+  display: block;
+  font-size: 13px;
+  font-weight: 460;
+  line-height: 1.2;
+  color: rgba(18, 18, 18, 0.4);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+body.lite-view .readme-toc a:hover,
+body.lite-view .readme-toc a.is-active {
+  color: rgba(18, 18, 18, 0.8);
+}
+
+body.lite-view .readme-article {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+body.lite-view .readme-article-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+body.lite-view #readme-modal-title {
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 20px;
+  font-weight: 500 !important;
+  letter-spacing: -0.00563rem !important;
+  text-wrap: balance;
+}
+
+body.lite-view .readme-date {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 460;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+body.lite-view #readme-view-source {
+  margin: 0 0 0.5rem !important;
+}
+
+body.lite-view #readme-modal .readme-content {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 460;
+  letter-spacing: -0.00563rem;
+}
+
+body.lite-view #readme-modal .readme-content p,
+body.lite-view #readme-modal .readme-content ul,
+body.lite-view #readme-modal .readme-content ol {
+  margin: 1rem 0 0;
+}
+
+body.lite-view #readme-modal .readme-content li + li {
+  margin-top: 0.25rem;
+}
+
+body.lite-view #readme-modal .readme-content strong {
+  font-weight: 600;
+}
+
+body.lite-view #readme-modal .readme-content h1,
+body.lite-view #readme-modal .readme-content h2,
+body.lite-view #readme-modal .readme-content h3,
+body.lite-view #readme-modal .readme-content h4 {
+  position: relative;
+  margin: 2.25rem 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 560;
+  letter-spacing: -0.00563rem;
+  text-wrap: balance;
+  scroll-margin-top: 5rem;
+}
+
+body.lite-view #readme-modal .readme-content h3,
+body.lite-view #readme-modal .readme-content h4 {
+  margin-top: 1.5rem;
+}
+
+body.lite-view #readme-modal .readme-content > :first-child,
+body.lite-view #readme-modal .readme-content > .markdown-heading:first-child h1,
+body.lite-view #readme-modal .readme-content > .markdown-heading:first-child h2 {
+  margin-top: 1rem;
+}
+
+body.lite-view #readme-modal .readme-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+body.lite-view #readme-modal .readme-content pre,
+body.lite-view #readme-modal .readme-content .mermaid,
+body.lite-view #readme-modal .readme-content table {
+  margin: 1.5rem 0;
+}
+
+body.lite-view #readme-modal .readme-content pre {
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+body.lite-view #readme-modal .readme-content blockquote {
+  margin: 1rem 0 0;
+  padding-left: 0.875rem;
+  border-left: 2px solid #ebebeb;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Brief marker on the section you jumped to from the list */
+body.lite-view #readme-modal .readme-target::after {
+  content: "";
+  position: absolute;
+  inset: -2px -6px;
+  border-radius: 0.5rem;
+  background: #ffa;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: readmeTargetFlash 2.5s ease both;
+}
+
+body.lite-view #readme-modal .readme-article > * {
+  animation: staggerIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.lite-view #readme-modal .readme-article > :nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+body.lite-view #readme-modal .readme-article > :nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes readmeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes readmeTargetFlash {
+  0% { opacity: 0; }
+  10%, 60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 1080px) {
+  body.lite-view .readme-toc {
+    display: none;
+  }
+
+  body.lite-view #readme-modal .readme-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 550px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  body.lite-view #readme-back-button,
+  body.lite-view #readme-modal .modal-close-button {
+    position: static !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.lite-view #readme-modal .readme-modal-content {
+    padding: 2rem 1.5rem 4rem !important;
+  }
+
+  body.lite-view #readme-modal .readme-modal-content::before {
+    height: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.lite-view .readme-toc,
+  body.lite-view #readme-modal .readme-article > *,
+  body.lite-view #readme-modal .readme-target::after {
+    animation: none;
+  }
 }
 
 /* ==========================================================================
