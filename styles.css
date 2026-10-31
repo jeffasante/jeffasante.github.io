@@ -2517,7 +2517,12 @@ body.lite-view .reads-row:last-child {
 
 body.lite-view .reads-row:hover {
   background-color: transparent !important;
-  opacity: 0.6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.lite-view .reads-list:has(.reads-row:hover) .reads-row:not(:hover) {
+    opacity: 0.35;
+  }
 }
 
 body.lite-view .reads-info {
@@ -2580,6 +2585,96 @@ body.lite-view .reads-date {
   body.lite-view .reads-date {
     align-self: flex-end;
   }
+}
+
+/* README rendered from GitHub's HTML: drop its permalink icons and empty table headers */
+.readme-content .anchor {
+  display: none;
+}
+
+.readme-content thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+.readme-content h2 {
+  text-transform: none;
+}
+
+body.lite-view #readme-back-button {
+  font-family: inherit !important;
+  font-weight: 460 !important;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.lite-view #readme-back-button:hover {
+  color: #111 !important;
+}
+
+body.lite-view #readme-modal-title {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+  color: #111 !important;
+}
+
+body.lite-view .readme-content h1,
+body.lite-view .readme-content h2,
+body.lite-view .readme-content h3,
+body.lite-view .readme-content h4 {
+  border-bottom: none;
+  padding-bottom: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+body.lite-view .readme-content h1 {
+  font-size: 1.125rem;
+  margin-top: 0;
+}
+
+body.lite-view .readme-content h2,
+body.lite-view .readme-content h3,
+body.lite-view .readme-content h4 {
+  font-size: 14px;
+  margin-top: 2rem;
+}
+
+body.lite-view .readme-content p,
+body.lite-view .readme-content ul,
+body.lite-view .readme-content ol {
+  opacity: 1;
+  color: #111;
+}
+
+body.lite-view .readme-content table td,
+body.lite-view .readme-content table th {
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0.5rem 1rem 0.5rem 0;
+}
+
+body.lite-view .readme-content table th {
+  background: none;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+  text-align: left;
+}
+
+body.lite-view .readme-content pre {
+  border: none;
+  background-color: #f6f5f4;
+  border-radius: 8px;
+}
+
+body.lite-view .readme-content img {
+  border: none;
+}
+
+body.lite-view .readme-content hr {
+  border-top: 1px solid #f0f0f0;
 }
 
 /* ==========================================================================
