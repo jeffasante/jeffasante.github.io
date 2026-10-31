@@ -2214,6 +2214,51 @@ body.lite-view footer::before {
   color: #111 !important;
 }
 
+.writing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: calc(0.5rem + 0.2rem);
+}
+
+.writing-row:last-child {
+  margin-bottom: 0.2rem;
+}
+
+.writing-text {
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.writing-date .reads-new {
+  margin: 0 0.5rem 0 0;
+}
+
+.writing-date {
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.reads-new {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.45rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.03);
+  color: #111;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: lowercase;
+  vertical-align: 1px;
+}
+
 body.lite-view .local-time {
   font-variant-numeric: tabular-nums;
 }
@@ -2577,18 +2622,47 @@ body.lite-view .reads-date {
 
 @media (max-width: 600px) {
   body.lite-view .reads-modal-content {
-    padding: 1.5rem !important;
-    width: 92% !important;
+    padding: 2rem 1.5rem 4rem !important;
+    width: 100% !important;
   }
-  
+
+  body.lite-view .reads-modal-content .modal-close-button {
+    top: 1.75rem !important;
+    right: 1.5rem !important;
+  }
+
+  /* Title and date share the first line; the description spans the full width below */
   body.lite-view .reads-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1rem;
+    row-gap: 0.15rem;
+    align-items: baseline;
+    padding: 0.85rem 0 !important;
   }
-  
+
+  body.lite-view .reads-info {
+    display: contents;
+  }
+
+  body.lite-view .reads-title-row {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  body.lite-view .reads-description {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
   body.lite-view .reads-date {
-    align-self: flex-end;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: baseline;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 13px !important;
   }
 }
 

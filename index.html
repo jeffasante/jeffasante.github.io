@@ -123,6 +123,14 @@
         </section>
 
         <section class="lite-section">
+          <div class="lite-label">writing</div>
+          <div id="home-writing" class="writing-list">
+            <div class="lite-item" style="opacity: 0.5;">loading writing...</div>
+          </div>
+          <a href="#" id="view-more-writing" class="lite-more-btn">view more...</a>
+        </section>
+
+        <section class="lite-section">
           <div class="lite-label">recent pushes</div>
           <div id="github-recent-pushes">
             <div class="lite-item" style="opacity: 0.5;">loading recent pushes...</div>
@@ -2082,16 +2090,10 @@
     readCloseButton.addEventListener("click", () => closeReadModal());
     readOverlay.addEventListener("click", () => closeReadModal());
 
-    readNavButton.addEventListener("click", async (e) => {
-      e.preventDefault();
-      openReadModal();
-      
-      if (readRepoList.children.length === 0 || readRepoList.querySelector('.loading-text')) {
-        readRepoList.innerHTML = '<p class="loading-text">Loading repositories...</p>';
-        try {
-          const repos = await fetchAllRepos();
-          readRepoList.innerHTML = "";
-          
+    let researchReposPromise = null;
+    const getResearchRepos = () => {
+      if (!researchReposPromise) {
+        researchReposPromise = fetchAllRepos().then(repos => {
           const explicitReads = [
             'cellm', 'symbold', 'RepoGym', 'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
             'latent-reasoning-transformer', 'adaptive-ecg-detector', 'facade', 'torpedo',
@@ -2140,12 +2142,37 @@
                    desc.includes('research-driven');
           }).sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
+          return researchRepos;
+        }).catch(error => {
+          researchReposPromise = null;
+          throw error;
+        });
+      }
+      return researchReposPromise;
+    };
+
+    // "New" marks only the most recent read, and only while it is recent.
+    const NEW_READ_DAYS = 30;
+    const isNewRead = (repo, index) =>
+      index === 0 && Date.now() - new Date(repo.pushed_at) < NEW_READ_DAYS * 864e5;
+    const newTagHtml = `<span class="reads-new">new</span>`;
+
+    readNavButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      openReadModal();
+
+      if (readRepoList.children.length === 0 || readRepoList.querySelector('.loading-text')) {
+        readRepoList.innerHTML = '<p class="loading-text">Loading repositories...</p>';
+        try {
+          const researchRepos = await getResearchRepos();
+          readRepoList.innerHTML = "";
+
           if (researchRepos.length === 0) {
             readRepoList.innerHTML = '<p class="error-text">No research works found.</p>';
             return;
           }
 
-          researchRepos.forEach(repo => {
+          researchRepos.forEach((repo, index) => {
             const row = document.createElement("div");
             row.className = "reads-row";
             
@@ -2153,11 +2180,13 @@
             const date = new Date(repo.pushed_at).toLocaleDateString('en-GB', dateOptions);
             const languageTag = repo.language ? `<span class="reads-tag">${repo.language.toLowerCase()}</span>` : '';
             const description = repo.description ? `<div class="reads-description">${repo.description}</div>` : '';
+            const newTag = isNewRead(repo, index) ? newTagHtml : '';
             
             row.innerHTML = `
               <div class="reads-info">
                 <div class="reads-title-row">
                   <span class="reads-title">${repo.name}</span>
+                  ${newTag}
                   ${languageTag}
                 </div>
                 ${description}
@@ -2178,6 +2207,59 @@
         }
       }
     });
+
+    // --- Home Writing List ---
+    const homeWriting = document.getElementById("home-writing");
+    const viewMoreWriting = document.getElementById("view-more-writing");
+    const HOME_WRITING_COUNT = 4;
+
+    viewMoreWriting.addEventListener("click", (e) => {
+      e.preventDefault();
+      readNavButton.click();
+    });
+
+    const loadHomeWriting = async () => {
+      try {
+        const researchRepos = await getResearchRepos();
+        homeWriting.innerHTML = "";
+
+        if (researchRepos.length === 0) {
+          homeWriting.innerHTML = '<div class="lite-item" style="opacity: 0.5;">no writing yet</div>';
+          viewMoreWriting.style.display = "none";
+          return;
+        }
+        if (researchRepos.length <= HOME_WRITING_COUNT) viewMoreWriting.style.display = "none";
+
+        const thisYear = new Date().getFullYear();
+        researchRepos.slice(0, HOME_WRITING_COUNT).forEach((repo, index) => {
+          const pushed = new Date(repo.pushed_at);
+          const dateOptions = pushed.getFullYear() === thisYear
+            ? { day: 'numeric', month: 'short' }
+            : { day: 'numeric', month: 'short', year: 'numeric' };
+          const row = document.createElement("div");
+          row.className = "lite-item writing-row";
+          row.innerHTML = `
+            <span class="writing-text"><a href="${repo.html_url}" class="writing-name"></a><span class="writing-desc"></span></span>
+            <span class="writing-date">${isNewRead(repo, index) ? newTagHtml : ''}${pushed.toLocaleDateString('en-GB', dateOptions).toLowerCase()}</span>
+          `;
+          const link = row.querySelector(".writing-name");
+          link.textContent = repo.name.toLowerCase();
+          if (repo.description) {
+            row.querySelector(".writing-desc").textContent = `, ${repo.description.trim().replace(/\.$/, '').toLowerCase()}.`;
+          }
+          link.addEventListener("click", async (e) => {
+            e.preventDefault();
+            await showReadmeModal(repo.full_name, link);
+          });
+          homeWriting.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Failed to load writing:", error);
+        homeWriting.innerHTML = '<div class="lite-item" style="opacity: 0.5;">could not load writing</div>';
+      }
+    };
+
+    loadHomeWriting();
 
     // --- Lite View Force Logic ---
     const body = document.body;
