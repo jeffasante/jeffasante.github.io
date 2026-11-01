@@ -78,6 +78,7 @@
 
         <section class="lite-section">
           <div class="lite-label">was</div>
+          <div class="lite-item"><a href="https://github.com/jeffasante/motif-web" target="_blank">motif</a>, how are two tracks connected? compares two audio files and tells you whether they share recorded audio (a sample, a re-release) or are musically similar (a cover: same melody and chords, even in another key or tempo), with linked waveforms, spectrograms and the evidence behind the verdict. a c engine compiled to wasm; your files never leave your device. <a href="https://jeffasante.github.io/motif-web/" target="_blank" class="demo-toggle" data-caption="motif running in your browser. pick two tracks and see how they're connected.">demo</a></div>
           <div class="lite-item"><a href="https://jeffasante.github.io/kimbo-slice/" target="_blank">kimbo slice</a>, splits a long video into clips that fit whatsapp status, instagram stories and snapchat, entirely in your browser; the video never leaves your device. a small c11 mp4 demuxer/muxer compiled to wasm (~21kb gzipped) cuts losslessly on keyframes, with an optional exact-length h.264 re-encode via webcodecs. works offline. <a href="https://jeffasante.github.io/kimbo-slice/" target="_blank" class="demo-toggle" data-caption="kimbo slice running in your browser. pick a video, choose where you'll post it, and get the clips in order.">demo</a></div>
           <div class="lite-item"><a href="https://github.com/jeffasante/symbold" target="_blank">symbold</a>, symbolic reasoning for handwritten digits: instead of a neural network, the model is a readable program of simple yes/no questions ("is there a closed loop?", "is the digit wide?"), so you can see exactly why it picked an answer. 92.7% on mnist, ~12 questions per digit, runs in a tiny c99 interpreter and wasm. <a href="https://jeffasante.github.io/symbold/web/" target="_blank" class="demo-toggle" data-caption="symbold running in wasm. draw a digit and see how many instructions the program ran.">demo</a></div>
           <div class="lite-item">researching <a href="https://github.com/jeffasante/FlowState-research" target="_blank">flowstate-research</a>, a research engine for an autonomous audio mixing engine using computer vision (tinycnn) to analyze spectral textures and execute dsp transitions like "dub throws" and "drops" in real-time. <a href="https://jeffasante.github.io/FlowState-research/" target="_blank" class="demo-toggle" data-caption="flowstate running live. load a track and watch the tinycnn read its spectrum.">demo</a></div>
@@ -2096,7 +2097,7 @@
       if (!researchReposPromise) {
         researchReposPromise = fetchAllRepos().then(repos => {
           const explicitReads = [
-            'cellm', 'symbold', 'RepoGym', 'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
+            'motif-web', 'cellm', 'symbold', 'RepoGym', 'glassbox', 'grpo-maze-solver', 'noise-cancellation-cpp', 'EvoEquation',
             'latent-reasoning-transformer', 'adaptive-ecg-detector', 'facade', 'torpedo',
             'gazetrack', 'nimble', 'Unofficial-GCN-Kipf-Welling-Implementation',
             'ant-colony-rl', 'position-weight-matrix', 'chrome-dino-RL',
